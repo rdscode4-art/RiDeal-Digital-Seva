@@ -1,0 +1,10 @@
+# ads.txt
+# ads.txt is used to increase transparency in digital advertising and prevent fraud
+# For more information, visit: https://iabtechlab.com/ads-txt/
+
+# Add your authorized digital sellers here
+# Format: <SSP/Exchange Domain>, <Publisher Account ID>, <Account Type>, <Certification Authority>
+
+# Example entries (replace with your actual values):
+# google.com, pub-xxxxxxxxxxxxxxxx, DIRECT, f08c47fec0942fa0
+# example-exchange.com, abc123, RESELLER
