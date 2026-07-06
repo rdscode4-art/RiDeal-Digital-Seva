@@ -35,7 +35,7 @@ export const BLOG_POSTS = [
     id: 2,
     title: "Unlocking Customer Loyalty: The Power of Custom CRM Software",
     category: "ERP & CRM",
-    date: "May 20, 2026",
+    date: "June 18, 2026",
     author: "Neha Patel",
     readTime: "5 min read",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800&auto=format&fit=crop",
@@ -139,7 +139,7 @@ export const BLOG_POSTS = [
     id: 6,
     title: "Effective Digital Marketing Strategies for Small Businesses",
     category: "Business Growth",
-    date: "April 28, 2026",
+    date: "May 05, 2026",
     author: "Karan Gupta",
     readTime: "5 min read",
     image: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=800&auto=format&fit=crop",
@@ -156,6 +156,78 @@ export const BLOG_POSTS = [
 
       <h3>3. Content & Value-First Marketing</h3>
       <p>Instead of hard-selling, publish blogs, video tutorials, or case studies that solve actual user problems. Demonstrating expertise builds trust, making customers far more likely to select your service when they are ready to purchase.</p>
+    `
+  },
+  {
+    id: 7,
+    title: "Next.js vs React: Choosing the Right Framework for Your Next Project",
+    category: "Web & App Development",
+    date: "June 18, 2026",
+    author: "Rahul Singh",
+    readTime: "6 min read",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
+    excerpt: "Understand the key differences between React and Next.js to make an informed decision for your upcoming web application.",
+    featured: false,
+    content: `
+      <p>When starting a new web project, choosing the right tech stack is critical. React has been the industry standard for years, but Next.js is rapidly gaining traction. Both are incredible tools, but which one fits your specific needs?</p>
+      <h3>React: The Flexible UI Library</h3>
+      <p>React is a powerful library for building interactive user interfaces. It's unopinionated, meaning you have complete freedom to choose your routing, state management, and build tools. However, it requires more setup for complex apps.</p>
+      <h3>Next.js: The Opinionated Framework</h3>
+      <p>Next.js is built on top of React. It provides built-in solutions for routing, Server-Side Rendering (SSR), Static Site Generation (SSG), and API routes. If SEO and fast initial load times are your priority, Next.js is often the better choice.</p>
+    `
+  },
+  {
+    id: 8,
+    title: "Automating HR Workflows with AI: From Hiring to Onboarding",
+    category: "AI & Automation",
+    date: "June 18, 2026",
+    author: "Sneha Kapoor",
+    readTime: "5 min read",
+    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop",
+    excerpt: "Discover how AI-powered automation is streamlining human resources, saving time, and improving the candidate experience.",
+    featured: false,
+    content: `
+      <p>Human Resources departments are often bogged down by repetitive administrative tasks. Reviewing hundreds of resumes, scheduling interviews, and managing onboarding paperwork can drain valuable time.</p>
+      <h3>AI-Powered Resume Screening</h3>
+      <p>Modern applicant tracking systems use AI to scan resumes, extracting relevant skills and experiences. This ensures that recruiters only spend time on the most qualified candidates, eliminating bias and accelerating the hiring process.</p>
+      <h3>Automated Onboarding</h3>
+      <p>Once a candidate is hired, automated workflows can trigger welcome emails, provision software accounts, and guide the new employee through interactive training modules without manual intervention.</p>
+    `
+  },
+  {
+    id: 9,
+    title: "How IoT is Revolutionizing Supply Chain and Warehouse Management",
+    category: "Logistics & Operations",
+    date: "June 18, 2026",
+    author: "Vikram Malhotra",
+    readTime: "7 min read",
+    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=800&auto=format&fit=crop",
+    excerpt: "The Internet of Things (IoT) is providing unprecedented visibility into global supply chains. Learn how smart sensors are optimizing operations.",
+    featured: false,
+    content: `
+      <p>The logistics industry has always relied on data to move goods efficiently. Today, the Internet of Things (IoT) is taking data collection to a whole new level, providing real-time insights into every stage of the supply chain.</p>
+      <h3>Smart Warehousing</h3>
+      <p>IoT-enabled sensors track inventory levels, monitor temperature and humidity for sensitive goods, and even guide autonomous robots to fetch products. This reduces human error and drastically cuts down fulfillment times.</p>
+      <h3>Predictive Maintenance for Fleets</h3>
+      <p>Vehicles equipped with IoT sensors can transmit engine diagnostics back to headquarters. This allows logistics companies to schedule predictive maintenance before a truck breaks down, minimizing costly delays.</p>
+    `
+  },
+  {
+    id: 10,
+    title: "Data-Driven Decision Making: The Secret to Sustainable Business Expansion",
+    category: "Business Growth",
+    date: "June 18, 2026",
+    author: "Karan Gupta",
+    readTime: "6 min read",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+    excerpt: "Stop guessing. Learn how implementing robust data analytics tools can uncover hidden growth opportunities and streamline your business.",
+    featured: false,
+    content: `
+      <p>In the digital age, intuition is no longer enough to run a successful business. Companies that leverage data to drive their decision-making processes consistently outperform their competitors.</p>
+      <h3>The Power of Analytics Dashboards</h3>
+      <p>Connecting your CRM, marketing platforms, and financial software into a centralized analytics dashboard provides a bird's-eye view of your business health. You can instantly see which marketing campaigns yield the highest ROI and which products are underperforming.</p>
+      <h3>Predicting Customer Behavior</h3>
+      <p>Advanced analytics can identify patterns in customer behavior, allowing you to anticipate needs, reduce churn rates, and offer personalized product recommendations that drive additional revenue.</p>
     `
   }
 ];

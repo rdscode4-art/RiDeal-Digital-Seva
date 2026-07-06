@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const ContactHero = () => {
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState({
-    title: "Get In Touch",
-    subtitle: "Have a project in mind or need expert IT consultation? Drop us a line, and our specialists will get back to you within 24 hours.",
+    title: "Contact RiDeal Digital Seva for IT Services",
+    subtitle: "Need ERP Software, CRM Development, Web Development, Mobile App Development, AI Automation or Digital Marketing Services?  Contact RiDeal Digital Seva today and our experts will help you choose the right solution for your business.",
     content: {
       eyebrow: "Contact Us",
       bgImage: "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?q=80&w=1600&auto=format&fit=crop"
@@ -12,7 +12,7 @@ const ContactHero = () => {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/sections/contact-hero")
+    fetch("https://backend.ridealdigitalseva.com/api/sections/contact-hero")
       .then(res => res.json())
       .then(resData => {
         if (resData && resData.title) {
@@ -327,7 +327,7 @@ const ContactHero = () => {
           </h1>
           <div className={`ch-title-line ${loaded ? "in" : ""}`} />
 
-          <p className={`ch-desc ${loaded ? "in" : ""}`}>
+    <p className={`ch-desc ${loaded ? "in" : ""}`}>
             {data.subtitle}
           </p>
 

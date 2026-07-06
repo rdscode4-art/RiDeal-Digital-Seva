@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 const AboutHero = () => {
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState({
-    title: "About Us",
-    subtitle: "RiDeal Digital Seva is a trusted IT solutions partner delivering innovative software, digital marketing, ERP, and AI-powered services to businesses across India.",
+    title: "Custom Software Development & IT Solutions Company in India",
+    subtitle: "RiDeal Digital Seva is a leading custom software development company in India specializing in website development, mobile app development, ERP software solutions, CRM systems, SEO services, digital marketing, AI-powered applications, and business automation solutions. We help startups, small businesses, and enterprises accelerate growth through innovative technology solutions.",
     content: {
-      eyebrow: "Who We Are",
+      eyebrow: "Trusted IT Solutions Partner",
       bgImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop"
     }
   });

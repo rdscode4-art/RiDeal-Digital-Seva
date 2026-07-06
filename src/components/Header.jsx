@@ -3,11 +3,13 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaArrowRight, FaSearch, FaTimes, FaBars } from "react-icons/fa";
 
 const NAV_LINKS = [
-  { label: "Home",     to: "/"         },
-  { label: "About",    to: "/about"    },
-  { label: "Services", to: "/services" },
-  { label: "Blog",     to: "/blog"     },
-  { label: "Contact",  to: "/contact"  },
+  { label: "Home",           to: "/"               },
+  { label: "About",          to: "/about"          },
+  { label: "Services",       to: "/services"       },
+  { label: "Certifications", to: "/certifications" },
+  { label: "Our Ventures",   to: "/branches"       },
+  { label: "Blog",           to: "/blog"           },
+  { label: "Contact",        to: "/contact"        },
 ];
 
 const NavbarPage = () => {
@@ -203,11 +205,11 @@ const NavbarPage = () => {
         <div className="header-inner">
 
           <Link to="/" className="logo">
-            <img src="/logo.jpeg" alt="RiDeal Digital Seva" className="logo-img" />
+            <img src="/logo.jpeg" alt="RiDeal Digital Seva - Custom Software Development Company" className="logo-img" />
           </Link>
 
           {/* DESKTOP NAV */}
-          <nav className="menu">
+          <nav className="menu" aria-label="Main Navigation">
             {NAV_LINKS.map(({ label, to }) => (
               <Link key={to} to={to} className={isActive(to) ? "active" : ""}>{label}</Link>
             ))}
@@ -251,7 +253,7 @@ const NavbarPage = () => {
           </nav>
           <div className="drawer-footer">
             <Link to="/contact" className="drawer-cta" onClick={closeMenu}>
-              Get In Touch <FaArrowRight />
+              Get Free IT Consultation <FaArrowRight />
             </Link>
           </div>
         </div>

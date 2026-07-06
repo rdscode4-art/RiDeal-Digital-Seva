@@ -380,6 +380,7 @@ const Footer = () => {
                 <a href="/">Home</a>
                 <a href="/about">About Us</a>
                 <a href="/services">Our Services</a>
+                <a href="/branches">Our Ventures</a>
                 <a href="/blog">Blog</a>
                 <a href="/contact">Contact Us</a>
               </div>
@@ -427,8 +428,8 @@ const Footer = () => {
         <div className="footer-bottom">
           <p>© 2026 <span>Rideal Digital Seva</span>. All Rights Reserved.</p>
           <div className="footer-policy">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
+            <a href="/terms-of-service">Terms of Service</a>
+            <a href="/privacy-policy">Privacy Policy</a>
           </div>
         </div>
 

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 const ServicesHero = () => {
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState({
-    title: "Our Services",
-    subtitle: "From ERP and CRM to AI-powered automation, web development, and digital marketing — end-to-end solutions built to help your business scale faster and operate smarter.",
+    title: "IT Services & Business Solutions",
+    subtitle: "Rideal Digital Seva provides ERP solutions, CRM development, AI automation, website development, mobile app development, digital marketing, SEO services, cloud solutions, and custom software development to help businesses grow faster and operate efficiently..",
     content: {
       eyebrow: "What We Offer",
       bgImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop"

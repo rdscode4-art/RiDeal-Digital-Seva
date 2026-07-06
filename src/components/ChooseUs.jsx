@@ -27,8 +27,8 @@ const WhyChooseUs = () => {
     content: {
       bullets: BULLETS,
       bars: BARS,
-      happyClients: "5,000+",
-      yearsExcellence: "10+"
+      happyClients: "500+",
+      projectsDelivered: "1000+"
     }
   });
 
@@ -556,8 +556,8 @@ const WhyChooseUs = () => {
 
             {/* badge card */}
             <div className="wcu-badge-card">
-              <span>{data.content.yearsExcellence}</span>
-              Years of Excellence
+              <span>{data.content.projectsDelivered || "1000+"}</span>
+              Projects Delivered
             </div>
 
           </div>

@@ -147,7 +147,7 @@ const SCard = ({ svc, idx, onOpen }) => {
 };
 
 /* ── Main Component ── */
-const Services = () => {
+const Services = ({ layout = "slider" }) => {
   const [selected, setSelected] = useState(null);
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -320,10 +320,17 @@ const Services = () => {
         .sm-cta svg { transition:transform 0.25s ease; }
         .sm-cta:hover svg { transform:translateX(4px); }
 
+        /* ── GRID LAYOUT ── */
+        .sv-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; max-width:1300px; margin:0 auto; padding:0 20px; }
+        .sv-grid .sv-card { width:100%; display:flex; flex-direction:column; flex-shrink:initial; }
+
         /* ── RESPONSIVE ── */
         @media(max-width:1300px){ .sv-vp{width:calc(3*${CW}px + 2*${GAP}px);} }
+        @media(max-width:1100px) { .sv-grid { grid-template-columns:repeat(3, 1fr); } }
         @media(max-width:980px) { .sv-vp{width:calc(2*${CW}px + ${GAP}px);} .sv-hd h1{font-size:36px;} }
+        @media(max-width:850px) { .sv-grid { grid-template-columns:repeat(2, 1fr); } }
         @media(max-width:660px) { .sv-vp{width:${CW}px;} .sv-hd h1{font-size:28px;} }
+        @media(max-width:550px) { .sv-grid { grid-template-columns:1fr; } }
         @media(max-width:600px) { .sm-body{padding:20px;} .sm-title{font-size:20px;} .sm-imgbox{height:170px;} }
       `}</style>
 
@@ -336,25 +343,35 @@ const Services = () => {
           <p>From ERP and CRM to AI-powered tools, logistics, healthcare, and beyond — end-to-end software solutions that simplify complexity and drive measurable growth.</p>
         </div>
 
-        <div className="sv-row">
-          <div className="sv-vp">
-            <div className="sv-track sv-ltr">
-              {[...s1, ...s1].map((svc, i) => (
-                <SCard key={i} svc={svc} idx={i % s1.length} onOpen={setSelected} />
-              ))}
-            </div>
+        {layout === "grid" ? (
+          <div className="sv-grid">
+            {services.map((svc, i) => (
+              <SCard key={i} svc={svc} idx={i} onOpen={setSelected} />
+            ))}
           </div>
-        </div>
+        ) : (
+          <>
+            <div className="sv-row">
+              <div className="sv-vp">
+                <div className="sv-track sv-ltr">
+                  {[...s1, ...s1].map((svc, i) => (
+                    <SCard key={i} svc={svc} idx={i % s1.length} onOpen={setSelected} />
+                  ))}
+                </div>
+              </div>
+            </div>
 
-        <div className="sv-row">
-          <div className="sv-vp">
-            <div className="sv-track sv-rtl">
-              {[...s2, ...s2].map((svc, i) => (
-                <SCard key={i} svc={svc} idx={i % s2.length} onOpen={setSelected} />
-              ))}
+            <div className="sv-row">
+              <div className="sv-vp">
+                <div className="sv-track sv-rtl">
+                  {[...s2, ...s2].map((svc, i) => (
+                    <SCard key={i} svc={svc} idx={i % s2.length} onOpen={setSelected} />
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
       </section>
 
       {selected && <ServiceModal svc={selected} onClose={() => setSelected(null)} />}

@@ -8,6 +8,8 @@ import WorkingProcess from '../components/WorkingProcess';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
+import Testimonial from '../components/Testimonial';
+import FAQ from '../components/FAQ';
 
 const Home = () => {
   return (
@@ -19,6 +21,8 @@ const Home = () => {
       <Services />
       <WhyChooseUs />
       <WorkingProcess />
+      <Testimonial />
+      <FAQ />
       <Newsletter />
       <Footer />
       <WhatsAppButton />

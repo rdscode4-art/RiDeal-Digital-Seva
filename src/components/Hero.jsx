@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+import technicalBoy from "../assets/technical_boy.png";
+
 const HeroSection = () => {
   const navigate = useNavigate();
   const [ripplePrimary, setRipplePrimary] = useState(null);
@@ -8,10 +10,10 @@ const HeroSection = () => {
   const [visible, setVisible] = useState(false);
   const heroRef = useRef(null);
   const [data, setData] = useState({
-    title: "Powering Innovation with Custom Software Solutions",
-    subtitle: "RiDeal Digital Seva delivers enterprise-grade IT services, responsive websites, high-performance mobile apps, and scalable ERP systems.",
+    title: "Grow Your Business with AI-Powered Digital Solutions",
+    subtitle: "Digital Marketing, Software Development, Business Automation & IT Services — All Under One Roof.",
     content: {
-      ctaText: "Get In Touch",
+      ctaText: "Get Free Consultation",
       bgImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600"
     }
   });
@@ -557,10 +559,7 @@ const HeroSection = () => {
                 <span className="btn-arrow">→</span>
               </button>
 
-              <button
-                className="h-secondary-btn"
-                onClick={(e) => fireRipple(e, setRippleSecondary)}
-              >
+              <button className="h-secondary-btn" onClick={(e) => { fireRipple(e, setRippleSecondary); navigate("/portfolio"); }}>
                 {rippleSecondary && (
                   <span
                     key={rippleSecondary.id}
@@ -568,7 +567,7 @@ const HeroSection = () => {
                     style={{ left: rippleSecondary.x, top: rippleSecondary.y }}
                   />
                 )}
-                Explore Services
+                View Portfolio
                 <span className="btn-arrow">→</span>
               </button>
 
@@ -583,8 +582,8 @@ const HeroSection = () => {
 
               <div className="hero-image-wrap">
                 <img
-                  src={data.content?.bgImage || "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop"}
-                  alt="Rideal Digital Seva"
+                  src={technicalBoy}
+                  alt="RiDeal Digital Seva IT Services, Web Development and Software Solutions"
                   className="hero-image"
                 />
               </div>
@@ -604,7 +603,7 @@ const HeroSection = () => {
                 <div className="icon-box">👥</div>
                 <div>
                   <p className="fc-label">Happy Clients</p>
-                  <h3 className="fc-value">5K+</h3>
+                  <h3 className="fc-value">500+</h3>
                   <span className="fc-trend">↑ Growing</span>
                 </div>
               </div>

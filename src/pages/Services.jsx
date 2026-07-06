@@ -8,7 +8,7 @@ const ServicesPage = () => {
     <>
       <Header />
       <ServicesHero />
-      <Services />
+      <Services layout="grid" />
        <WhatsAppButton />
       <Footer />
     </>

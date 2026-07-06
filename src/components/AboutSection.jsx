@@ -41,9 +41,9 @@ const MVV = [
 
 /* ── STATS ── */
 const STATS = [
-  { icon: <FaUsers />, value: "5,000+", label: "Happy Clients" },
-  { icon: <FaLaptopCode />, value: "200+", label: "Projects Delivered" },
-  { icon: <FaBrain />, value: "10+", label: "Years Experience" },
+  { icon: <FaUsers />, value: "500+", label: "Happy Clients" },
+  { icon: <FaLaptopCode />, value: "1000+", label: "Projects Delivered" },
+  { icon: <FaHeart />, value: "98%", label: "Client Satisfaction" },
   { icon: <FaCheckCircle />, value: "24/7", label: "Support Available" },
 ];
 
@@ -908,7 +908,7 @@ const AboutSection = () => {
               )}
             </h2>
             <p className="as-intro-desc">
-              {data.content?.storyText || `RiDeal Digital Seva is a full-service IT company delivering innovative software solutions — ERP, CRM, HRMS, Web & App Development, Digital Marketing, and AI-powered automation. We help businesses of all sizes modernize operations, boost efficiency, and achieve sustainable growth. With 10+ years of experience and 5,000+ happy clients, we are committed to making technology work for you.`}
+              {data.content?.storyText || `RiDeal Digital Seva is a full-service IT company delivering innovative software solutions — ERP, CRM, HRMS, Web & App Development, Digital Marketing, and AI-powered automation. We help businesses of all sizes modernize operations, boost efficiency, and achieve sustainable growth. With 10+ years of experience and 500+ happy clients, we are committed to making technology work for you.`}
             </p>
             <a href="/contact" className="as-intro-btn">
               Work With Us <FaArrowRight />
@@ -926,10 +926,10 @@ const AboutSection = () => {
               <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop" alt="Digital solutions" />
             </div>
             <div className="as-badge-float">
-              <div className="as-badge-icon">🏆</div>
+              <div className="as-badge-icon">🚀</div>
               <div>
-                <div className="as-badge-val">10+</div>
-                <div className="as-badge-lbl">Years of Excellence</div>
+                <div className="as-badge-val">1000+</div>
+                <div className="as-badge-lbl">Projects Delivered</div>
               </div>
             </div>
           </div>

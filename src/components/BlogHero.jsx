@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 const BlogHero = () => {
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState({
-    title: "Our Blogs & Insights",
-    subtitle: "Explore the latest trends, guides, strategies, and case studies in IT, ERP systems, AI automation, and digital growth.",
+    title: "IT Blogs, ERP Insights & Digital Marketing Guides",
+    subtitle: "Explore expert articles on ERP Software, CRM Development, HRMS Solutions, Web Development, Mobile App Development, AI Automation, Digital Marketing, SEO, and business growth strategies.",
     content: {
-      eyebrow: "Stay Updated",
+      eyebrow: "Technology & Business Insights",
       bgImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop"
     }
   });

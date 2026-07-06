@@ -1,26 +1,28 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaArrowRight, FaCheckCircle } from "react-icons/fa";
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaArrowRight, FaCheckCircle, FaQrcode, FaTimes } from "react-icons/fa";
+import scannerImg from "../assets/scanner.jpeg";
 
 // ── EmailJS credentials (optional — fill in to enable direct email sending) ──
 // Sign up free at https://www.emailjs.com, create a Gmail service + template,
 // then replace the three values below. Until then, the form uses mailto: fallback.
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
 const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
-const EMAILJS_CONFIGURED  =
-  EMAILJS_SERVICE_ID  !== "YOUR_SERVICE_ID" &&
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+const EMAILJS_CONFIGURED =
+  EMAILJS_SERVICE_ID !== "YOUR_SERVICE_ID" &&
   EMAILJS_TEMPLATE_ID !== "YOUR_TEMPLATE_ID" &&
-  EMAILJS_PUBLIC_KEY  !== "YOUR_PUBLIC_KEY";
+  EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY";
 
 const TO_EMAIL = "info@ridealdigitalseva.com";
 
 const ContactSection = () => {
   const formRef = useRef(null);
-  const [form, setForm]       = useState({ name: "", email: "", message: "" });
-  const [sent, setSent]       = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
+  const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError]     = useState("");
+  const [error, setError] = useState("");
+  const [showQR, setShowQR] = useState(false);
 
   const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -30,12 +32,14 @@ const ContactSection = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/inquiries", {
+      const response = await fetch("https://backend.ridealdigitalseva.com/api/inquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
+          phone: form.phone,
+          service: form.service,
           subject: "General Inquiry",
           message: form.message
         })
@@ -47,21 +51,22 @@ const ContactSection = () => {
 
       setLoading(false);
       setSent(true);
-      setForm({ name: "", email: "", message: "" });
+      setForm({ name: "", email: "", phone: "", service: "", message: "" });
       setTimeout(() => setSent(false), 5000);
     } catch (err) {
       console.warn("Backend submit failed, falling back to mailto protocol:", err);
-      
+
       // Fall back to mailto: fallback (works without any backend)
-      const subject = encodeURIComponent(`Contact Form — ${form.name}`);
-      const body    = encodeURIComponent(
-        `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
+      const serviceText = form.service ? ` - ${form.service}` : "";
+      const subject = encodeURIComponent(`Contact Form — ${form.name}${serviceText}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService: ${form.service}\n\nMessage:\n${form.message}`
       );
       window.location.href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
-      
+
       setLoading(false);
       setSent(true);
-      setForm({ name: "", email: "", message: "" });
+      setForm({ name: "", email: "", phone: "", service: "", message: "" });
       setTimeout(() => setSent(false), 5000);
     }
   };
@@ -336,6 +341,16 @@ const ContactSection = () => {
           box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
         }
 
+        select.cs-field {
+          appearance: none;
+          cursor: pointer;
+        }
+        
+        select.cs-field option {
+          background: #083878;
+          color: #fff;
+        }
+
         textarea.cs-field {
           resize: none;
           height: 112px;
@@ -417,6 +432,32 @@ const ContactSection = () => {
 
         .cs-success svg { font-size: 20px; color: #4ade80; }
 
+        /* ── QR MODAL ── */
+        .qr-overlay {
+          position: fixed; top:0; left:0; width:100%; height:100%;
+          background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+          z-index: 9999; display: flex; align-items: center; justify-content: center;
+          animation: csFadeUp 0.3s ease;
+        }
+        .qr-modal {
+          background: #fff; padding: 40px; border-radius: 20px;
+          text-align: center; max-width: 400px; width: 90%;
+          position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .qr-close {
+          position: absolute; top: 16px; right: 16px;
+          background: transparent; border: none; font-size: 20px;
+          color: #6b7280; cursor: pointer; transition: color 0.2s;
+        }
+        .qr-close:hover { color: #0a0f1e; }
+        .qr-modal img {
+          width: 250px; height: 250px; border-radius: 12px; margin: 20px auto;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: block;
+          object-fit: contain;
+        }
+        .qr-modal h3 { font-size: 22px; font-weight: 900; color: #083878; margin-bottom: 8px; }
+        .qr-modal p { font-size: 14.5px; color: #4b5563; line-height: 1.6; }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
           .cs-wrap { flex-direction: column; }
@@ -470,6 +511,16 @@ const ContactSection = () => {
                 <p>+91 90279 53810</p>
               </div>
             </div>
+
+            <div className="cs-info-card" onClick={() => setShowQR(true)} style={{ cursor: "pointer", background: "#083878", borderColor: "#083878" }}>
+              <div className="cs-info-icon" style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderColor: "rgba(255,255,255,0.15)" }}>
+                <FaQrcode />
+              </div>
+              <div className="cs-info-body">
+                <h4 style={{ color: "#fff" }}>Start Your Project</h4>
+                <p style={{ color: "rgba(255,255,255,0.8)" }}>Scan to make advance payment & begin</p>
+              </div>
+            </div>
           </div>
 
           {/* ── RIGHT ── */}
@@ -491,6 +542,22 @@ const ContactSection = () => {
                   onChange={handle} required />
               </div>
               <div className="cs-field-wrap">
+                <input className="cs-field" type="tel" name="phone"
+                  placeholder="Phone Number" value={form.phone}
+                  onChange={handle} required />
+              </div>
+              <div className="cs-field-wrap">
+                <select className="cs-field" name="service" value={form.service} onChange={handle} required>
+                  <option value="" disabled>Select a Service</option>
+                  <option value="ERP & CRM">ERP & CRM Solutions</option>
+                  <option value="Web & App Development">Web & App Development</option>
+                  <option value="AI & Automation">AI & Automation</option>
+                  <option value="Logistics & Operations">Logistics & Operations</option>
+                  <option value="Business Growth">Business Growth & Digital Marketing</option>
+                  <option value="Other">Other / General Inquiry</option>
+                </select>
+              </div>
+              <div className="cs-field-wrap">
                 <textarea className="cs-field" name="message"
                   placeholder="Your Message" value={form.message}
                   onChange={handle} required />
@@ -504,7 +571,7 @@ const ContactSection = () => {
                 ) : (
                   <>
                     {error && (
-                      <p style={{ color:"#fca5a5", fontSize:"13px", marginBottom:"10px", position:"relative", zIndex:1 }}>
+                      <p style={{ color: "#fca5a5", fontSize: "13px", marginBottom: "10px", position: "relative", zIndex: 1 }}>
                         {error}
                       </p>
                     )}
@@ -522,6 +589,17 @@ const ContactSection = () => {
 
         </div>
       </section>
+
+      {showQR && (
+        <div className="qr-overlay" onClick={() => setShowQR(false)}>
+          <div className="qr-modal" onClick={e => e.stopPropagation()}>
+            <button className="qr-close" onClick={() => setShowQR(false)}><FaTimes /></button>
+            <h3>Kickstart Your Project</h3>
+            <img src={scannerImg} alt="Pay Token Money QR" />
+            <p>Please share a screenshot of your successful advance payment with us to begin onboarding immediately.</p>
+          </div>
+        </div>
+      )}
     </>
   );
 };
