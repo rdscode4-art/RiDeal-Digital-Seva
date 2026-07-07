@@ -16,7 +16,7 @@ const projects = [
 const ShowcasePortfolio = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const trackRef = useRef(null);
-  const cardWidth = 520;
+  const cardWidth = 320;
   const gap = 24;
 
   const scrollTo = (index) => {
@@ -44,19 +44,19 @@ const ShowcasePortfolio = () => {
         .sp-track-wrap { overflow: hidden; }
         .sp-track { display: flex; gap: 24px; overflow-x: auto; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; padding-bottom: 10px; }
         .sp-track::-webkit-scrollbar { display: none; }
-        .pc-card { flex-shrink: 0; width: 520px; background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 24px; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; backdrop-filter: blur(12px); }
+        .pc-card { flex-shrink: 0; width: 320px; background: rgba(255, 255, 255, 0.025); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; backdrop-filter: blur(12px); }
         .pc-card:hover { border-color: rgba(96, 165, 250, 0.4); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(96, 165, 250, 0.1); transform: translateY(-8px); }
-        .pc-img-wrap { width: 100%; height: 260px; position: relative; overflow: hidden; }
+        .pc-img-wrap { width: 100%; height: 180px; position: relative; overflow: hidden; }
         .pc-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
         .pc-card:hover .pc-img { transform: scale(1.06); }
         .pc-img-gradient { position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to top, rgba(5,20,50,0.95), transparent); }
-        .pc-body { padding: 28px 30px 30px; }
-        .pc-title { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 12px; font-family: 'Barlow', sans-serif; }
-        .pc-desc { color: #94a3b8; line-height: 1.6; font-size: 0.95rem; margin-bottom: 20px; }
-        .pc-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-        .pc-tag { background: rgba(96, 165, 250, 0.1); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.2); padding: 5px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
-        .pc-actions { display: flex; gap: 12px; }
-        .pc-btn { flex: 1; padding: 12px 0; text-align: center; border-radius: 10px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Barlow', sans-serif; }
+        .pc-body { padding: 20px 24px 24px; }
+        .pc-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 8px; font-family: 'Barlow', sans-serif; }
+        .pc-desc { color: #94a3b8; line-height: 1.5; font-size: 0.85rem; margin-bottom: 16px; }
+        .pc-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+        .pc-tag { background: rgba(96, 165, 250, 0.1); color: #60a5fa; border: 1px solid rgba(96, 165, 250, 0.2); padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; }
+        .pc-actions { display: flex; gap: 10px; }
+        .pc-btn { flex: 1; padding: 10px 0; text-align: center; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 6px; font-family: 'Barlow', sans-serif; }
         .pc-btn-primary { background: #083878; color: white; border: 1px solid #083878; text-decoration: none; }
         .pc-btn-primary:hover { background: #0a4799; box-shadow: 0 8px 20px rgba(8,56,120,0.5); }
         .pc-btn-secondary { background: transparent; color: #cbd5e1; border: 1px solid rgba(255, 255, 255, 0.1); }

@@ -135,7 +135,7 @@ const Branches = () => {
 
         /* ── SECTIONS ── */
         .br-container {
-          max-width: 1200px;
+          max-width: 1000px;
           margin: -40px auto 0;
           padding: 0 6%;
           position: relative;
@@ -144,10 +144,10 @@ const Branches = () => {
 
         .br-card {
           background: #fff;
-          border-radius: 24px;
+          border-radius: 20px;
           overflow: hidden;
-          box-shadow: 0 15px 40px rgba(8,56,120,0.08);
-          margin-bottom: 60px;
+          box-shadow: 0 10px 30px rgba(8,56,120,0.06);
+          margin-bottom: 40px;
           display: grid;
           grid-template-columns: 1fr 1fr;
           border: 1px solid rgba(8,56,120,0.06);
@@ -170,7 +170,7 @@ const Branches = () => {
         .br-img-box {
           position: relative;
           overflow: hidden;
-          min-height: 400px;
+          min-height: 300px;
         }
 
         .br-img {
@@ -185,7 +185,7 @@ const Branches = () => {
         }
 
         .br-content {
-          padding: 50px;
+          padding: 30px 40px;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -194,44 +194,44 @@ const Branches = () => {
         .br-header {
           display: flex;
           align-items: center;
-          gap: 16px;
-          margin-bottom: 24px;
+          gap: 12px;
+          margin-bottom: 16px;
         }
 
         .br-icon {
-          width: 60px;
-          height: 60px;
-          border-radius: 16px;
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 26px;
+          font-size: 20px;
         }
 
         .br-name {
-          font-size: 32px;
+          font-size: 26px;
           font-weight: 800;
           color: #0a0f1e;
         }
 
         .br-desc {
-          font-size: 16px;
+          font-size: 14.5px;
           color: #4b5563;
-          line-height: 1.7;
-          margin-bottom: 16px;
+          line-height: 1.6;
+          margin-bottom: 12px;
         }
 
         .br-features-box {
-          margin-top: 24px;
-          padding-top: 24px;
+          margin-top: 16px;
+          padding-top: 16px;
           border-top: 1px solid #e5e7eb;
         }
 
         .br-feat-desc {
-          font-size: 15px;
+          font-size: 13.5px;
           color: #6b7280;
-          line-height: 1.6;
-          margin-bottom: 20px;
+          line-height: 1.5;
+          margin-bottom: 16px;
           font-style: italic;
         }
 

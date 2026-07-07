@@ -3,18 +3,18 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaArrowRight, FaSearch, FaTimes, FaBars } from "react-icons/fa";
 
 const NAV_LINKS = [
-  { label: "Home",           to: "/"               },
-  { label: "About",          to: "/about"          },
-  { label: "Services",       to: "/services"       },
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Services", to: "/services" },
   { label: "Certifications", to: "/certifications" },
-  { label: "Our Ventures",   to: "/branches"       },
-  { label: "Blog",           to: "/blog"           },
-  { label: "Contact",        to: "/contact"        },
+  { label: "Our Ventures", to: "/branches" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const NavbarPage = () => {
   const [searchOpen, setSearchOpen] = useState(false);
-  const [menuOpen,   setMenuOpen]   = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -261,5 +261,4 @@ const NavbarPage = () => {
     </>
   );
 };
-
 export default NavbarPage;

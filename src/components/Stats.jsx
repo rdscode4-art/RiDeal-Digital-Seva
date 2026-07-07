@@ -6,16 +6,16 @@ import {
 const STATS = [
   {
     icon: <FaAward />,
-    value: 500,
+    value: 100,
     suffix: "+",
-    label: "Clients",
+    label: "Happy Clients",
     color: "#083878",
   },
   {
     icon: <FaUsers />,
-    value: 1000,
+    value: 100,
     suffix: "+",
-    label: "Projects",
+    label: "Total Projects",
     color: "#0d4fa0",
   },
   {

@@ -1,622 +1,451 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-import technicalBoy from "../assets/technical_boy.png";
+import { FaLaptopCode, FaCloud, FaDatabase, FaCode } from "react-icons/fa";
+import heroImg from "../assets/hero-removebg-preview.png";
 
 const HeroSection = () => {
   const navigate = useNavigate();
-  const [ripplePrimary, setRipplePrimary] = useState(null);
-  const [rippleSecondary, setRippleSecondary] = useState(null);
   const [visible, setVisible] = useState(false);
-  const heroRef = useRef(null);
-  const [data, setData] = useState({
-    title: "Grow Your Business with AI-Powered Digital Solutions",
-    subtitle: "Digital Marketing, Software Development, Business Automation & IT Services — All Under One Roof.",
-    content: {
-      ctaText: "Get Free Consultation",
-      bgImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600"
-    }
-  });
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/sections/home-hero")
-      .then(res => res.json())
-      .then(resData => {
-        if (resData && resData.title) {
-          setData(resData);
-        }
-      })
-      .catch(err => console.warn("CMS Hero load failed, static fallback active:", err));
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
-  const fireRipple = (e, setter) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    setter({ x, y, id: Date.now() });
-    setTimeout(() => setter(null), 700);
-  };
-
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
-        /* ─── KEYFRAMES ─── */
-        @keyframes fadeSlideUp {
-          from { opacity:0; transform:translateY(40px); }
-          to   { opacity:1; transform:translateY(0); }
-        }
-        @keyframes fadeSlideRight {
-          from { opacity:0; transform:translateX(50px); }
-          to   { opacity:1; transform:translateX(0); }
-        }
-        @keyframes floatUpDown {
-          0%,100% { transform:translateY(0); }
-          50%      { transform:translateY(-12px); }
-        }
-        @keyframes blobDrift {
-          0%,100% { transform:scale(1) translate(0,0) rotate(0deg); }
-          33%      { transform:scale(1.1) translate(25px,-20px) rotate(5deg); }
-          66%      { transform:scale(0.92) translate(-18px,22px) rotate(-4deg); }
-        }
-        @keyframes badgeGlow {
-          0%,100% { box-shadow:0 0 0 0 rgba(8,56,120,0.4); }
-          50%      { box-shadow:0 0 0 10px rgba(8,56,120,0); }
-        }
-        @keyframes rippleOut {
-          from { transform:scale(0); opacity:0.5; }
-          to   { transform:scale(5); opacity:0; }
-        }
-        @keyframes underlineSlide {
-          from { transform:scaleX(0); }
-          to   { transform:scaleX(1); }
-        }
-        @keyframes cardEntrance {
-          from { opacity:0; transform:scale(0.85) translateY(20px); }
-          to   { opacity:1; transform:scale(1) translateY(0); }
-        }
-        @keyframes shimmerMove {
-          0%   { background-position:-600px 0; }
-          100% { background-position:600px 0; }
-        }
-        @keyframes dotBlink {
-          0%,100% { opacity:1; }
-          50%      { opacity:0.3; }
-        }
-        @keyframes borderRotate {
-          from { transform:rotate(0deg); }
-          to   { transform:rotate(360deg); }
-        }
-
-        /* ─── HERO WRAPPER ─── */
         .hero {
-          width:100%;
-          min-height:90vh;
-          background:linear-gradient(135deg,#f0f4ff 0%,#f5f7fb 50%,#eef9f4 100%);
-          display:flex;
-          align-items:center;
-          padding:40px 6% 60px;
-          overflow:hidden;
-          position:relative;
-          font-family:'Barlow',sans-serif;
+          width: 100%;
+          min-height: 90vh;
+          background: linear-gradient(135deg, #090e17 0%, #16123a 100%);
+          display: flex;
+          align-items: center;
+          padding: 80px 8% 60px;
+          overflow: hidden;
+          position: relative;
+          font-family: 'Outfit', sans-serif;
+          color: white;
         }
 
-        /* ─── BLOBS ─── */
-        .h-blob {
-          position:absolute;
-          border-radius:50%;
-          filter:blur(90px);
-          pointer-events:none;
-          animation:blobDrift 10s ease-in-out infinite;
+        /* Ambient Glows */
+        .glow-1 {
+          position: absolute;
+          width: 600px;
+          height: 600px;
+          background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+          top: -200px;
+          left: -200px;
+          border-radius: 50%;
+          pointer-events: none;
         }
-        .h-blob-1 {
-          width:480px; height:480px;
-          background:radial-gradient(circle,rgba(8,56,120,0.22),rgba(8,56,120,0.08));
-          top:-120px; left:-140px;
-          animation-delay:0s;
+        .glow-2 {
+          position: absolute;
+          width: 800px;
+          height: 800px;
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+          bottom: -300px;
+          right: -100px;
+          border-radius: 50%;
+          pointer-events: none;
         }
-        .h-blob-2 {
-          width:360px; height:360px;
-          background:radial-gradient(circle,rgba(34,211,238,0.18),rgba(8,56,120,0.08));
-          bottom:-80px; right:5%;
-          animation-delay:3.5s;
-        }
-        .h-blob-3 {
-          width:220px; height:220px;
-          background:radial-gradient(circle,rgba(52,211,153,0.15),transparent);
-          top:45%; left:42%;
-          animation-delay:7s;
-        }
-
-        /* ─── CONTAINER ─── */
+        
         .hero-container {
-          width:100%;
-          display:flex;
-          justify-content:space-between;
-          align-items:center;
-          gap:60px;
-          position:relative;
-          z-index:1;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 60px;
+          position: relative;
+          z-index: 2;
         }
 
-        /* ─── LEFT ─── */
         .hero-left {
-          width:50%;
-          opacity:0;
-          transform:translateY(40px);
-          transition:opacity 0.8s ease, transform 0.8s ease;
+          width: 50%;
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s ease;
         }
         .hero-left.visible {
-          opacity:1;
-          transform:translateY(0);
+          opacity: 1;
+          transform: translateY(0);
         }
 
-        /* BADGE */
-        .h-badge {
-          display:inline-flex;
-          align-items:center;
-          gap:9px;
-          background:#dce8f7;
-          color:#083878;
-          padding:10px 22px;
-          border-radius:40px;
-          font-size:15px;
-          font-weight:700;
-          margin-bottom:24px;
-          cursor:default;
-          animation:badgeGlow 2.8s ease-in-out infinite;
-          transition:background 0.3s, color 0.3s, transform 0.3s;
-          border:1.5px solid rgba(8,56,120,0.2);
-        }
-        .h-badge:hover {
-          background:#083878;
-          color:#fff;
-          transform:scale(1.06) translateY(-2px);
-          border-color:transparent;
-        }
-        .h-badge-dot {
-          width:9px; height:9px;
-          background:#083878;
-          transition:background 0.3s;
-          flex-shrink:0;
-        }
-        .h-badge:hover .h-badge-dot { background:#fff; }
-
-        /* HEADING */
-        .hero-heading {
-          font-size:62px;
-          line-height:1.15;
-          color:#111827;
-          font-weight:800;
-          margin-bottom:24px;
-          transition:opacity 0.8s 0.15s ease, transform 0.8s 0.15s ease;
-        }
-        .h-highlight {
-          color:transparent;
-          -webkit-text-stroke: 2px #083878;
-          text-stroke: 2px #083878;
-          position:relative;
-          display:inline-block;
-        }
-        .shiny-text {
-          background: linear-gradient(
-            120deg,
-            #083878 0%,
-            #083878 30%,
-            #1a6abf 42%,
-            #3b82f6 48%,
-            #60a5fa 50%,
-            #3b82f6 52%,
-            #1a6abf 58%,
-            #083878 70%,
-            #083878 100%
-          ) !important;
-          background-size: 200% auto !important;
-          background-repeat: repeat !important;
-          color: transparent !important;
-          -webkit-background-clip: text !important;
-          background-clip: text !important;
-          animation: shineSweep 10s linear infinite !important;
-          display: inline !important;
-          font-weight: 800 !important;
-        }
-        @keyframes shineSweep {
-          0% { background-position: 0% center; }
-          100% { background-position: 200% center; }
-        }
-        .h-highlight::after {
-          content:'';
-          position:absolute;
-          bottom:-5px; left:0;
-          width:100%; height:3px;
-          background:linear-gradient(90deg,#083878,#1a6abf,#083878);
-          border-radius:4px;
-          transform:scaleX(0);
-          transform-origin:left;
-          transition:transform 0.7s ease;
-        }
-        .hero-left.visible .h-highlight::after {
-          animation:underlineSlide 0.7s 0.9s ease forwards;
+        .badge {
+          display: inline-block;
+          background: rgba(59, 130, 246, 0.1);
+          border: 1px solid rgba(59, 130, 246, 0.3);
+          color: #60a5fa;
+          backdrop-filter: blur(10px);
+          padding: 8px 16px;
+          border-radius: 30px;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          margin-bottom: 24px;
+          text-transform: uppercase;
         }
 
-        /* DESC */
+        .hero-title {
+          font-size: 56px;
+          line-height: 1.15;
+          font-weight: 800;
+          margin-bottom: 24px;
+          background: #ffffff;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
         .hero-desc {
-          font-size:18px;
-          line-height:1.9;
-          color:#6b7280;
-          margin-bottom:36px;
-          max-width:680px;
+          font-size: 16px;
+          line-height: 1.6;
+          color: rgba(255, 255, 255, 0.85);
+          margin-bottom: 40px;
+          max-width: 90%;
         }
 
-        /* ─── BUTTONS ─── */
-        .hero-buttons {
-          display:flex;
-          gap:18px;
-          flex-wrap:wrap;
+        .cta-button-group {
+          display: flex;
+          gap: 16px;
+          flex-wrap: wrap;
         }
 
-        /* Primary */
-        .h-primary-btn {
-          position:relative;
-          overflow:hidden;
-          background:linear-gradient(135deg,#083878 0%,#1a6abf 100%);
-          color:#fff;
-          border:none;
-          padding:16px 32px;
-          border-radius:12px;
-          cursor:pointer;
-          font-size:16px;
-          font-weight:700;
-          font-family:'Barlow',sans-serif;
-          box-shadow:0 6px 22px rgba(8,56,120,0.38);
-          transition:transform 0.3s ease, box-shadow 0.3s ease;
-          display:flex;
-          align-items:center;
-          gap:9px;
+        .cta-button {
+          padding: 14px 28px;
+          border-radius: 30px;
+          font-size: 14px;
+          font-weight: 700;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          transition: all 0.3s ease;
         }
-        .h-primary-btn:hover {
-          transform:translateY(-5px);
-          box-shadow:0 16px 40px rgba(8,56,120,0.55);
+        
+        .cta-button.primary {
+          background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+          color: white;
+          border: 1px solid rgba(255,255,255,0.1);
+          box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
         }
-        .h-primary-btn:active { transform:translateY(-2px); }
-        .h-primary-btn .btn-arrow {
-          display:inline-block;
-          transition:transform 0.3s ease;
-        }
-        .h-primary-btn:hover .btn-arrow { transform:translateX(5px); }
-
-        /* Secondary */
-        .h-secondary-btn {
-          position:relative;
-          overflow:hidden;
-          background:transparent;
-          color:#083878;
-          border:2px solid #083878;
-          padding:16px 32px;
-          border-radius:12px;
-          cursor:pointer;
-          font-size:16px;
-          font-weight:700;
-          font-family:'Barlow',sans-serif;
-          transition:transform 0.3s ease, box-shadow 0.3s ease,
-                      background 0.3s ease, color 0.3s ease;
-          display:flex;
-          align-items:center;
-          gap:9px;
-        }
-        .h-secondary-btn:hover {
-          background:#083878;
-          color:#fff;
-          transform:translateY(-5px);
-          box-shadow:0 16px 40px rgba(8,56,120,0.4);
-        }
-        .h-secondary-btn:active { transform:translateY(-2px); }
-        .h-secondary-btn .btn-arrow {
-          display:inline-block;
-          transition:transform 0.3s ease;
-        }
-        .h-secondary-btn:hover .btn-arrow { transform:translateX(5px); }
-
-        /* Ripple */
-        .h-ripple {
-          position:absolute;
-          width:14px; height:14px;
-          border-radius:50%;
-          background:rgba(255,255,255,0.6);
-          pointer-events:none;
-          transform:scale(0);
-          animation:rippleOut 0.7s linear forwards;
-          margin-left:-7px;
-          margin-top:-7px;
+        .cta-button.primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
         }
 
-        /* ─── RIGHT ─── */
+        .cta-button.secondary {
+          background: transparent;
+          color: white;
+          border: 1px solid rgba(255,255,255,0.4);
+        }
+        .cta-button.secondary:hover {
+          background: rgba(255,255,255,0.1);
+          transform: translateY(-3px);
+          border-color: white;
+        }
+
+        .cta-arrow {
+          font-size: 16px;
+          transition: transform 0.3s ease;
+        }
+        .cta-button:hover .cta-arrow {
+          transform: translateX(4px) translateY(-4px);
+        }
+
+        .stats-container {
+          display: flex;
+          align-items: center;
+          margin-top: 60px;
+          gap: 40px;
+        }
+        .stat-item {
+          display: flex;
+          flex-direction: column;
+        }
+        .stat-number {
+          font-size: 32px;
+          font-weight: 800;
+          margin-bottom: 4px;
+        }
+        .stat-label {
+          font-size: 14px;
+          color: rgba(255,255,255,0.7);
+        }
+        .stat-divider {
+          width: 1px;
+          height: 40px;
+          background: rgba(255,255,255,0.2);
+        }
+
         .hero-right {
-          width:45%;
-          display:flex;
-          justify-content:center;
-          opacity:0;
-          transform:translateX(50px);
-          transition:opacity 0.9s 0.25s ease, transform 0.9s 0.25s ease;
+          width: 50%;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0;
+          transform: translateX(30px);
+          transition: all 0.8s ease 0.2s;
         }
         .hero-right.visible {
-          opacity:1;
-          transform:translateX(0);
+          opacity: 1;
+          transform: translateX(0);
         }
 
-        /* HERO CARD */
-        .hero-card {
-          width:100%;
-          position:relative;
-          background:linear-gradient(145deg,#1f1147,#2d1a6e);
-          border-radius:28px;
-          padding:22px;
-          box-shadow:0 28px 70px rgba(0,0,0,0.28);
-          animation:floatUpDown 5.5s ease-in-out infinite;
-          transition:box-shadow 0.4s ease, transform 0.4s ease;
-        }
-        .hero-card:hover {
-          box-shadow:0 40px 90px rgba(8,56,120,0.35);
-          transform:translateY(-6px) scale(1.015);
-          animation-play-state:paused;
-        }
-
-        /* Image */
         .hero-image {
-          width:100%;
-          height:400px;
-          object-fit:cover;
-          border-radius:20px;
-          display:block;
-          transition:transform 0.5s ease;
-        }
-        .hero-card:hover .hero-image { transform:scale(1.04); }
-
-        /* Shimmer overlay on image */
-        .hero-image-wrap {
-          position:relative;
-          border-radius:20px;
-          overflow:hidden;
-        }
-        .hero-image-wrap::after {
-          content:'';
-          position:absolute;
-          inset:0;
-          background:linear-gradient(
-            105deg,
-            transparent 30%,
-            rgba(255,255,255,0.12) 50%,
-            transparent 70%
-          );
-          background-size:600px 100%;
-          animation:shimmerMove 3.5s linear infinite;
-          pointer-events:none;
-          border-radius:20px;
+          width: 100%;
+          max-width: 550px;
+          position: relative;
+          z-index: 2;
+          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
+          animation: floatHero 6s ease-in-out infinite;
         }
 
-        /* ─── FLOATING CARDS ─── */
-        .floating-card {
-          position:absolute;
-          background:#fff;
-          padding:14px 18px;
-          border-radius:18px;
-          display:flex;
-          align-items:center;
-          gap:14px;
-          box-shadow:0 14px 36px rgba(0,0,0,0.14);
-          cursor:default;
-          border:1.5px solid transparent;
-          transition:
-            transform 0.4s cubic-bezier(0.34,1.56,0.64,1),
-            box-shadow 0.35s ease,
-            border-color 0.35s ease;
-        }
-        .floating-card:hover {
-          transform:translateY(-10px) scale(1.07) !important;
-          box-shadow:0 28px 56px rgba(8,56,120,0.25);
-          border-color:rgba(8,56,120,0.35);
-          animation-play-state:paused;
+        @keyframes floatHero {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
         }
 
-        .growth-card {
-          top:28px; left:-35px;
-          animation:floatUpDown 4.2s 0.4s ease-in-out infinite;
+        /* Floating elements */
+        @keyframes float1 {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(10deg); }
         }
-        .client-card {
-          bottom:28px; right:-35px;
-          animation:floatUpDown 4.8s 1.1s ease-in-out infinite;
+        @keyframes float2 {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-15px) rotate(-10deg); }
         }
-
-        /* Icon box */
-        .icon-box {
-          width:52px; height:52px;
-          background:#dce8f7;
-          border-radius:14px;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          font-size:24px;
-          flex-shrink:0;
-          transition:background 0.35s ease, transform 0.35s ease;
-        }
-        .floating-card:hover .icon-box {
-          background:linear-gradient(135deg,#083878,#1a6abf);
-          transform:rotate(-10deg) scale(1.12);
+        @keyframes float3 {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-10px) scale(1.05); }
         }
 
-        .fc-label {
-          font-size:13px;
-          color:#9ca3af;
-          font-weight:600;
-          margin-bottom:3px;
-          letter-spacing:0.3px;
+        .float-icon {
+          position: absolute;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+          z-index: 3;
+          color: white;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(10px);
         }
-        .fc-value {
-          font-size:26px;
-          color:#111827;
-          font-weight:800;
-          line-height:1;
-          transition:color 0.3s ease;
+        .icon-laptop {
+          top: 15%;
+          left: 5%;
+          width: 50px;
+          height: 50px;
+          font-size: 22px;
+          animation: float1 5s ease-in-out infinite;
+          background: linear-gradient(135deg, rgba(79, 70, 229, 0.8), rgba(37, 99, 235, 0.8));
         }
-        .floating-card:hover .fc-value { color:#083878; }
+        .icon-cloud {
+          top: 10%;
+          right: 15%;
+          width: 60px;
+          height: 60px;
+          font-size: 26px;
+          animation: float2 6s ease-in-out infinite;
+          transform: rotate(10deg);
+          background: linear-gradient(135deg, rgba(14, 165, 233, 0.8), rgba(2, 132, 199, 0.8));
+        }
+        .icon-code {
+          bottom: 30%;
+          right: -5%;
+          width: 55px;
+          height: 55px;
+          font-size: 24px;
+          animation: float3 4.5s ease-in-out infinite;
+          background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(5, 150, 105, 0.8));
+        }
+        .icon-database {
+          bottom: 25%;
+          left: -5%;
+          width: 45px;
+          height: 45px;
+          font-size: 20px;
+          animation: float1 5.5s ease-in-out infinite;
+          background: linear-gradient(135deg, rgba(245, 158, 11, 0.8), rgba(217, 119, 6, 0.8));
+        }
 
-        .fc-trend {
-          display:inline-flex;
-          align-items:center;
-          gap:3px;
-          font-size:11px;
-          font-weight:700;
-          color:#16a34a;
-          background:#dcfce7;
-          padding:3px 8px;
-          border-radius:20px;
-          margin-top:5px;
+        .tech-card {
+          position: absolute;
+          bottom: -10px;
+          left: 15%;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          color: white;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+          z-index: 4;
+          animation: float1 7s ease-in-out infinite;
+          width: 260px;
+        }
+        .tech-card h4 {
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 15px;
+          line-height: 1.3;
+          color: white;
+        }
+        .avatars {
+          display: flex;
+          align-items: center;
+        }
+        .avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 2px solid white;
+          margin-left: -10px;
+          background: #e2e8f0;
+          object-fit: cover;
+        }
+        .avatar:first-child { margin-left: 0; }
+        .avatar-more {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: 2px solid white;
+          margin-left: -10px;
+          background: #4f46e5;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 11px;
+          font-weight: bold;
+        }
+        .client-count {
+          margin-left: 15px;
+          font-size: 12px;
+          font-weight: 600;
+          color: white;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .client-count-num {
+          border-bottom: 1px solid rgba(255,255,255,0.3);
+          padding-bottom: 2px;
+          font-size: 14px;
+        }
+        .client-count-text {
+          font-size: 12px;
+          color: rgba(255,255,255,0.7);
+          font-weight: 500;
         }
 
-        /* ─── RESPONSIVE ─── */
-        @media(max-width:1100px){
-          .hero-container { flex-direction:column; }
-          .hero-left,.hero-right { width:100%; }
-          .hero-heading { font-size:48px; }
-          .hero-right { margin-top:20px; }
+        @media (max-width: 1024px) {
+          .hero-container {
+            flex-direction: column;
+            text-align: center;
+          }
+          .hero-left, .hero-right { width: 100%; }
+          .hero-title { font-size: 48px; }
+          .hero-desc { margin: 0 auto 30px; }
+          .stats-container {
+            justify-content: center;
+          }
+          .tech-card { left: 50%; transform: translateX(-50%); bottom: -40px; }
         }
-        @media(max-width:768px){
-          .hero { padding:30px 20px 60px; min-height:auto; }
-          .hero-heading { font-size:32px; }
-          .hero-desc { font-size:15px; }
-          .hero-buttons { flex-direction:column; width:100%; }
-          .h-primary-btn,.h-secondary-btn { width:100%; justify-content:center; }
-          .hero-image { height:240px; }
-          .floating-card { transform:scale(0.8) !important; }
-          .growth-card { left:0; top:10px; }
-          .client-card { right:0; bottom:10px; }
-          .h-blob-1 { width:200px; height:200px; }
-          .h-blob-2 { width:160px; height:160px; }
-        }
-        @media(max-width:480px){
-          .hero { padding:24px 16px 48px; }
-          .hero-heading { font-size:26px; }
-          .h-badge { font-size:13px; padding:8px 16px; }
-          .floating-card { display:none; }
+        @media (max-width: 768px) {
+          .hero { padding: 100px 5% 60px; }
+          .hero-title { font-size: 36px; }
+          .stats-container { flex-wrap: wrap; gap: 20px; }
+          .stat-divider { display: none; }
+          .stat-item { flex: 1 1 40%; }
+          .icon-target, .icon-megaphone, .icon-check { display: none; }
         }
       `}</style>
 
       <section className="hero">
+        <div className="glow-1"></div>
+        <div className="glow-2"></div>
 
-        {/* Blobs */}
-        <div className="h-blob h-blob-1" />
-        <div className="h-blob h-blob-2" />
-        <div className="h-blob h-blob-3" />
-
-        <div className="hero-container" ref={heroRef}>
-
-          {/* ── LEFT ── */}
-          <div className={`hero-left ${visible ? "visible" : ""}`}>
-
-            <div className="h-badge">
-              <span className="h-badge-dot" />
-              ✔ Trusted Digital IT Solutions Partner
+        <div className="hero-container">
+          {/* Left Content */}
+          <div className={`hero-left ${visible ? 'visible' : ''}`}>
+            <div className="badge">
+              IT SOLUTIONS FOR A SMARTER FUTURE
             </div>
 
-            <h1 className="hero-heading">
-              {data.title.includes("Custom Software Solutions") ? (
-                <>
-                  <span className="shiny-text">
-                    {data.title.replace("Custom Software Solutions", "")}
-                  </span>
-                  <br />
-                  <span className="h-highlight">Custom Software Solutions</span>
-                </>
-              ) : (
-                <span className="shiny-text">{data.title}</span>
-              )}
+            <h1 className="hero-title">
+              IT Solutions For A<br />Digital-First World
             </h1>
 
             <p className="hero-desc">
-              {data.subtitle}
+              Empower your business with cutting technology solutions<br />
+              tailored to meet your unique needs from cloud computing.
             </p>
 
-            <div className="hero-buttons">
-
-              <button
-                className="h-primary-btn"
-                onClick={(e) => { fireRipple(e, setRipplePrimary); navigate("/contact"); }}
-              >
-                {ripplePrimary && (
-                  <span
-                    key={ripplePrimary.id}
-                    className="h-ripple"
-                    style={{ left: ripplePrimary.x, top: ripplePrimary.y }}
-                  />
-                )}
-                🚀 {data.content?.ctaText || "Get Free Consultation"}
-                <span className="btn-arrow">→</span>
+            <div className="cta-button-group">
+              <button className="cta-button primary" onClick={() => navigate('/contact')}>
+                BOOK A FREE CONSULTATION
+                <span className="cta-arrow">↗</span>
               </button>
-
-              <button className="h-secondary-btn" onClick={(e) => { fireRipple(e, setRippleSecondary); navigate("/portfolio"); }}>
-                {rippleSecondary && (
-                  <span
-                    key={rippleSecondary.id}
-                    className="h-ripple"
-                    style={{ left: rippleSecondary.x, top: rippleSecondary.y }}
-                  />
-                )}
-                View Portfolio
-                <span className="btn-arrow">→</span>
+              <button className="cta-button secondary" onClick={() => navigate('/portfolio')}>
+                VIEW PORTFOLIO
+                <span className="cta-arrow">↗</span>
               </button>
-
             </div>
 
-          </div>
-
-          {/* ── RIGHT ── */}
-          <div className={`hero-right ${visible ? "visible" : ""}`}>
-
-            <div className="hero-card">
-
-              <div className="hero-image-wrap">
-                <img
-                  src={technicalBoy}
-                  alt="RiDeal Digital Seva IT Services, Web Development and Software Solutions"
-                  className="hero-image"
-                />
+            <div className="stats-container">
+              <div className="stat-item">
+                <span className="stat-number">100+</span>
+                <span className="stat-label">Happy Clients</span>
               </div>
-
-              {/* Business Growth */}
-              <div className="floating-card growth-card">
-                <div className="icon-box">📈</div>
-                <div>
-                  <p className="fc-label">Business Growth</p>
-                  <h3 className="fc-value">+85%</h3>
-                  <span className="fc-trend">↑ This Year</span>
-                </div>
+              <div className="stat-divider"></div>
+              <div className="stat-item">
+                <span className="stat-number">100+</span>
+                <span className="stat-label">Total Projects</span>
               </div>
-
-              {/* Happy Clients */}
-              <div className="floating-card client-card">
-                <div className="icon-box">👥</div>
-                <div>
-                  <p className="fc-label">Happy Clients</p>
-                  <h3 className="fc-value">500+</h3>
-                  <span className="fc-trend">↑ Growing</span>
-                </div>
+              <div className="stat-divider"></div>
+              <div className="stat-item">
+                <span className="stat-number">50+</span>
+                <span className="stat-label">Expert Team</span>
               </div>
-
             </div>
-
           </div>
 
+          {/* Right Content */}
+          <div className={`hero-right ${visible ? 'visible' : ''}`}>
+            <div className="float-icon icon-laptop"><FaLaptopCode /></div>
+            <div className="float-icon icon-cloud"><FaCloud /></div>
+            <div className="float-icon icon-code"><FaCode /></div>
+            <div className="float-icon icon-database"><FaDatabase /></div>
+
+            <img
+              src={heroImg}
+              alt="Hero"
+              className="hero-image"
+            />
+
+            <div className="tech-card">
+              <h4>Worked With More Than 100+ Technology</h4>
+              <div className="avatars">
+                <img src="https://i.pravatar.cc/100?img=1" className="avatar" alt="user" />
+                <img src="https://i.pravatar.cc/100?img=2" className="avatar" alt="user" />
+                <img src="https://i.pravatar.cc/100?img=3" className="avatar" alt="user" />
+                <div className="avatar-more">+</div>
+                <div className="client-count">
+                  <span className="client-count-num">100+</span>
+                  <span className="client-count-text">Clients</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </section>
     </>
   );
 };
 
 export default HeroSection;
+
