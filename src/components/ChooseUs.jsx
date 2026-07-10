@@ -81,8 +81,8 @@ const WhyChooseUs = () => {
           position: absolute;
           inset: 0;
           background-image:
-            linear-gradient(rgba(8,56,120,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(8,56,120,0.04) 1px, transparent 1px);
+            linear-gradient(rgba(37, 99, 235,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235,0.04) 1px, transparent 1px);
           background-size: 48px 48px;
           pointer-events: none;
         }
@@ -105,8 +105,8 @@ const WhyChooseUs = () => {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(8,56,120,0.08);
-          color: #083878;
+          background: rgba(37, 99, 235,0.08);
+          color: #2563eb;
           font-size: 12px;
           font-weight: 800;
           letter-spacing: 1.8px;
@@ -114,14 +114,14 @@ const WhyChooseUs = () => {
           padding: 7px 16px;
           border-radius: 40px;
           margin-bottom: 22px;
-          border: 1px solid rgba(8,56,120,0.15);
+          border: 1px solid rgba(37, 99, 235,0.15);
         }
 
         .wcu-eyebrow-dot {
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          background: #083878;
+          background: #2563eb;
           flex-shrink: 0;
         }
 
@@ -134,22 +134,22 @@ const WhyChooseUs = () => {
         }
 
         .wcu-heading span {
-          color: #083878;
+          color: #2563eb;
           position: relative;
           display: inline-block;
         }
         .wcu-heading .shiny-text {
           background: linear-gradient(
             120deg,
-            #083878 0%,
-            #083878 30%,
-            #1a6abf 42%,
-            #3b82f6 48%,
-            #60a5fa 50%,
-            #3b82f6 52%,
-            #1a6abf 58%,
-            #083878 70%,
-            #083878 100%
+            #2563eb 0%,
+            #2563eb 30%,
+            #2563eb 42%,
+            #2563eb 48%,
+            #2563eb 50%,
+            #2563eb 52%,
+            #2563eb 58%,
+            #2563eb 70%,
+            #2563eb 100%
           ) !important;
           background-size: 200% auto !important;
           background-repeat: repeat !important;
@@ -172,7 +172,7 @@ const WhyChooseUs = () => {
           left: 0;
           width: 100%;
           height: 3px;
-          background: linear-gradient(90deg, #083878, #1a6abf);
+          background: linear-gradient(90deg, #2563eb, #2563eb);
           border-radius: 4px;
         }
 
@@ -203,7 +203,7 @@ const WhyChooseUs = () => {
         }
 
         .wcu-bullet svg {
-          color: #083878;
+          color: #2563eb;
           font-size: 16px;
           flex-shrink: 0;
           margin-top: 2px;
@@ -236,8 +236,8 @@ const WhyChooseUs = () => {
         .wcu-bar-pct {
           font-size: 13px;
           font-weight: 800;
-          color: #083878;
-          background: rgba(8,56,120,0.08);
+          color: #2563eb;
+          background: rgba(37, 99, 235,0.08);
           padding: 2px 9px;
           border-radius: 20px;
         }
@@ -245,7 +245,7 @@ const WhyChooseUs = () => {
         .wcu-bar-track {
           width: 100%;
           height: 8px;
-          background: rgba(8,56,120,0.1);
+          background: rgba(37, 99, 235,0.1);
           border-radius: 20px;
           overflow: hidden;
         }
@@ -253,7 +253,7 @@ const WhyChooseUs = () => {
         .wcu-bar-fill {
           height: 100%;
           border-radius: 20px;
-          background: linear-gradient(90deg, #083878 0%, #1a6abf 60%, #3b82f6 100%);
+          background: linear-gradient(90deg, #2563eb 0%, #2563eb 60%, #2563eb 100%);
           width: 0%;
           transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
           position: relative;
@@ -282,7 +282,7 @@ const WhyChooseUs = () => {
           gap: 9px;
           height: 50px;
           padding: 0 28px;
-          background: linear-gradient(135deg, #083878 0%, #1a6abf 100%);
+          background: linear-gradient(135deg, #2563eb 0%, #2563eb 100%);
           color: #fff;
           font-size: 15px;
           font-weight: 700;
@@ -291,13 +291,13 @@ const WhyChooseUs = () => {
           border-radius: 50px;
           cursor: pointer;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
-          box-shadow: 0 6px 22px rgba(8,56,120,0.3);
+          box-shadow: 0 6px 22px rgba(37, 99, 235,0.3);
           letter-spacing: 0.2px;
         }
 
         .wcu-btn:hover {
           transform: translateY(-3px);
-          box-shadow: 0 14px 36px rgba(8,56,120,0.42);
+          box-shadow: 0 14px 36px rgba(37, 99, 235,0.42);
         }
 
         .wcu-btn svg {
@@ -330,7 +330,7 @@ const WhyChooseUs = () => {
 
         .wcu-img:hover {
           transform: scale(1.03);
-          box-shadow: 0 20px 50px rgba(8,56,120,0.22);
+          box-shadow: 0 20px 50px rgba(37, 99, 235,0.22);
         }
 
         /* tall left image spans 2 rows */
@@ -338,7 +338,7 @@ const WhyChooseUs = () => {
           grid-row: 1 / 3;
           border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 12px 36px rgba(8,56,120,0.14);
+          box-shadow: 0 12px 36px rgba(37, 99, 235,0.14);
           min-height: 420px;
         }
 
@@ -350,7 +350,7 @@ const WhyChooseUs = () => {
         .wcu-img-wrap {
           border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 12px 36px rgba(8,56,120,0.14);
+          box-shadow: 0 12px 36px rgba(37, 99, 235,0.14);
         }
 
         .wcu-img-wrap .wcu-img {
@@ -368,8 +368,8 @@ const WhyChooseUs = () => {
           display: flex;
           align-items: center;
           gap: 14px;
-          box-shadow: 0 16px 48px rgba(8,56,120,0.16);
-          border: 1.5px solid rgba(8,56,120,0.08);
+          box-shadow: 0 16px 48px rgba(37, 99, 235,0.16);
+          border: 1.5px solid rgba(37, 99, 235,0.08);
           z-index: 2;
           animation: floatCard 4s ease-in-out infinite;
         }
@@ -383,7 +383,7 @@ const WhyChooseUs = () => {
           width: 48px;
           height: 48px;
           border-radius: 12px;
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -394,7 +394,7 @@ const WhyChooseUs = () => {
         .wcu-stat-val {
           font-size: 26px;
           font-weight: 800;
-          color: #083878;
+          color: #2563eb;
           line-height: 1;
         }
 
@@ -410,14 +410,14 @@ const WhyChooseUs = () => {
           position: absolute;
           top: -16px;
           right: -16px;
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           color: #fff;
           border-radius: 14px;
           padding: 12px 18px;
           font-size: 13px;
           font-weight: 700;
           z-index: 2;
-          box-shadow: 0 8px 28px rgba(8,56,120,0.35);
+          box-shadow: 0 8px 28px rgba(37, 99, 235,0.35);
           white-space: nowrap;
           animation: floatCard 5s 1s ease-in-out infinite;
         }

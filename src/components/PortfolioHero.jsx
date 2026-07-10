@@ -79,7 +79,7 @@ const PortfolioHero = () => {
         }
 
         .ph-title-highlight {
-          background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+          background: linear-gradient(135deg, rgba(10, 15, 30, 0.92) 0%, rgba(10, 15, 30, 0.75) 60%, rgba(37, 99, 235, 0.40) 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;

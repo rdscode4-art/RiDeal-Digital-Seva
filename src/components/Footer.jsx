@@ -30,10 +30,11 @@ const Footer = () => {
         /* ── FOOTER ── */
         .footer {
           width: 100%;
-          background: #083878;
+          background: #0a0f1e;
           color: #fff;
           position: relative;
           overflow: hidden;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* subtle dot-grid overlay */
@@ -53,7 +54,7 @@ const Footer = () => {
           width: 500px;
           height: 500px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 65%);
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 65%);
           top: -180px;
           right: -120px;
           pointer-events: none;
@@ -128,9 +129,9 @@ const Footer = () => {
         }
 
         .social-icons a:hover {
-          background: rgba(255,255,255,0.18);
-          border-color: rgba(255,255,255,0.6);
-          color: #fff;
+          background: rgba(37, 99, 235, 0.1);
+          border-color: #2563eb;
+          color: #2563eb;
           transform: translateY(-4px);
         }
 
@@ -152,7 +153,7 @@ const Footer = () => {
           left: 0;
           width: 32px;
           height: 2.5px;
-          background: rgba(255,255,255,0.45);
+          background: linear-gradient(90deg, #2563eb, #2563eb);
           border-radius: 4px;
         }
 
@@ -183,7 +184,7 @@ const Footer = () => {
         }
 
         .footer-links a:hover {
-          color: #fff;
+          color: #2563eb;
           padding-left: 5px;
         }
 
@@ -228,7 +229,7 @@ const Footer = () => {
         }
 
         .contact-item:hover p {
-          color: #fff;
+          color: #2563eb;
         }
 
         /* ── DIVIDER ── */
@@ -285,22 +286,22 @@ const Footer = () => {
           width: 44px;
           height: 44px;
           border-radius: 50%;
-          background: #fff;
-          color: #083878;
+          background: #2563eb;
+          color: #0a0f1e;
           border: none;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 16px;
           cursor: pointer;
-          box-shadow: 0 6px 22px rgba(8,56,120,0.3);
+          box-shadow: 0 6px 22px rgba(37, 99, 235, 0.3);
           transition: transform 0.25s ease, box-shadow 0.25s ease;
           z-index: 999;
         }
 
         .back-top-btn:hover {
           transform: translateY(-4px);
-          box-shadow: 0 12px 32px rgba(8,56,120,0.4);
+          box-shadow: 0 12px 32px rgba(37, 99, 235, 0.5);
         }
 
         /* ── RESPONSIVE ── */
@@ -444,25 +445,25 @@ const Footer = () => {
             width: "46px",
             height: "46px",
             borderRadius: "50%",
-            background: "#fff",
-            color: "#083878",
+            background: "#2563eb",
+            color: "#0a0f1e",
             border: "none",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             fontSize: "17px",
             cursor: "pointer",
-            boxShadow: "0 6px 22px rgba(8,56,120,0.3)",
+            boxShadow: "0 6px 22px rgba(37, 99, 235, 0.3)",
             zIndex: 9999,
             transition: "transform 0.25s ease, box-shadow 0.25s ease",
           }}
           onMouseEnter={e => {
             e.currentTarget.style.transform = "translateY(-4px)";
-            e.currentTarget.style.boxShadow = "0 12px 32px rgba(8,56,120,0.4)";
+            e.currentTarget.style.boxShadow = "0 12px 32px rgba(37, 99, 235, 0.5)";
           }}
           onMouseLeave={e => {
             e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "0 6px 22px rgba(8,56,120,0.3)";
+            e.currentTarget.style.boxShadow = "0 6px 22px rgba(37, 99, 235, 0.3)";
           }}
         >
           <FaArrowUp />

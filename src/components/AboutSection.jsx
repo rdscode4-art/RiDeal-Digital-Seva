@@ -56,7 +56,7 @@ const TEAMS = [
     experience: "10+ Years of Tech Leadership",
     desc: "Visionary leader driving innovation, growth, and client-centric digital transformation.",
     skills: ["Business Strategy", "IT Consulting", "Enterprise Growth"],
-    color: "#083878",
+    color: "#2563eb",
   },
   {
     icon: <FaRocket />,
@@ -65,7 +65,7 @@ const TEAMS = [
     experience: "6+ Years in Agile Delivery",
     desc: "Managing complex project lifecycles, ensuring on-time delivery with zero compromise on quality.",
     skills: ["Agile & Scrum", "Risk Mitigation", "Sprint Planning"],
-    color: "#0d4fa0",
+    color: "#2563eb",
   },
   {
     icon: <FaCode />,
@@ -74,7 +74,7 @@ const TEAMS = [
     experience: "5+ Years in Full Stack Dev",
     desc: "Creating scalable, robust, and modern web and mobile applications with top performance.",
     skills: ["React / Node.js", "Next.js", "Web Architecture"],
-    color: "#1560c0",
+    color: "#2563eb",
   },
   {
     icon: <FaPaintBrush />,
@@ -83,7 +83,7 @@ const TEAMS = [
     experience: "4+ Years in Digital Design",
     desc: "Designing stunning, intuitive user interfaces and layouts that prioritize accessibility and brand identity.",
     skills: ["Figma", "Prototyping", "Design Systems"],
-    color: "#083878",
+    color: "#2563eb",
   },
   {
     icon: <FaShieldAlt />,
@@ -92,7 +92,7 @@ const TEAMS = [
     experience: "4+ Years in Testing",
     desc: "Ensuring all applications are bug-free, highly secure, and meet the highest industry standards.",
     skills: ["Automation Testing", "Manual Testing", "Security Audits"],
-    color: "#0d4fa0",
+    color: "#2563eb",
   },
   {
     icon: <FaCloud />,
@@ -101,7 +101,7 @@ const TEAMS = [
     experience: "5+ Years in Cloud Infrastructure",
     desc: "Designing high-availability cloud setups, automating deployment pipelines, and ensuring secure scalability.",
     skills: ["AWS / Azure", "Docker & K8s", "CI/CD Pipelines"],
-    color: "#1560c0",
+    color: "#2563eb",
   },
 ];
 
@@ -191,14 +191,14 @@ const AboutSection = () => {
           font-weight: 800;
           letter-spacing: 2.5px;
           text-transform: uppercase;
-          color: #083878;
+          color: #2563eb;
           margin-bottom: 14px;
         }
         .as-eyebrow::before {
           content: '';
           display: inline-block;
           width: 24px; height: 2px;
-          background: #083878;
+          background: #2563eb;
           border-radius: 2px;
         }
 
@@ -211,8 +211,8 @@ const AboutSection = () => {
         }
         .as-intro-heading span {
           color: transparent;
-          -webkit-text-stroke: 2px #083878;
-          text-stroke: 2px #083878;
+          -webkit-text-stroke: 2px #2563eb;
+          text-stroke: 2px #2563eb;
           position: relative;
           display: inline-block;
         }
@@ -221,7 +221,7 @@ const AboutSection = () => {
           position: absolute;
           bottom: -3px; left: 0;
           width: 100%; height: 3px;
-          background: linear-gradient(90deg, #083878, #1a6abf);
+          background: linear-gradient(90deg, #2563eb, #2563eb);
           border-radius: 4px;
         }
 
@@ -239,7 +239,7 @@ const AboutSection = () => {
           gap: 9px;
           height: 50px;
           padding: 0 28px;
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           color: #fff;
           font-size: 15px;
           font-weight: 700;
@@ -249,9 +249,9 @@ const AboutSection = () => {
           cursor: pointer;
           text-decoration: none;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
-          box-shadow: 0 6px 22px rgba(8,56,120,0.3);
+          box-shadow: 0 6px 22px rgba(37, 99, 235,0.3);
         }
-        .as-intro-btn:hover { transform:translateY(-3px); box-shadow:0 14px 36px rgba(8,56,120,0.42); }
+        .as-intro-btn:hover { transform:translateY(-3px); box-shadow:0 14px 36px rgba(37, 99, 235,0.42); }
         .as-intro-btn svg { transition: transform 0.25s ease; }
         .as-intro-btn:hover svg { transform: translateX(4px); }
 
@@ -270,7 +270,7 @@ const AboutSection = () => {
           grid-row: 1 / 3;
           border-radius: 18px;
           overflow: hidden;
-          box-shadow: 0 14px 40px rgba(8,56,120,0.14);
+          box-shadow: 0 14px 40px rgba(37, 99, 235,0.14);
         }
         .as-img-tall img { width:100%; height:100%; min-height:360px; object-fit:cover; display:block; transition:transform 0.45s ease; }
         .as-img-tall:hover img { transform:scale(1.05); }
@@ -278,7 +278,7 @@ const AboutSection = () => {
         .as-img-sm {
           border-radius: 14px;
           overflow: hidden;
-          box-shadow: 0 10px 28px rgba(8,56,120,0.1);
+          box-shadow: 0 10px 28px rgba(37, 99, 235,0.1);
         }
         .as-img-sm img { width:100%; height:175px; object-fit:cover; display:block; transition:transform 0.45s ease; }
         .as-img-sm:hover img { transform:scale(1.06); }
@@ -293,25 +293,25 @@ const AboutSection = () => {
           display: flex;
           align-items: center;
           gap: 12px;
-          box-shadow: 0 14px 40px rgba(8,56,120,0.16);
-          border: 1.5px solid rgba(8,56,120,0.08);
+          box-shadow: 0 14px 40px rgba(37, 99, 235,0.16);
+          border: 1.5px solid rgba(37, 99, 235,0.08);
           animation: asFloat 4s ease-in-out infinite;
           z-index: 2;
         }
         .as-badge-icon {
           width: 46px; height: 46px;
           border-radius: 12px;
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           display: flex; align-items: center; justify-content: center;
           font-size: 20px; color: #fff; flex-shrink: 0;
         }
-        .as-badge-val { font-size: 24px; font-weight: 900; color: #083878; line-height: 1; }
+        .as-badge-val { font-size: 24px; font-weight: 900; color: #2563eb; line-height: 1; }
         .as-badge-lbl { font-size: 12px; color: #6b7280; font-weight: 600; margin-top: 2px; }
 
         /* ── STATS BAR ── */
         .as-stats {
           width: 100%;
-          background: #083878;
+          background: #2563eb;
           padding: 40px 6%;
           font-family: 'Barlow', sans-serif;
           position: relative;
@@ -371,7 +371,7 @@ const AboutSection = () => {
           content: '';
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(rgba(8,56,120,0.05) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(37, 99, 235,0.05) 1px, transparent 1px);
           background-size: 30px 30px;
           pointer-events: none;
         }
@@ -390,10 +390,10 @@ const AboutSection = () => {
           font-weight: 800;
           letter-spacing: 2.5px;
           text-transform: uppercase;
-          color: #083878;
+          color: #2563eb;
           margin-bottom: 14px;
         }
-        .as-mvv-eyebrow-line { width:32px; height:2px; background:#083878; border-radius:2px; }
+        .as-mvv-eyebrow-line { width:32px; height:2px; background:#2563eb; border-radius:2px; }
         .as-mvv-heading {
           font-size: 44px;
           font-weight: 900;
@@ -402,8 +402,8 @@ const AboutSection = () => {
         }
         .as-mvv-heading span {
           color: transparent;
-          -webkit-text-stroke: 2px #083878;
-          text-stroke: 2px #083878;
+          -webkit-text-stroke: 2px #2563eb;
+          text-stroke: 2px #2563eb;
           display: inline-block;
         }
 
@@ -424,7 +424,7 @@ const AboutSection = () => {
           gap: 10px;
           padding: 13px 28px;
           border-radius: 50px;
-          border: 2px solid rgba(8,56,120,0.15);
+          border: 2px solid rgba(37, 99, 235,0.15);
           background: #fff;
           color: #4b5563;
           font-size: 15px;
@@ -432,19 +432,19 @@ const AboutSection = () => {
           font-family: 'Barlow', sans-serif;
           cursor: pointer;
           transition: all 0.25s ease;
-          box-shadow: 0 2px 10px rgba(8,56,120,0.06);
+          box-shadow: 0 2px 10px rgba(37, 99, 235,0.06);
         }
         .as-mvv-tab:hover {
-          border-color: #083878;
-          color: #083878;
+          border-color: #2563eb;
+          color: #2563eb;
           transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(8,56,120,0.14);
+          box-shadow: 0 8px 24px rgba(37, 99, 235,0.14);
         }
         .as-mvv-tab.active {
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           color: #fff;
           border-color: transparent;
-          box-shadow: 0 8px 28px rgba(8,56,120,0.32);
+          box-shadow: 0 8px 28px rgba(37, 99, 235,0.32);
           transform: translateY(-2px);
         }
         .as-mvv-tab-icon { font-size: 16px; }
@@ -467,14 +467,14 @@ const AboutSection = () => {
           min-width: 0;
           border-radius: 20px;
           overflow: hidden;
-          box-shadow: 0 20px 56px rgba(8,56,120,0.18);
+          box-shadow: 0 20px 56px rgba(37, 99, 235,0.18);
           position: relative;
         }
         .as-mvv-img-wrap::after {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, transparent 55%, rgba(8,56,120,0.35) 100%);
+          background: linear-gradient(180deg, transparent 55%, rgba(37, 99, 235,0.35) 100%);
           pointer-events: none;
         }
         .as-mvv-img {
@@ -505,11 +505,11 @@ const AboutSection = () => {
         .as-mvv-img-badge-icon {
           width: 42px; height: 42px;
           border-radius: 10px;
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           display: flex; align-items: center; justify-content: center;
           font-size: 18px; color: #fff;
         }
-        .as-mvv-img-badge-text { font-size: 13px; font-weight: 700; color: #083878; }
+        .as-mvv-img-badge-text { font-size: 13px; font-weight: 700; color: #2563eb; }
 
         /* text side */
         .as-mvv-text { flex: 1; min-width: 0; }
@@ -518,8 +518,8 @@ const AboutSection = () => {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(8,56,120,0.08);
-          color: #083878;
+          background: rgba(37, 99, 235,0.08);
+          color: #2563eb;
           font-size: 12px;
           font-weight: 800;
           letter-spacing: 2px;
@@ -527,7 +527,7 @@ const AboutSection = () => {
           padding: 7px 16px;
           border-radius: 40px;
           margin-bottom: 18px;
-          border: 1px solid rgba(8,56,120,0.15);
+          border: 1px solid rgba(37, 99, 235,0.15);
         }
 
         .as-mvv-title {
@@ -559,7 +559,7 @@ const AboutSection = () => {
           color: #1e293b;
           font-weight: 600;
         }
-        .as-mvv-point svg { color: #083878; font-size: 15px; flex-shrink: 0; }
+        .as-mvv-point svg { color: #2563eb; font-size: 15px; flex-shrink: 0; }
 
         .as-mvv-cta {
           display: inline-flex;
@@ -567,7 +567,7 @@ const AboutSection = () => {
           gap: 9px;
           height: 48px;
           padding: 0 26px;
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           color: #fff;
           font-size: 14.5px;
           font-weight: 700;
@@ -577,9 +577,9 @@ const AboutSection = () => {
           cursor: pointer;
           text-decoration: none;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
-          box-shadow: 0 6px 20px rgba(8,56,120,0.28);
+          box-shadow: 0 6px 20px rgba(37, 99, 235,0.28);
         }
-        .as-mvv-cta:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(8,56,120,0.4); }
+        .as-mvv-cta:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(37, 99, 235,0.4); }
         .as-mvv-cta svg { transition: transform 0.25s ease; }
         .as-mvv-cta:hover svg { transform: translateX(4px); }
 
@@ -599,8 +599,8 @@ const AboutSection = () => {
           position: absolute;
           inset: 0;
           background-image:
-            linear-gradient(rgba(8,56,120,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(8,56,120,0.03) 1px, transparent 1px);
+            linear-gradient(rgba(37, 99, 235,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37, 99, 235,0.03) 1px, transparent 1px);
           background-size: 52px 52px;
           pointer-events: none;
         }
@@ -611,7 +611,7 @@ const AboutSection = () => {
           position: absolute;
           width: 600px; height: 600px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(8,56,120,0.05) 0%, transparent 65%);
+          background: radial-gradient(circle, rgba(37, 99, 235,0.05) 0%, transparent 65%);
           top: -200px; right: -200px;
           pointer-events: none;
         }
@@ -631,10 +631,10 @@ const AboutSection = () => {
           font-weight: 800;
           letter-spacing: 2.5px;
           text-transform: uppercase;
-          color: #083878;
+          color: #2563eb;
           margin-bottom: 14px;
         }
-        .as-team-eyebrow-line { width:32px; height:2px; background:#083878; border-radius:2px; }
+        .as-team-eyebrow-line { width:32px; height:2px; background:#2563eb; border-radius:2px; }
 
         .as-team-heading {
           font-size: 44px;
@@ -645,8 +645,8 @@ const AboutSection = () => {
         }
         .as-team-heading span {
           color: transparent;
-          -webkit-text-stroke: 2px #083878;
-          text-stroke: 2px #083878;
+          -webkit-text-stroke: 2px #2563eb;
+          text-stroke: 2px #2563eb;
           display: inline-block;
         }
 
@@ -675,7 +675,7 @@ const AboutSection = () => {
           flex-direction: column;
           gap: 6px;
           margin-bottom: 16px;
-          border-left: 2px solid rgba(8, 56, 120, 0.15);
+          border-left: 2px solid rgba(37, 99, 235, 0.15);
           padding-left: 10px;
           position: relative;
           z-index: 1;
@@ -689,7 +689,7 @@ const AboutSection = () => {
           color: #4b5563;
         }
         .as-team-info-icon {
-          color: #083878;
+          color: #2563eb;
           font-size: 14px;
           flex-shrink: 0;
         }
@@ -702,7 +702,7 @@ const AboutSection = () => {
 
         .as-team-card {
           background: #fff;
-          border: 1.5px solid rgba(8,56,120,0.08);
+          border: 1.5px solid rgba(37, 99, 235,0.08);
           border-radius: 20px;
           padding: 32px 24px 28px;
           position: relative;
@@ -720,8 +720,8 @@ const AboutSection = () => {
 
         .as-team-card:hover {
           transform: translateY(-10px);
-          box-shadow: 0 24px 56px rgba(8,56,120,0.14);
-          border-color: rgba(8,56,120,0.22);
+          box-shadow: 0 24px 56px rgba(37, 99, 235,0.14);
+          border-color: rgba(37, 99, 235,0.22);
         }
 
         /* top accent bar */
@@ -730,7 +730,7 @@ const AboutSection = () => {
           position: absolute;
           top: 0; left: 0; right: 0;
           height: 3px;
-          background: linear-gradient(90deg, #083878, #1a6abf);
+          background: linear-gradient(90deg, #2563eb, #2563eb);
           transform: scaleX(0);
           transform-origin: left;
           transition: transform 0.35s ease;
@@ -743,7 +743,7 @@ const AboutSection = () => {
           content: '';
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(8,56,120,0.03) 0%, transparent 60%);
+          background: linear-gradient(135deg, rgba(37, 99, 235,0.03) 0%, transparent 60%);
           opacity: 0;
           transition: opacity 0.32s ease;
           pointer-events: none;
@@ -755,13 +755,13 @@ const AboutSection = () => {
         .as-team-icon-wrap {
           width: 64px; height: 64px;
           border-radius: 16px;
-          background: rgba(8,56,120,0.07);
-          border: 1.5px solid rgba(8,56,120,0.1);
+          background: rgba(37, 99, 235,0.07);
+          border: 1.5px solid rgba(37, 99, 235,0.1);
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 26px;
-          color: #083878;
+          color: #2563eb;
           margin-bottom: 20px;
           transition: background 0.3s ease, transform 0.3s ease,
                       border-color 0.3s ease, color 0.3s ease;
@@ -769,7 +769,7 @@ const AboutSection = () => {
           z-index: 1;
         }
         .as-team-card:hover .as-team-icon-wrap {
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           color: #fff;
           border-color: transparent;
           transform: rotate(-8deg) scale(1.1);
@@ -785,7 +785,7 @@ const AboutSection = () => {
           z-index: 1;
           transition: color 0.25s ease;
         }
-        .as-team-card:hover .as-team-role { color: #083878; }
+        .as-team-card:hover .as-team-role { color: #2563eb; }
 
         .as-team-desc {
           font-size: 13.5px;
@@ -807,16 +807,16 @@ const AboutSection = () => {
         .as-team-skill {
           font-size: 11.5px;
           font-weight: 700;
-          color: #083878;
-          background: rgba(8,56,120,0.07);
-          border: 1px solid rgba(8,56,120,0.12);
+          color: #2563eb;
+          background: rgba(37, 99, 235,0.07);
+          border: 1px solid rgba(37, 99, 235,0.12);
           padding: 4px 10px;
           border-radius: 20px;
           letter-spacing: 0.2px;
           transition: background 0.22s ease, color 0.22s ease;
         }
         .as-team-card:hover .as-team-skill {
-          background: rgba(8,56,120,0.12);
+          background: rgba(37, 99, 235,0.12);
         }
 
         /* CTA row */
@@ -833,7 +833,7 @@ const AboutSection = () => {
           gap: 10px;
           height: 52px;
           padding: 0 32px;
-          background: linear-gradient(135deg, #083878 0%, #1a6abf 100%);
+          background: linear-gradient(135deg, #2563eb 0%, #2563eb 100%);
           color: #fff;
           font-size: 15px;
           font-weight: 800;
@@ -843,12 +843,12 @@ const AboutSection = () => {
           cursor: pointer;
           text-decoration: none;
           transition: transform 0.28s ease, box-shadow 0.28s ease;
-          box-shadow: 0 8px 28px rgba(8,56,120,0.32);
+          box-shadow: 0 8px 28px rgba(37, 99, 235,0.32);
           letter-spacing: 0.3px;
         }
         .as-team-cta:hover {
           transform: translateY(-4px);
-          box-shadow: 0 18px 44px rgba(8,56,120,0.44);
+          box-shadow: 0 18px 44px rgba(37, 99, 235,0.44);
         }
         .as-team-cta svg { transition: transform 0.28s ease; }
         .as-team-cta:hover svg { transform: translateX(5px); }

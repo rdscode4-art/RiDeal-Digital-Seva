@@ -107,7 +107,7 @@ const Pricing = () => {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          color: #083878;
+          color: #2563eb;
           font-size: 13px;
           font-weight: 700;
           letter-spacing: 2px;
@@ -118,7 +118,7 @@ const Pricing = () => {
         .pricing-eyebrow-line {
           width: 36px;
           height: 1.5px;
-          background: #083878;
+          background: #2563eb;
           border-radius: 2px;
         }
 
@@ -145,7 +145,7 @@ const Pricing = () => {
           border: 1.5px solid #d4d9f5;
           border-radius: 50px;
           padding: 4px;
-          box-shadow: 0 2px 10px rgba(8,56,120,0.08);
+          box-shadow: 0 2px 10px rgba(37, 99, 235,0.08);
         }
 
         .toggle-btn {
@@ -161,7 +161,7 @@ const Pricing = () => {
         }
 
         .toggle-btn.active {
-          background: #083878;
+          background: #2563eb;
           color: #fff;
         }
 
@@ -174,7 +174,7 @@ const Pricing = () => {
           display: flex;
           align-items: center;
           gap: 6px;
-          color: #083878;
+          color: #2563eb;
           font-size: 14px;
           font-weight: 700;
         }
@@ -184,7 +184,7 @@ const Pricing = () => {
           line-height: 1;
           transform: scaleX(-1);
           display: inline-block;
-          color: #083878;
+          color: #2563eb;
           opacity: 0.7;
         }
 
@@ -208,12 +208,12 @@ const Pricing = () => {
 
         .pricing-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 20px 50px rgba(8,56,120,0.13);
+          box-shadow: 0 20px 50px rgba(37, 99, 235,0.13);
         }
 
         .pricing-card.featured {
-          border-color: #083878;
-          box-shadow: 0 12px 40px rgba(8,56,120,0.18);
+          border-color: #2563eb;
+          box-shadow: 0 12px 40px rgba(37, 99, 235,0.18);
         }
 
         /* ── RIBBON ── */
@@ -236,7 +236,7 @@ const Pricing = () => {
           clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
         }
 
-        .pricing-ribbon.default  { background: #083878; }
+        .pricing-ribbon.default  { background: #2563eb; }
         .pricing-ribbon.featured { background: #051f4a; }
 
         /* ── CARD BODY ── */
@@ -262,7 +262,7 @@ const Pricing = () => {
 
         .pricing-save {
           background: #eef1ff;
-          color: #083878;
+          color: #2563eb;
           font-size: 11px;
           font-weight: 800;
           padding: 3px 10px;
@@ -331,7 +331,7 @@ const Pricing = () => {
         }
 
         .feature-check {
-          color: #083878;
+          color: #2563eb;
           font-size: 14px;
           flex-shrink: 0;
         }
@@ -350,7 +350,7 @@ const Pricing = () => {
         }
 
         .feature-info:hover {
-          color: #083878;
+          color: #2563eb;
         }
 
         /* CTA button */
@@ -373,14 +373,14 @@ const Pricing = () => {
         }
 
         .pricing-btn.default {
-          background: #083878;
+          background: #2563eb;
           color: #fff;
         }
 
         .pricing-btn.default:hover {
-          background: #0a4799;
+          background: #2563eb;
           transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(8,56,120,0.3);
+          box-shadow: 0 8px 24px rgba(37, 99, 235,0.3);
         }
 
         .pricing-btn.featured-btn {
@@ -389,7 +389,7 @@ const Pricing = () => {
         }
 
         .pricing-btn.featured-btn:hover {
-          background: #083878;
+          background: #2563eb;
           transform: translateY(-2px);
           box-shadow: 0 8px 24px rgba(5,31,74,0.35);
         }

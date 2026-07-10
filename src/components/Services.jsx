@@ -175,7 +175,7 @@ const Services = ({ layout = "slider" }) => {
   if (loading) {
     return (
       <div style={{ textAlign: "center", padding: "100px 20px", background: "#f5f7fc", fontFamily: "'Barlow', sans-serif" }}>
-        <h2 style={{ color: "#083878", fontWeight: 700 }}>Loading Services...</h2>
+        <h2 style={{ color: "#2563eb", fontWeight: 700 }}>Loading Services...</h2>
       </div>
     );
   }
@@ -190,20 +190,20 @@ const Services = ({ layout = "slider" }) => {
 
         /* ── HEADER ── */
         .sv-hd { text-align:center; padding:0 7%; margin-bottom:52px; }
-        .sv-badge { display:inline-block; background:#dce8f7; color:#083878; padding:9px 24px; border-radius:40px; font-size:14px; font-weight:700; margin-bottom:16px; }
+        .sv-badge { display:inline-block; background:#dce8f7; color:#2563eb; padding:9px 24px; border-radius:40px; font-size:14px; font-weight:700; margin-bottom:16px; }
         .sv-hd h1 { font-size:50px; font-weight:800; color:#111827; margin-bottom:14px; line-height:1.2; }
         .shiny-text {
           background: linear-gradient(
             120deg,
-            #083878 0%,
-            #083878 30%,
-            #1a6abf 42%,
-            #3b82f6 48%,
-            #60a5fa 50%,
-            #3b82f6 52%,
-            #1a6abf 58%,
-            #083878 70%,
-            #083878 100%
+            #2563eb 0%,
+            #2563eb 30%,
+            #2563eb 42%,
+            #2563eb 48%,
+            #2563eb 50%,
+            #2563eb 52%,
+            #2563eb 58%,
+            #2563eb 70%,
+            #2563eb 100%
           ) !important;
           background-size: 200% auto !important;
           background-repeat: repeat !important;
@@ -238,10 +238,10 @@ const Services = ({ layout = "slider" }) => {
 
         /* ── CARD ── */
         .sv-card { flex-shrink:0; width:${CW}px; background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 6px 22px rgba(0,0,0,0.08); transition:transform 0.28s ease,box-shadow 0.28s ease; cursor:pointer; position:relative; }
-        .sv-card:hover { transform:translateY(-7px); box-shadow:0 18px 40px rgba(8,56,120,0.18); }
+        .sv-card:hover { transform:translateY(-7px); box-shadow:0 18px 40px rgba(37, 99, 235,0.18); }
         .sv-card:hover .sv-card-hover-hint { opacity:1; }
 
-        .sv-card-hover-hint { position:absolute; top:8px; right:10px; background:rgba(8,56,120,0.85); color:#fff; font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; opacity:0; transition:opacity 0.25s ease; pointer-events:none; z-index:3; letter-spacing:0.3px; }
+        .sv-card-hover-hint { position:absolute; top:8px; right:10px; background:rgba(37, 99, 235,0.85); color:#fff; font-size:11px; font-weight:700; padding:4px 10px; border-radius:20px; opacity:0; transition:opacity 0.25s ease; pointer-events:none; z-index:3; letter-spacing:0.3px; }
 
         .sv-imgbox { position:relative; width:100%; height:160px; overflow:hidden; background:#dce8f7; }
         .sv-imgbox-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#dce8f7,#eef3fb); font-size:48px; }
@@ -272,24 +272,24 @@ const Services = ({ layout = "slider" }) => {
           animation:smBoxIn 0.28s cubic-bezier(0.34,1.56,0.64,1);
         }
         .sm-box::-webkit-scrollbar { width:5px; }
-        .sm-box::-webkit-scrollbar-thumb { background:rgba(8,56,120,0.2); border-radius:4px; }
+        .sm-box::-webkit-scrollbar-thumb { background:rgba(37, 99, 235,0.2); border-radius:4px; }
 
         /* close btn */
         .sm-close {
           position:absolute; top:14px; right:14px; z-index:2;
           width:36px; height:36px; border-radius:50%; border:none;
-          background:rgba(255,255,255,0.9); color:#083878; font-size:15px;
+          background:rgba(255,255,255,0.9); color:#2563eb; font-size:15px;
           display:flex; align-items:center; justify-content:center;
           cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,0.15);
           transition:background 0.2s ease, transform 0.2s ease;
         }
-        .sm-close:hover { background:#083878; color:#fff; transform:rotate(90deg); }
+        .sm-close:hover { background:#2563eb; color:#fff; transform:rotate(90deg); }
 
         /* modal image */
         .sm-imgbox { position:relative; width:100%; height:220px; overflow:hidden; border-radius:22px 22px 0 0; background:#dce8f7; }
         .sm-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 0.85s ease; }
         .sm-img-on { opacity:1; }
-        .sm-img-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(8,56,120,0.55) 100%); }
+        .sm-img-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(37, 99, 235,0.55) 100%); }
         .sm-img-badge { position:absolute; bottom:16px; left:20px; display:flex; align-items:center; gap:10px; }
         .sm-img-icon  { font-size:28px; }
         .sm-img-title { font-size:18px; font-weight:800; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,0.3); }
@@ -299,24 +299,24 @@ const Services = ({ layout = "slider" }) => {
 
         /* modal body */
         .sm-body { padding:28px 32px 32px; }
-        .sm-eyebrow { font-size:11px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:#083878; margin-bottom:10px; }
+        .sm-eyebrow { font-size:11px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:#2563eb; margin-bottom:10px; }
         .sm-title { font-size:26px; font-weight:900; color:#0a0f1e; margin-bottom:14px; line-height:1.2; }
         .sm-desc  { font-size:15px; color:#4b5563; line-height:1.8; margin-bottom:24px; }
-        .sm-feat-heading { font-size:14px; font-weight:800; color:#083878; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:14px; }
+        .sm-feat-heading { font-size:14px; font-weight:800; color:#2563eb; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:14px; }
         .sm-features { list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:28px; }
         .sm-feature  { display:flex; align-items:center; gap:10px; font-size:15px; color:#1e293b; font-weight:500; }
-        .sm-feat-icon { color:#083878; font-size:14px; flex-shrink:0; }
+        .sm-feat-icon { color:#2563eb; font-size:14px; flex-shrink:0; }
         .sm-cta {
           display:inline-flex; align-items:center; gap:9px;
           height:48px; padding:0 26px;
-          background:linear-gradient(135deg,#083878,#1a6abf);
+          background:linear-gradient(135deg,#2563eb,#2563eb);
           color:#fff; font-size:15px; font-weight:700;
           font-family:'Barlow',sans-serif; border:none; border-radius:50px;
           cursor:pointer; text-decoration:none;
           transition:transform 0.25s ease,box-shadow 0.25s ease;
-          box-shadow:0 6px 20px rgba(8,56,120,0.28);
+          box-shadow:0 6px 20px rgba(37, 99, 235,0.28);
         }
-        .sm-cta:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(8,56,120,0.4); }
+        .sm-cta:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(37, 99, 235,0.4); }
         .sm-cta svg { transition:transform 0.25s ease; }
         .sm-cta:hover svg { transform:translateX(4px); }
 

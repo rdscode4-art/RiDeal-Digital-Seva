@@ -4,9 +4,10 @@ import Footer from '../components/Footer';
 import ShowcaseHero from '../components/showcase/ShowcaseHero';
 import ShowcasePortfolio from '../components/showcase/ShowcasePortfolio';
 import ShowcaseServices from '../components/showcase/ShowcaseServices';
-import ShowcaseWhyUs from '../components/showcase/ShowcaseWhyUs';
+import SmartSolutions from '../components/SmartSolutions';
 import ShowcaseTestimonials from '../components/showcase/ShowcaseTestimonials';
 import ShowcaseTechStack from '../components/showcase/ShowcaseTechStack';
+import StaticSocialMedia from '../components/staticsocialmedia/StaticSocialMedia';
 
 const Portfolio = () => {
   return (
@@ -20,9 +21,10 @@ const Portfolio = () => {
 
       <main className="showcase-main" style={{ background: '#051432', color: '#ffffff', overflowX: 'hidden' }}>
         <ShowcaseHero />
-        <ShowcasePortfolio />
+        <StaticSocialMedia />
+        {/* <ShowcasePortfolio /> */}
         <ShowcaseServices />
-        <ShowcaseWhyUs />
+        <SmartSolutions />
         <ShowcaseTestimonials />
         <ShowcaseTechStack />
       </main>

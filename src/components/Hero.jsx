@@ -1,451 +1,417 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { FaLaptopCode, FaCloud, FaDatabase, FaCode } from "react-icons/fa";
-import heroImg from "../assets/hero-removebg-preview.png";
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+
+import H1 from '../assets/H1.png';
+import H2 from '../assets/H2.jpeg';
+import H3 from '../assets/H3.jpeg';
+import H4 from '../assets/H4.jpeg';
+
+const images = [H1, H2, H3, H4];
 
 const HeroSection = () => {
-  const navigate = useNavigate();
-  const [visible, setVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cursorPos, setCursorPos] = useState({ x: 80, y: 80 }); // percentages
+  const [isClicking, setIsClicking] = useState(false);
+  const [step, setStep] = useState(0);
 
+  // Parallax effect values
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const x = (clientX / window.innerWidth - 0.5) * 2; 
+    const y = (clientY / window.innerHeight - 0.5) * 2;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  const rotateY = useTransform(smoothX, [-1, 1], [-25, 25]);
+  const rotateX = useTransform(smoothY, [-1, 1], [15, -15]);
+
+  // Precise step-by-step cursor animation sequence
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 100);
+    let timer;
+    if (step === 0) {
+      // Idle at bottom right
+      setCursorPos({ x: 85, y: 85 });
+      timer = setTimeout(() => setStep(1), 2000);
+    } else if (step === 1) {
+      // Move to center area to click
+      // Generate a slight random offset so it doesn't click the exact same pixel every time
+      const randomX = 40 + Math.random() * 20; // 40% to 60%
+      const randomY = 40 + Math.random() * 20; // 40% to 60%
+      setCursorPos({ x: randomX, y: randomY });
+      timer = setTimeout(() => setStep(2), 800); // 800ms to move
+    } else if (step === 2) {
+      // Click
+      setIsClicking(true);
+      timer = setTimeout(() => setStep(3), 200); // 200ms press
+    } else if (step === 3) {
+      // Release click and switch to next image
+      setIsClicking(false);
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+      timer = setTimeout(() => setStep(0), 500); // Wait briefly before returning to idle
+    }
     return () => clearTimeout(timer);
-  }, []);
+  }, [step]);
 
   return (
-    <>
+    <section className="hero-section" onMouseMove={handleMouseMove}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
-        .hero {
-          width: 100%;
-          min-height: 90vh;
-          background: linear-gradient(135deg, #090e17 0%, #16123a 100%);
+        .hero-section {
+          min-height: 100vh;
+          background-color: #0a0f1e;
+          background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1.5px, transparent 1.5px);
+          background-size: 40px 40px;
           display: flex;
           align-items: center;
-          padding: 80px 8% 60px;
+          justify-content: center;
+          padding: 100px 5%;
           overflow: hidden;
           position: relative;
-          font-family: 'Outfit', sans-serif;
-          color: white;
+          perspective: 1200px;
+          -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
         }
 
-        /* Ambient Glows */
-        .glow-1 {
+        .hero-section::before {
+          content: '';
           position: absolute;
-          width: 600px;
-          height: 600px;
-          background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-          top: -200px;
-          left: -200px;
+          top: -30%;
+          right: -10%;
+          width: 70vw;
+          height: 70vw;
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 60%);
           border-radius: 50%;
+          z-index: 0;
           pointer-events: none;
         }
-        .glow-2 {
-          position: absolute;
-          width: 800px;
-          height: 800px;
-          background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-          bottom: -300px;
-          right: -100px;
-          border-radius: 50%;
+
+        .hero-container {
+          max-width: 1200px;
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        .hero-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
           pointer-events: none;
         }
         
-        .hero-container {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 60px;
-          position: relative;
-          z-index: 2;
+        .hero-content * {
+          pointer-events: auto;
         }
 
-        .hero-left {
-          width: 50%;
-          opacity: 0;
-          transform: translateY(30px);
-          transition: all 0.8s ease;
-        }
-        .hero-left.visible {
-          opacity: 1;
-          transform: translateY(0);
+        .hero-title-wrapper {
+          margin-bottom: 25px;
         }
 
-        .badge {
-          display: inline-block;
-          background: rgba(59, 130, 246, 0.1);
-          border: 1px solid rgba(59, 130, 246, 0.3);
-          color: #60a5fa;
-          backdrop-filter: blur(10px);
-          padding: 8px 16px;
-          border-radius: 30px;
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 0.5px;
-          margin-bottom: 24px;
-          text-transform: uppercase;
-        }
-
-        .hero-title {
-          font-size: 56px;
-          line-height: 1.15;
-          font-weight: 800;
-          margin-bottom: 24px;
-          background: #ffffff;
+        .hero-title-top {
+          font-family: 'Playfair Display', serif;
+          font-style: italic;
+          font-size: clamp(3rem, 5vw, 4.5rem);
+          font-weight: 700;
+          background: linear-gradient(90deg, #2563eb, #2563eb);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
+          line-height: 1.1;
+          margin-bottom: 5px;
+          padding-right: 10px;
         }
 
-        .hero-desc {
-          font-size: 16px;
-          line-height: 1.6;
-          color: rgba(255, 255, 255, 0.85);
-          margin-bottom: 40px;
-          max-width: 90%;
-        }
-
-        .cta-button-group {
+        .hero-title-bottom {
+          font-family: 'Poppins', sans-serif;
+          font-size: clamp(2.5rem, 4.5vw, 4rem);
+          font-weight: 800;
+          color: white;
+          line-height: 1.1;
           display: flex;
-          gap: 16px;
+          align-items: baseline;
           flex-wrap: wrap;
+          gap: 12px;
         }
 
-        .cta-button {
-          padding: 14px 28px;
-          border-radius: 30px;
-          font-size: 14px;
-          font-weight: 700;
-          cursor: pointer;
+        .highlight-word {
+          position: relative;
+          display: inline-block;
+        }
+
+        .highlight-word::after {
+          content: '';
+          position: absolute;
+          bottom: -8px;
+          left: 0;
+          width: 100%;
+          height: 10px;
+          background-image: url("data:image/svg+xml,%3Csvg width='24' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,5 Q6,0 12,5 T24,5' fill='none' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+          background-repeat: repeat-x;
+          background-size: 24px 10px;
+        }
+
+        .status-wrapper {
           display: inline-flex;
           align-items: center;
           gap: 12px;
-          transition: all 0.3s ease;
-        }
-        
-        .cta-button.primary {
-          background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
-          color: white;
-          border: 1px solid rgba(255,255,255,0.1);
-          box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
-        }
-        .cta-button.primary:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
-        }
-
-        .cta-button.secondary {
-          background: transparent;
-          color: white;
-          border: 1px solid rgba(255,255,255,0.4);
-        }
-        .cta-button.secondary:hover {
-          background: rgba(255,255,255,0.1);
-          transform: translateY(-3px);
-          border-color: white;
-        }
-
-        .cta-arrow {
-          font-size: 16px;
-          transition: transform 0.3s ease;
-        }
-        .cta-button:hover .cta-arrow {
-          transform: translateX(4px) translateY(-4px);
-        }
-
-        .stats-container {
-          display: flex;
-          align-items: center;
-          margin-top: 60px;
-          gap: 40px;
-        }
-        .stat-item {
-          display: flex;
-          flex-direction: column;
-        }
-        .stat-number {
-          font-size: 32px;
-          font-weight: 800;
-          margin-bottom: 4px;
-        }
-        .stat-label {
-          font-size: 14px;
-          color: rgba(255,255,255,0.7);
-        }
-        .stat-divider {
-          width: 1px;
-          height: 40px;
-          background: rgba(255,255,255,0.2);
-        }
-
-        .hero-right {
-          width: 50%;
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          opacity: 0;
-          transform: translateX(30px);
-          transition: all 0.8s ease 0.2s;
-        }
-        .hero-right.visible {
-          opacity: 1;
-          transform: translateX(0);
-        }
-
-        .hero-image {
-          width: 100%;
-          max-width: 550px;
-          position: relative;
-          z-index: 2;
-          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));
-          animation: floatHero 6s ease-in-out infinite;
-        }
-
-        @keyframes floatHero {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-15px); }
-        }
-
-        /* Floating elements */
-        @keyframes float1 {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(10deg); }
-        }
-        @keyframes float2 {
-          0%, 100% { transform: translateY(0) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(-10deg); }
-        }
-        @keyframes float3 {
-          0%, 100% { transform: translateY(0) scale(1); }
-          50% { transform: translateY(-10px) scale(1.05); }
-        }
-
-        .float-icon {
-          position: absolute;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-          z-index: 3;
-          color: white;
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 8px 16px;
+          border-radius: 50px;
+          margin-bottom: 30px;
           backdrop-filter: blur(10px);
         }
-        .icon-laptop {
-          top: 15%;
-          left: 5%;
-          width: 50px;
-          height: 50px;
-          font-size: 22px;
-          animation: float1 5s ease-in-out infinite;
-          background: linear-gradient(135deg, rgba(79, 70, 229, 0.8), rgba(37, 99, 235, 0.8));
-        }
-        .icon-cloud {
-          top: 10%;
-          right: 15%;
-          width: 60px;
-          height: 60px;
-          font-size: 26px;
-          animation: float2 6s ease-in-out infinite;
-          transform: rotate(10deg);
-          background: linear-gradient(135deg, rgba(14, 165, 233, 0.8), rgba(2, 132, 199, 0.8));
-        }
-        .icon-code {
-          bottom: 30%;
-          right: -5%;
-          width: 55px;
-          height: 55px;
-          font-size: 24px;
-          animation: float3 4.5s ease-in-out infinite;
-          background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(5, 150, 105, 0.8));
-        }
-        .icon-database {
-          bottom: 25%;
-          left: -5%;
-          width: 45px;
-          height: 45px;
-          font-size: 20px;
-          animation: float1 5.5s ease-in-out infinite;
-          background: linear-gradient(135deg, rgba(245, 158, 11, 0.8), rgba(217, 119, 6, 0.8));
+
+        .status-dot {
+          width: 10px;
+          height: 10px;
+          background: #2563eb;
+          border-radius: 50%;
+          box-shadow: 0 0 10px #2563eb;
+          animation: statusPulse 2s infinite;
         }
 
-        .tech-card {
-          position: absolute;
-          bottom: -10px;
-          left: 15%;
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+        @keyframes statusPulse {
+          0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+          70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+
+        .status-text {
+          color: #cbd5e1;
+          font-family: 'Poppins', sans-serif;
+          font-size: 0.95rem;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+        }
+
+        .hero-description {
+          font-family: 'Poppins', sans-serif;
+          color: #cbd5e1;
+          font-size: 1.05rem;
+          line-height: 1.6;
+          max-width: 480px;
+          margin-bottom: 40px;
+        }
+
+        .hero-btn {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 600;
+          font-size: 1.05rem;
           color: white;
-          padding: 20px;
+          padding: 16px 32px;
           border-radius: 12px;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-          z-index: 4;
-          animation: float1 7s ease-in-out infinite;
-          width: 260px;
-        }
-        .tech-card h4 {
-          font-size: 14px;
-          font-weight: 600;
-          margin-bottom: 15px;
-          line-height: 1.3;
-          color: white;
-        }
-        .avatars {
-          display: flex;
-          align-items: center;
-        }
-        .avatar {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          border: 2px solid white;
-          margin-left: -10px;
-          background: #e2e8f0;
-          object-fit: cover;
-        }
-        .avatar:first-child { margin-left: 0; }
-        .avatar-more {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          border: 2px solid white;
-          margin-left: -10px;
-          background: #4f46e5;
-          color: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 11px;
-          font-weight: bold;
-        }
-        .client-count {
-          margin-left: 15px;
-          font-size: 12px;
-          font-weight: 600;
-          color: white;
+          cursor: pointer;
           display: flex;
           align-items: center;
           gap: 10px;
+          border: 1px solid transparent;
+          background: linear-gradient(#1a1528, #1a1528) padding-box, 
+                      linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(37, 99, 235, 0.8)) border-box;
+          box-shadow: 0 0 25px rgba(37, 99, 235, 0.15);
+          transition: all 0.3s ease;
         }
-        .client-count-num {
-          border-bottom: 1px solid rgba(255,255,255,0.3);
-          padding-bottom: 2px;
-          font-size: 14px;
+        
+        .hero-btn:hover {
+          box-shadow: 0 0 35px rgba(37, 99, 235, 0.3);
+          transform: translateY(-2px);
         }
-        .client-count-text {
-          font-size: 12px;
-          color: rgba(255,255,255,0.7);
-          font-weight: 500;
+        .hero-btn:hover svg {
+          transform: translate(3px, -3px);
+        }
+        .hero-btn svg {
+          transition: transform 0.3s ease;
         }
 
-        @media (max-width: 1024px) {
-          .hero-container {
-            flex-direction: column;
-            text-align: center;
-          }
-          .hero-left, .hero-right { width: 100%; }
-          .hero-title { font-size: 48px; }
-          .hero-desc { margin: 0 auto 30px; }
-          .stats-container {
-            justify-content: center;
-          }
-          .tech-card { left: 50%; transform: translateX(-50%); bottom: -40px; }
+        .hero-visual {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          pointer-events: none;
+          z-index: 10;
         }
-        @media (max-width: 768px) {
-          .hero { padding: 100px 5% 60px; }
-          .hero-title { font-size: 36px; }
-          .stats-container { flex-wrap: wrap; gap: 20px; }
-          .stat-divider { display: none; }
-          .stat-item { flex: 1 1 40%; }
-          .icon-target, .icon-megaphone, .icon-check { display: none; }
+
+        .mockup-window {
+          width: 100%;
+          max-width: 580px;
+          aspect-ratio: 16/10;
+          border-radius: 12px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: -25px 35px 60px rgba(0, 0, 0, 0.6), 0 0 45px rgba(37, 99, 235, 0.1);
+          transform-style: preserve-3d;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          background: #101423;
+          position: relative;
+        }
+
+        .mockup-header {
+          height: 35px;
+          background: rgba(0, 0, 0, 0.4);
+          display: flex;
+          align-items: center;
+          padding: 0 15px;
+          gap: 8px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          position: relative;
+          z-index: 10;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #2563eb; }
+
+        .url-bar {
+          margin-left: 15px;
+          background: rgba(255, 255, 255, 0.08);
+          border-radius: 4px;
+          padding: 4px 12px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-family: sans-serif;
+          font-size: 0.7rem;
+          color: rgba(255, 255, 255, 0.6);
+          flex: 1;
+          max-width: 220px;
+        }
+        
+        .mockup-body {
+          flex: 1;
+          position: relative;
+          background: #000;
+        }
+        
+        /* Fake Cursor */
+        .fake-cursor {
+          position: absolute;
+          z-index: 50;
+          width: 24px;
+          height: 24px;
+          pointer-events: none;
+          filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+        }
+
+        .slide-image {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+          position: absolute;
+          inset: 0;
+        }
+
+        @media (max-width: 968px) {
+          .hero-container { grid-template-columns: 1fr; text-align: center; }
+          .hero-content { align-items: center; }
+          .hero-title-bottom { justify-content: center; }
+          .hero-description { margin: 0 auto 40px auto; }
+          .hero-visual { perspective: none; }
+          .mockup-window { max-width: 100%; margin: 0 auto; transform: none !important; }
         }
       `}</style>
 
-      <section className="hero">
-        <div className="glow-1"></div>
-        <div className="glow-2"></div>
-
-        <div className="hero-container">
-          {/* Left Content */}
-          <div className={`hero-left ${visible ? 'visible' : ''}`}>
-            <div className="badge">
-              IT SOLUTIONS FOR A SMARTER FUTURE
-            </div>
-
-            <h1 className="hero-title">
-              IT Solutions For A<br />Digital-First World
-            </h1>
-
-            <p className="hero-desc">
-              Empower your business with cutting technology solutions<br />
-              tailored to meet your unique needs from cloud computing.
-            </p>
-
-            <div className="cta-button-group">
-              <button className="cta-button primary" onClick={() => navigate('/contact')}>
-                BOOK A FREE CONSULTATION
-                <span className="cta-arrow">↗</span>
-              </button>
-              <button className="cta-button secondary" onClick={() => navigate('/portfolio')}>
-                VIEW PORTFOLIO
-                <span className="cta-arrow">↗</span>
-              </button>
-            </div>
-
-            <div className="stats-container">
-              <div className="stat-item">
-                <span className="stat-number">100+</span>
-                <span className="stat-label">Happy Clients</span>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-item">
-                <span className="stat-number">100+</span>
-                <span className="stat-label">Total Projects</span>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-item">
-                <span className="stat-number">50+</span>
-                <span className="stat-label">Expert Team</span>
-              </div>
+      <div className="hero-container">
+        <motion.div 
+          className="hero-content"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="hero-title-wrapper">
+            <div className="hero-title-top">Grow Your Business</div>
+            <div className="hero-title-bottom">
+              with <span className="highlight-word">AI-Powered</span> Digital Solutions
             </div>
           </div>
 
-          {/* Right Content */}
-          <div className={`hero-right ${visible ? 'visible' : ''}`}>
-            <div className="float-icon icon-laptop"><FaLaptopCode /></div>
-            <div className="float-icon icon-cloud"><FaCloud /></div>
-            <div className="float-icon icon-code"><FaCode /></div>
-            <div className="float-icon icon-database"><FaDatabase /></div>
+          <div className="status-wrapper">
+            <div className="status-dot"></div>
+            <span className="status-text">Trusted Digital IT Solutions Partner</span>
+          </div>
 
-            <img
-              src={heroImg}
-              alt="Hero"
-              className="hero-image"
-            />
+          <p className="hero-description">
+            Digital Marketing, Software Development, Business Automation & IT Services — All Under One Roof.
+          </p>
 
-            <div className="tech-card">
-              <h4>Worked With More Than 100+ Technology</h4>
-              <div className="avatars">
-                <img src="https://i.pravatar.cc/100?img=1" className="avatar" alt="user" />
-                <img src="https://i.pravatar.cc/100?img=2" className="avatar" alt="user" />
-                <img src="https://i.pravatar.cc/100?img=3" className="avatar" alt="user" />
-                <div className="avatar-more">+</div>
-                <div className="client-count">
-                  <span className="client-count-num">100+</span>
-                  <span className="client-count-text">Clients</span>
-                </div>
+          <button className="hero-btn" onClick={() => window.location.href = '/contact'}>
+            Get Free Consultation
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M7 17l9.2-9.2M17 17V7H7"/>
+            </svg>
+          </button>
+        </motion.div>
+
+        <div className="hero-visual">
+          <motion.div 
+            className="mockup-window"
+            style={{ rotateX, rotateY }}
+          >
+            <div className="mockup-header">
+              <div className="dot dot-red"></div>
+              <div className="dot dot-yellow"></div>
+              <div className="dot dot-green"></div>
+              <div className="url-bar">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                https://ridealdigitalseva.com/
               </div>
             </div>
-          </div>
+            
+            <div className="mockup-body">
+              {/* Fake animated cursor */}
+              <motion.div 
+                className="fake-cursor"
+                animate={{
+                  left: `${cursorPos.x}%`,
+                  top: `${cursorPos.y}%`,
+                  scale: isClicking ? 0.8 : 1
+                }}
+                transition={{
+                  left: { type: "spring", stiffness: 45, damping: 15 },
+                  top: { type: "spring", stiffness: 45, damping: 15 },
+                  scale: { duration: 0.1 }
+                }}
+                style={{ originX: 0.2, originY: 0.2 }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.5 3L18.5 16L12.5 17L10 22L5.5 3Z" fill="white" stroke="#000" strokeWidth="1.5" strokeLinejoin="round"/>
+                </svg>
+              </motion.div>
+
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentIndex}
+                  src={images[currentIndex]}
+                  alt="Company Graphic"
+                  className="slide-image"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                />
+              </AnimatePresence>
+            </div>
+          </motion.div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
 export default HeroSection;
-

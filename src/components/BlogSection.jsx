@@ -42,7 +42,7 @@ const BlogSection = () => {
   if (loading) {
     return (
       <div style={{ textAlign: "center", padding: "100px 20px", background: "#f5f7fc", fontFamily: "'Barlow', sans-serif" }}>
-        <h2 style={{ color: "#083878", fontWeight: 700 }}>Loading Articles...</h2>
+        <h2 style={{ color: "#2563eb", fontWeight: 700 }}>Loading Articles...</h2>
       </div>
     );
   }
@@ -84,31 +84,31 @@ const BlogSection = () => {
           width: 100%;
           max-width: 320px;
           background: #fff;
-          border: 1.5px solid rgba(8,56,120,0.15);
+          border: 1.5px solid rgba(37, 99, 235,0.15);
           border-radius: 50px;
           padding: 2px 6px 2px 18px;
-          box-shadow: 0 4px 16px rgba(8,56,120,0.03);
+          box-shadow: 0 4px 16px rgba(37, 99, 235,0.03);
           transition: border-color 0.25s ease, box-shadow 0.25s ease;
         }
         .bl-search-box:focus-within {
-          border-color: #083878;
-          box-shadow: 0 6px 20px rgba(8,56,120,0.1);
+          border-color: #2563eb;
+          box-shadow: 0 6px 20px rgba(37, 99, 235,0.1);
         }
         .bl-search-box input {
           border: none;
           outline: none;
           padding: 10px 0;
           font-size: 14px;
-          color: #083878;
+          color: #2563eb;
           font-weight: 500;
           width: 100%;
           font-family: 'Barlow', sans-serif;
         }
         .bl-search-box input::placeholder {
-          color: rgba(8,56,120,0.4);
+          color: rgba(37, 99, 235,0.4);
         }
         .bl-search-icon {
-          color: #083878;
+          color: #2563eb;
           margin-right: 12px;
           font-size: 14px;
         }
@@ -126,7 +126,7 @@ const BlogSection = () => {
         }
         .bl-cat-pill {
           background: #fff;
-          border: 1.5px solid rgba(8,56,120,0.12);
+          border: 1.5px solid rgba(37, 99, 235,0.12);
           color: #4b5563;
           padding: 8px 20px;
           border-radius: 50px;
@@ -137,15 +137,15 @@ const BlogSection = () => {
           transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
         }
         .bl-cat-pill:hover {
-          color: #083878;
-          border-color: #083878;
+          color: #2563eb;
+          border-color: #2563eb;
           transform: translateY(-1px);
         }
         .bl-cat-pill.active {
-          background: #083878;
-          border-color: #083878;
+          background: #2563eb;
+          border-color: #2563eb;
           color: #fff;
-          box-shadow: 0 6px 18px rgba(8,56,120,0.22);
+          box-shadow: 0 6px 18px rgba(37, 99, 235,0.22);
         }
 
         /* ── FEATURED BLOG CARD ── */
@@ -162,7 +162,7 @@ const BlogSection = () => {
         }
         .bl-featured-card:hover {
           transform: translateY(-6px);
-          box-shadow: 0 20px 45px rgba(8,56,120,0.12);
+          box-shadow: 0 20px 45px rgba(37, 99, 235,0.12);
         }
 
         .bl-feat-imgbox {
@@ -183,7 +183,7 @@ const BlogSection = () => {
           position: absolute;
           top: 20px;
           left: 20px;
-          background: #083878;
+          background: #2563eb;
           color: #fff;
           font-size: 11px;
           font-weight: 800;
@@ -210,7 +210,7 @@ const BlogSection = () => {
           flex-wrap: wrap;
         }
         .bl-meta-icon {
-          color: #083878;
+          color: #2563eb;
           margin-right: 6px;
         }
         .bl-feat-title {
@@ -222,7 +222,7 @@ const BlogSection = () => {
           transition: color 0.2s ease;
         }
         .bl-featured-card:hover .bl-feat-title {
-          color: #083878;
+          color: #2563eb;
         }
         .bl-feat-desc {
           font-size: 15px;
@@ -234,7 +234,7 @@ const BlogSection = () => {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          color: #083878;
+          color: #2563eb;
           font-weight: 700;
           font-size: 14.5px;
           text-decoration: none;
@@ -248,7 +248,7 @@ const BlogSection = () => {
         }
         .bl-read-btn:hover {
           gap: 12px;
-          color: #1a6abf;
+          color: #2563eb;
         }
 
         /* ── BLOG GRID ── */
@@ -270,7 +270,7 @@ const BlogSection = () => {
         }
         .bl-card:hover {
           transform: translateY(-6px);
-          box-shadow: 0 16px 36px rgba(8,56,120,0.1);
+          box-shadow: 0 16px 36px rgba(37, 99, 235,0.1);
         }
 
         .bl-card-imgbox {
@@ -292,7 +292,7 @@ const BlogSection = () => {
           top: 16px;
           left: 16px;
           background: rgba(255,255,255,0.95);
-          color: #083878;
+          color: #2563eb;
           font-size: 10.5px;
           font-weight: 800;
           letter-spacing: 1.2px;
@@ -325,7 +325,7 @@ const BlogSection = () => {
           transition: color 0.2s ease;
         }
         .bl-card:hover .bl-card-title {
-          color: #083878;
+          color: #2563eb;
         }
         .bl-card-desc {
           font-size: 13.5px;
@@ -353,7 +353,7 @@ const BlogSection = () => {
           margin-bottom: 20px;
         }
         .bl-reset-btn {
-          background: #083878;
+          background: #2563eb;
           color: #fff;
           border: none;
           padding: 10px 24px;
@@ -363,7 +363,7 @@ const BlogSection = () => {
           transition: background 0.2s ease;
         }
         .bl-reset-btn:hover {
-          background: #1a6abf;
+          background: #2563eb;
         }
 
         /* ── RESPONSIVE DESIGN ── */

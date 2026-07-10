@@ -2,15 +2,15 @@ import Header from '../components/Header';
 import BlogHero from '../components/BlogHero';
 import BlogSection from '../components/BlogSection';
 import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsAppButton';
+import StaticSocialMedia from '../components/staticsocialmedia/StaticSocialMedia';
 
 const Blog = () => {
   return (
     <>
       <Header />
       <BlogHero />
+      <StaticSocialMedia />
       <BlogSection />
-       <WhatsAppButton />
       <Footer />
     </>
   );

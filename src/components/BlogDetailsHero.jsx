@@ -47,7 +47,7 @@ const BlogDetailsHero = ({ post }) => {
         .bdh-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(135deg, rgba(8,56,120,0.92) 0%, rgba(5,20,50,0.85) 55%, rgba(8,56,120,0.78) 100%);
+          background: linear-gradient(135deg, rgba(10, 15, 30, 0.92) 0%, rgba(10, 15, 30, 0.75) 60%, rgba(37, 99, 235, 0.40) 100%);
           z-index: 1;
         }
 
@@ -59,8 +59,8 @@ const BlogDetailsHero = ({ post }) => {
 
         .bdh-arc-wrap { position: absolute; bottom: -20px; right: -20px; width: 200px; height: 200px; z-index: 2; pointer-events: none; }
         .bdh-arc      { position: absolute; border-radius: 50%; bottom: 0; right: 0; }
-        .bdh-arc:nth-child(1) { width: 110px; height: 110px; border: 16px solid #083878; bottom: -28px; right: -28px; animation: bdhFloat 4s ease-in-out infinite; }
-        .bdh-arc:nth-child(2) { width: 170px; height: 170px; border: 16px solid rgba(8,56,120,0.35); bottom: -55px; right: -55px; animation: bdhFloat 5.5s 0.8s ease-in-out infinite; }
+        .bdh-arc:nth-child(1) { width: 110px; height: 110px; border: 16px solid #2563eb; bottom: -28px; right: -28px; animation: bdhFloat 4s ease-in-out infinite; }
+        .bdh-arc:nth-child(2) { width: 170px; height: 170px; border: 16px solid rgba(37, 99, 235,0.35); bottom: -55px; right: -55px; animation: bdhFloat 5.5s 0.8s ease-in-out infinite; }
 
         .bdh-dot { position: absolute; border-radius: 50%; z-index: 3; pointer-events: none; }
         .bdh-dot-1 { width: 12px; height: 12px; background: #fff; top: 36%; left: 20%; animation: bdhPulse 3s ease-in-out infinite; }
@@ -70,7 +70,7 @@ const BlogDetailsHero = ({ post }) => {
           position: relative;
           z-index: 3;
           width: 100%;
-          padding: 60px 6%;
+          padding: 140px 6% 60px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -111,7 +111,7 @@ const BlogDetailsHero = ({ post }) => {
         .bdh-title-line {
           width: 0;
           height: 3px;
-          background: linear-gradient(90deg, transparent, #fff, transparent);
+          background: linear-gradient(90deg, transparent, #2563eb, transparent);
           border-radius: 4px;
           transition: width 0.8s 0.9s ease;
           margin: -4px auto 0;

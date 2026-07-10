@@ -35,7 +35,7 @@ const FAQ = () => {
     <section className="faq-section">
       <style>{`
         .faq-section {
-          padding: 80px 6%;
+          padding: 60px 6%;
           background: #f8fafc;
           font-family: 'Barlow', sans-serif;
           display: flex;
@@ -46,31 +46,34 @@ const FAQ = () => {
         .faq-header {
           text-align: center;
           max-width: 700px;
-          margin-bottom: 50px;
-        }
-
-        .faq-tag {
-          color: #3b82f6;
-          font-weight: 700;
-          font-size: 14px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          margin-bottom: 12px;
-          display: inline-block;
+          margin-bottom: 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
         }
 
         .faq-title {
-          font-size: 42px;
-          font-weight: 800;
-          color: #1e293b;
+          font-size: 48px;
+          font-weight: 900;
+          color: #0f172a;
           line-height: 1.2;
-          margin-bottom: 16px;
+          letter-spacing: -1px;
+          margin: 0;
+        }
+
+        .faq-title em {
+          color: #2563eb;
+          font-style: italic;
+          font-weight: 900;
         }
 
         .faq-subtitle {
-          font-size: 17px;
+          font-size: 18px;
           color: #64748b;
+          font-weight: 400;
           line-height: 1.6;
+          margin: 0;
         }
 
         .faq-container {
@@ -90,8 +93,8 @@ const FAQ = () => {
         }
 
         .faq-item.open {
-          border-color: #3b82f6;
-          box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+          border-color: #2563eb;
+          box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
         }
 
         .faq-question {
@@ -112,11 +115,11 @@ const FAQ = () => {
         }
 
         .faq-question:hover {
-          color: #3b82f6;
+          color: #2563eb;
         }
 
         .faq-icon {
-          color: #3b82f6;
+          color: #2563eb;
           font-size: 16px;
           transition: transform 0.4s ease;
           flex-shrink: 0;
@@ -152,8 +155,7 @@ const FAQ = () => {
       `}</style>
 
       <div className="faq-header">
-        <span className="faq-tag">Got Questions?</span>
-        <h2 className="faq-title">Frequently Asked Questions</h2>
+        <h2 className="faq-title">Frequently Asked <em>Questions</em></h2>
         <p className="faq-subtitle">Everything you need to know about our digital IT solutions, software services, and development processes.</p>
       </div>
 

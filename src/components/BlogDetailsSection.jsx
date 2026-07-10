@@ -52,7 +52,7 @@ const BlogDetailsSection = ({ post }) => {
           transition: color 0.2s ease, transform 0.2s ease;
         }
         .bds-back-btn:hover {
-          color: #083878;
+          color: #2563eb;
           transform: translateX(-3px);
         }
 
@@ -64,7 +64,7 @@ const BlogDetailsSection = ({ post }) => {
           width: 36px;
           height: 36px;
           border-radius: 50%;
-          border: 1px solid rgba(8,56,120,0.15);
+          border: 1px solid rgba(37, 99, 235,0.15);
           background: #fff;
           color: #4b5563;
           display: flex;
@@ -75,9 +75,9 @@ const BlogDetailsSection = ({ post }) => {
           transition: all 0.22s ease;
         }
         .bds-share-btn:hover {
-          color: #083878;
-          border-color: #083878;
-          background: rgba(8,56,120,0.05);
+          color: #2563eb;
+          border-color: #2563eb;
+          background: rgba(37, 99, 235,0.05);
           transform: translateY(-2px);
         }
 
@@ -86,7 +86,7 @@ const BlogDetailsSection = ({ post }) => {
           background: #fff;
           border-radius: 24px;
           border: 1px solid #eef1f6;
-          box-shadow: 0 10px 30px rgba(8,56,120,0.02);
+          box-shadow: 0 10px 30px rgba(37, 99, 235,0.02);
           overflow: hidden;
         }
 
@@ -131,7 +131,7 @@ const BlogDetailsSection = ({ post }) => {
           top: 4px;
           bottom: 4px;
           width: 4px;
-          background: #083878;
+          background: #2563eb;
           border-radius: 4px;
         }
         .bds-content ul {
@@ -142,12 +142,12 @@ const BlogDetailsSection = ({ post }) => {
           margin-bottom: 12px;
         }
         .bds-content strong {
-          color: #083878;
+          color: #2563eb;
           font-weight: 700;
         }
         
         .blog-quote {
-          border-left: 4px solid #083878;
+          border-left: 4px solid #2563eb;
           padding: 8px 0 8px 24px;
           margin: 36px 0;
           font-style: italic;
@@ -161,8 +161,8 @@ const BlogDetailsSection = ({ post }) => {
 
         /* Call To Action Box */
         .bds-cta-box {
-          background: linear-gradient(135deg, rgba(8,56,120,0.04) 0%, rgba(26,106,191,0.06) 100%);
-          border: 1.5px dashed rgba(8,56,120,0.22);
+          background: linear-gradient(135deg, rgba(37, 99, 235,0.04) 0%, rgba(26,106,191,0.06) 100%);
+          border: 1.5px dashed rgba(37, 99, 235,0.22);
           border-radius: 18px;
           padding: 32px;
           margin-top: 48px;
@@ -190,19 +190,19 @@ const BlogDetailsSection = ({ post }) => {
           gap: 9px;
           height: 48px;
           padding: 0 28px;
-          background: linear-gradient(135deg, #083878, #1a6abf);
+          background: linear-gradient(135deg, #2563eb, #2563eb);
           color: #fff;
           font-size: 14.5px;
           font-weight: 700;
           text-decoration: none;
           border-radius: 50px;
-          box-shadow: 0 6px 18px rgba(8,56,120,0.2);
+          box-shadow: 0 6px 18px rgba(37, 99, 235,0.2);
           transition: transform 0.25s ease, box-shadow 0.25s ease;
           white-space: nowrap;
         }
         .bds-cta-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 10px 28px rgba(8,56,120,0.3);
+          box-shadow: 0 10px 28px rgba(37, 99, 235,0.3);
         }
 
         /* Bottom Share Row */

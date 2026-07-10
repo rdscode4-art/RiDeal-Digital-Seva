@@ -17,7 +17,7 @@ const ShowcaseTestimonials = () => (
       .testi-track-wrap { display: flex; overflow: hidden; }
       .testi-track { display: flex; gap: 28px; padding: 20px 5%; }
       .testi-card { min-width: 400px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 36px; backdrop-filter: blur(10px); transition: all 0.3s ease; flex-shrink: 0; }
-      .testi-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(96,165,250,0.2); transform: translateY(-8px); }
+      .testi-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(37, 99, 235,0.2); transform: translateY(-8px); }
       .testi-top { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
       .testi-name { color: #fff; font-size: 1.1rem; font-weight: 700; }
       .testi-role { color: #64748b; font-size: 0.85rem; }

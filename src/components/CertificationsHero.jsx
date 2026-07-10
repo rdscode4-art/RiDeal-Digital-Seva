@@ -1,26 +1,16 @@
 import { useEffect, useState } from "react";
 
-const ContactHero = () => {
+const CertificationsHero = () => {
   const [loaded, setLoaded] = useState(false);
-  const [data, setData] = useState({
-    title: "Contact RiDeal Digital Seva for IT Services",
-    subtitle: "Need ERP Software, CRM Development, Web Development, Mobile App Development, AI Automation or Digital Marketing Services?  Contact RiDeal Digital Seva today and our experts will help you choose the right solution for your business.",
+  
+  const data = {
+    title: "Government Authorized Certifications",
+    subtitle: "We operate under full compliance and guidelines of statutory government organizations to guarantee safety, operational standards, and trust.",
     content: {
-      eyebrow: "Contact Us",
-      bgImage: "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?q=80&w=1600&auto=format&fit=crop"
+      eyebrow: "Official Credentials",
+      bgImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1600&auto=format&fit=crop"
     }
-  });
-
-  useEffect(() => {
-    fetch("https://backend.ridealdigitalseva.com/api/sections/contact-hero")
-      .then(res => res.json())
-      .then(resData => {
-        if (resData && resData.title) {
-          setData(resData);
-        }
-      })
-      .catch(err => console.warn("CMS ContactHero load failed:", err));
-  }, []);
+  };
 
   useEffect(() => { const t = setTimeout(() => setLoaded(true), 80); return () => clearTimeout(t); }, []);
 
@@ -51,7 +41,6 @@ const ContactHero = () => {
         .ch-bg {
           position: absolute;
           inset: 0;
-          background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop');
           background-size: cover;
           background-position: center top;
           z-index: 0;
@@ -184,12 +173,12 @@ const ContactHero = () => {
 
         /* title */
         .ch-title {
-          font-size: 58px;
+          font-size: 48px;
           font-weight: 900;
           color: #fff;
-          letter-spacing: 4px;
+          letter-spacing: 2px;
           text-transform: uppercase;
-          line-height: 1.1;
+          line-height: 1.2;
           margin: 0;
           opacity: 0;
           /* shimmer effect on text */
@@ -223,10 +212,10 @@ const ContactHero = () => {
 
         /* desc */
         .ch-desc {
-          font-size: 15px;
-          color: rgba(255,255,255,0.7);
-          line-height: 1.8;
-          max-width: 460px;
+          font-size: 16px;
+          color: rgba(255,255,255,0.8);
+          line-height: 1.6;
+          max-width: 600px;
           margin: 0;
           opacity: 0;
         }
@@ -277,7 +266,7 @@ const ContactHero = () => {
       `}</style>
 
       <section className="ch-section">
-        <div className="ch-bg" style={{ backgroundImage: `url(${data.content?.bgImage || "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop"})` }} />
+        <div className="ch-bg" style={{ backgroundImage: `url(${data.content.bgImage})` }} />
         <div className="ch-overlay" />
 
         {/* spinning circles */}
@@ -301,30 +290,23 @@ const ContactHero = () => {
         <div className="ch-content">
           <div className={`ch-eyebrow ${loaded ? "in" : ""}`}>
             <span className="ch-eyebrow-line" />
-            {data.content?.eyebrow || "Get In Touch"}
+            {data.content.eyebrow}
             <span className="ch-eyebrow-line" />
           </div>
 
           <h1 className={`ch-title ${loaded ? "" : ""}`}>
-            {data.title.includes("Touch") ? (
-              <>
-                {data.title.replace("Touch", "")}
-                <span>Touch</span>
-              </>
-            ) : (
-              data.title
-            )}
+            {data.title}
           </h1>
           <div className={`ch-title-line ${loaded ? "in" : ""}`} />
 
-    <p className={`ch-desc ${loaded ? "in" : ""}`}>
+          <p className={`ch-desc ${loaded ? "in" : ""}`}>
             {data.subtitle}
           </p>
 
           <a href="/" className={`ch-breadcrumb ${loaded ? "in" : ""}`}>
             Home
             <span className="ch-breadcrumb-sep">→</span>
-            <span className="ch-breadcrumb-active">Contact</span>
+            <span className="ch-breadcrumb-active">Certifications</span>
           </a>
         </div>
       </section>
@@ -332,4 +314,4 @@ const ContactHero = () => {
   );
 };
 
-export default ContactHero;
+export default CertificationsHero;

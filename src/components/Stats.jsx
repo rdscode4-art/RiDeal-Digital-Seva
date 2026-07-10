@@ -6,31 +6,31 @@ import {
 const STATS = [
   {
     icon: <FaAward />,
-    value: 100,
+    value: 500,
     suffix: "+",
     label: "Happy Clients",
-    color: "#083878",
+    color: "#2563eb",
   },
   {
     icon: <FaUsers />,
-    value: 100,
+    value: 1000,
     suffix: "+",
-    label: "Total Projects",
-    color: "#0d4fa0",
+    label: "Projects Delivered",
+    color: "#2563eb",
   },
   {
     icon: <FaSmile />,
     value: 98,
     suffix: "%",
-    label: "Client Satisfaction",
-    color: "#1560c0",
+    label: "Client Retention",
+    color: "#2563eb",
   },
   {
     icon: <FaLaptopCode />,
     value: 24,
     suffix: "/7",
-    label: "Support",
-    color: "#083878",
+    label: "Support Available",
+    color: "#2563eb",
   },
 ];
 
@@ -90,7 +90,8 @@ const Stats = () => {
           const icons = [<FaAward />, <FaUsers />, <FaSmile />, <FaLaptopCode />];
           const enriched = data.content.map((item, idx) => ({
             ...item,
-            icon: icons[idx] || <FaLaptopCode />
+            icon: icons[idx] || <FaLaptopCode />,
+            color: "#2563eb"
           }));
           setStats(enriched);
         } else {
@@ -129,7 +130,7 @@ const Stats = () => {
         .st-section {
           width: 100%;
           background: #fff;
-          padding: 70px 6%;
+          padding: 50px 6%;
           font-family: 'Barlow', sans-serif;
           position: relative;
           overflow: hidden;
@@ -140,7 +141,7 @@ const Stats = () => {
           content: '';
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(rgba(8,56,120,0.05) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(37, 99, 235,0.15) 1px, transparent 1px);
           background-size: 30px 30px;
           pointer-events: none;
         }
@@ -158,7 +159,7 @@ const Stats = () => {
         /* ── CARD ── */
         .st-card {
           background: #fff;
-          border: 1.5px solid rgba(8,56,120,0.08);
+          border: 1.5px solid rgba(37, 99, 235,0.15);
           border-radius: 20px;
           padding: 36px 24px 28px;
           text-align: center;
@@ -177,8 +178,8 @@ const Stats = () => {
 
         .st-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 20px 50px rgba(8,56,120,0.12);
-          border-color: rgba(8,56,120,0.2);
+          box-shadow: 0 20px 50px rgba(37, 99, 235,0.15);
+          border-color: rgba(37, 99, 235,0.3);
         }
 
         /* top accent bar */

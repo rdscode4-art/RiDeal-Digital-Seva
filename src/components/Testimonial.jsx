@@ -39,7 +39,7 @@ const Testimonial = () => {
     <section className="testimonial-section">
       <style>{`
         .testimonial-section {
-          padding: 80px 6%;
+          padding: 60px 6%;
           background: #ffffff;
           font-family: 'Barlow', sans-serif;
           position: relative;
@@ -48,24 +48,33 @@ const Testimonial = () => {
 
         .testimonial-header {
           text-align: center;
-          margin-bottom: 60px;
-        }
-
-        .testi-tag {
-          color: #3b82f6;
-          font-weight: 700;
-          font-size: 14px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          margin-bottom: 12px;
-          display: inline-block;
+          margin-bottom: 40px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
         }
 
         .testi-title {
-          font-size: 42px;
-          font-weight: 800;
-          color: #1e293b;
+          font-size: 48px;
+          font-weight: 900;
+          color: #0f172a;
           line-height: 1.2;
+          letter-spacing: -1px;
+          margin: 0;
+        }
+
+        .testi-title em {
+          color: #2563eb;
+          font-style: italic;
+          font-weight: 900;
+        }
+
+        .testi-subtitle {
+          font-size: 18px;
+          color: #64748b;
+          font-weight: 400;
+          margin: 0;
         }
 
         .testi-vp {
@@ -125,7 +134,7 @@ const Testimonial = () => {
         }
 
         .testi-card:hover .testi-quote-icon {
-          color: #3b82f6;
+          color: #2563eb;
           opacity: 0.2;
         }
 
@@ -174,8 +183,8 @@ const Testimonial = () => {
       `}</style>
 
       <div className="testimonial-header">
-        <span className="testi-tag">Client Reviews</span>
-        <h2 className="testi-title">What Our Clients Say</h2>
+        <h2 className="testi-title">What Our <em>Clients Say</em></h2>
+        <span className="testi-subtitle">Real feedback from businesses we've helped grow.</span>
       </div>
 
       <div className="testi-vp">

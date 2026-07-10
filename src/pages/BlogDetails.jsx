@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import BlogDetailsHero from "../components/BlogDetailsHero";
 import BlogDetailsSection from "../components/BlogDetailsSection";
 import Footer from "../components/Footer";
-import WhatsAppButton from "../components/WhatsAppButton";
+import StaticSocialMedia from "../components/staticsocialmedia/StaticSocialMedia";
 import { BLOG_POSTS } from "../data/blogData";
 
 const BlogDetails = () => {
@@ -41,7 +41,7 @@ const BlogDetails = () => {
           fontFamily: "'Barlow', sans-serif",
           background: "#f5f7fc"
         }}>
-          <h2 style={{ color: "#083878", fontWeight: 700 }}>Loading Article Details...</h2>
+          <h2 style={{ color: "#2563eb", fontWeight: 700 }}>Loading Article Details...</h2>
         </div>
         <Footer />
       </>
@@ -75,12 +75,12 @@ const BlogDetails = () => {
             alignItems: "center",
             height: "48px",
             padding: "0 28px",
-            background: "linear-gradient(135deg, #083878, #1a6abf)",
+            background: "linear-gradient(135deg, #2563eb, #2563eb)",
             color: "#fff",
             fontWeight: 700,
             borderRadius: "50px",
             textDecoration: "none",
-            boxShadow: "0 6px 18px rgba(8,56,120,0.2)"
+            boxShadow: "0 6px 18px rgba(37, 99, 235,0.2)"
           }}>
             Back to Blogs
           </Link>
@@ -94,8 +94,8 @@ const BlogDetails = () => {
     <>
       <Header />
       <BlogDetailsHero post={post} />
+      <StaticSocialMedia />
       <BlogDetailsSection post={post} />
-      <WhatsAppButton />
       <Footer />
     </>
   );

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { FaRocket, FaFileInvoiceDollar, FaBuilding, FaIdCard, FaArrowRight, FaTimes } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import WhatsAppButton from "../components/WhatsAppButton";
+import StaticSocialMedia from "../components/staticsocialmedia/StaticSocialMedia";
+import CertificationsHero from "../components/CertificationsHero";
 import cert1 from "../assets/certificate.png";
 import cert2 from "../assets/certificate2.png";
 import cert3 from "../assets/Certificate3.png";
@@ -23,7 +24,7 @@ const CERTIFICATIONS = [
     title: "GST Registration Certificate",
     subtitle: "Department of Revenue, Ministry of Finance, Govt of India",
     icon: <FaFileInvoiceDollar />,
-    color: "#3b82f6", // Blue
+    color: "#2563eb", // Blue
     bg: "#dbeafe",
     link: cert2,
   },
@@ -41,7 +42,7 @@ const CERTIFICATIONS = [
     title: "Certificate of Incorporation",
     subtitle: "Ministry of Corporate Affairs, Govt of India",
     icon: <FaBuilding />,
-    color: "#10b981", // Green
+    color: "#2563eb", // Green
     bg: "#d1fae5",
     link: cert3,
   },
@@ -57,6 +58,8 @@ const Certifications = () => {
   return (
     <>
       <Header />
+      <CertificationsHero />
+      <StaticSocialMedia />
       <div className="cert-page">
         <style>{`
           .cert-page {
@@ -70,47 +73,6 @@ const Certifications = () => {
             align-items: center;
           }
 
-          .cert-header {
-            text-align: center;
-            max-width: 800px;
-            margin-bottom: 60px;
-          }
-
-          .cert-tagline {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: #3b82f6;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-          }
-
-          .cert-tagline::before,
-          .cert-tagline::after {
-            content: "";
-            width: 40px;
-            height: 2px;
-            background: #3b82f6;
-            opacity: 0.5;
-          }
-
-          .cert-title {
-            font-size: 42px;
-            color: #1e293b;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-          }
-
-          .cert-subtitle {
-            font-size: 17px;
-            color: #64748b;
-            line-height: 1.6;
-          }
-
           .cert-grid {
             display: flex;
             flex-wrap: wrap;
@@ -119,7 +81,6 @@ const Certifications = () => {
             width: 100%;
             max-width: 1200px;
           }
-
           .cert-card {
             flex: 1 1 300px;
             max-width: 380px;
@@ -145,7 +106,7 @@ const Certifications = () => {
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #3b82f6, #10b981, #f59e0b, #ef4444);
+            background: linear-gradient(90deg, #2563eb, #2563eb, #f59e0b, #ef4444);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
@@ -154,8 +115,8 @@ const Certifications = () => {
 
           .cert-card:hover {
             transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(8, 56, 120, 0.12);
-            border-color: rgba(8, 56, 120, 0.15);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.12);
+            border-color: rgba(37, 99, 235, 0.15);
           }
 
           .cert-card:hover::before {
@@ -213,7 +174,7 @@ const Certifications = () => {
             gap: 8px;
             font-size: 14px;
             font-weight: 600;
-            color: #3b82f6;
+            color: #2563eb;
             text-decoration: none;
             transition: all 0.3s ease;
             padding: 8px 16px;
@@ -224,7 +185,7 @@ const Certifications = () => {
           .cert-card:hover .cert-link {
             gap: 12px;
             background: #f1f5f9;
-            color: #1d4ed8;
+            color: #2563eb;
           }
 
           @keyframes fadeInUp {
@@ -306,16 +267,6 @@ const Certifications = () => {
             to { transform: scale(1); opacity: 1; }
           }
         `}</style>
-
-        <div className="cert-header">
-          <div className="cert-tagline">OFFICIAL CREDENTIALS</div>
-          <h1 className="cert-title">Government Authorized Certifications</h1>
-          <p className="cert-subtitle">
-            We operate under full compliance and guidelines of statutory government organizations to guarantee safety,
-            operational standards, and trust.
-          </p>
-        </div>
-
         <div className="cert-grid">
           {CERTIFICATIONS.map((cert, index) => (
             <div className="cert-card" key={cert.id} style={{ animationDelay: `${index * 0.15}s` }}>
@@ -360,7 +311,6 @@ const Certifications = () => {
 
       </div>
       <Footer />
-      <WhatsAppButton />
     </>
   );
 };

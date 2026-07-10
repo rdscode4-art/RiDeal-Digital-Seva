@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import StaticSocialMedia from "../components/staticsocialmedia/StaticSocialMedia";
 
 const PrivacyPolicy = () => {
   useEffect(() => {
@@ -10,6 +11,7 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Header />
+      <StaticSocialMedia />
       
       <style>{`
         .privacy-page {
@@ -25,14 +27,14 @@ const PrivacyPolicy = () => {
           background: #fff;
           padding: 60px;
           border-radius: 20px;
-          box-shadow: 0 10px 40px rgba(8,56,120,0.05);
-          border: 1px solid rgba(8,56,120,0.08);
+          box-shadow: 0 10px 40px rgba(37, 99, 235,0.05);
+          border: 1px solid rgba(37, 99, 235,0.08);
         }
 
         .privacy-title {
           font-size: 42px;
           font-weight: 900;
-          color: #083878;
+          color: #2563eb;
           margin-bottom: 12px;
           letter-spacing: -0.5px;
         }
@@ -79,7 +81,7 @@ const PrivacyPolicy = () => {
           content: '•';
           position: absolute;
           left: 0;
-          color: #083878;
+          color: #2563eb;
           font-weight: bold;
           font-size: 18px;
         }
@@ -89,7 +91,7 @@ const PrivacyPolicy = () => {
           padding: 30px;
           border-radius: 12px;
           margin-top: 40px;
-          border-left: 4px solid #083878;
+          border-left: 4px solid #2563eb;
         }
 
         .privacy-contact p {
@@ -102,7 +104,7 @@ const PrivacyPolicy = () => {
         }
 
         .privacy-contact a {
-          color: #083878;
+          color: #2563eb;
           text-decoration: none;
           font-weight: 700;
         }

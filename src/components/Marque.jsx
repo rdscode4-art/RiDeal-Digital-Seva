@@ -22,7 +22,7 @@ const Marquee = () => {
       <style>{`
         .marquee-section {
           width: 100%;
-          background: #083878;
+          background: #2563eb;
           overflow: hidden;
           padding: 10px 0;
         }

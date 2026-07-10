@@ -96,7 +96,7 @@ const ContactSection = () => {
           content: '';
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(rgba(8,56,120,0.06) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(37, 99, 235,0.06) 1px, transparent 1px);
           background-size: 30px 30px;
           pointer-events: none;
         }
@@ -127,14 +127,14 @@ const ContactSection = () => {
           font-weight: 800;
           letter-spacing: 2.5px;
           text-transform: uppercase;
-          color: #083878;
+          color: #2563eb;
           margin-bottom: 12px;
         }
         .cs-eyebrow::before {
           content: '';
           display: inline-block;
           width: 24px; height: 2px;
-          background: #083878;
+          background: #2563eb;
           border-radius: 2px;
         }
 
@@ -149,8 +149,8 @@ const ContactSection = () => {
         }
         .cs-heading span {
           color: transparent;
-          -webkit-text-stroke: 2px #083878;
-          text-stroke: 2px #083878;
+          -webkit-text-stroke: 2px #2563eb;
+          text-stroke: 2px #2563eb;
           display: inline-block;
         }
 
@@ -168,7 +168,7 @@ const ContactSection = () => {
           align-items: center;
           gap: 18px;
           background: #fff;
-          border: 1.5px solid rgba(8,56,120,0.08);
+          border: 1.5px solid rgba(37, 99, 235,0.08);
           border-radius: 14px;
           padding: 20px 22px;
           margin-bottom: 16px;
@@ -186,7 +186,7 @@ const ContactSection = () => {
           position: absolute;
           left: 0; top: 0; bottom: 0;
           width: 3px;
-          background: #083878;
+          background: #2563eb;
           border-radius: 4px 0 0 4px;
           transform: scaleY(0);
           transform-origin: bottom;
@@ -195,8 +195,8 @@ const ContactSection = () => {
 
         .cs-info-card:hover {
           transform: translateX(6px);
-          box-shadow: 0 10px 32px rgba(8,56,120,0.12);
-          border-color: rgba(8,56,120,0.22);
+          box-shadow: 0 10px 32px rgba(37, 99, 235,0.12);
+          border-color: rgba(37, 99, 235,0.22);
         }
 
         .cs-info-card:hover::before { transform: scaleY(1); }
@@ -204,12 +204,12 @@ const ContactSection = () => {
         .cs-info-icon {
           width: 52px; height: 52px;
           border-radius: 12px;
-          background: rgba(8,56,120,0.07);
-          border: 1.5px solid rgba(8,56,120,0.12);
+          background: rgba(37, 99, 235,0.07);
+          border: 1.5px solid rgba(37, 99, 235,0.12);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #083878;
+          color: #2563eb;
           font-size: 19px;
           flex-shrink: 0;
           transition: background 0.28s ease, color 0.28s ease,
@@ -217,9 +217,9 @@ const ContactSection = () => {
         }
 
         .cs-info-card:hover .cs-info-icon {
-          background: #083878;
+          background: #2563eb;
           color: #fff;
-          border-color: #083878;
+          border-color: #2563eb;
           transform: rotate(-8deg) scale(1.1);
         }
 
@@ -240,12 +240,12 @@ const ContactSection = () => {
         .cs-right {
           flex: 1.05;
           min-width: 0;
-          background: linear-gradient(145deg, #083878 0%, #0c4a9e 50%, #1560c0 100%);
+          background: linear-gradient(145deg, #2563eb 0%, #0c4a9e 50%, #2563eb 100%);
           border-radius: 20px;
           padding: 38px 34px 34px;
           position: relative;
           overflow: hidden;
-          box-shadow: 0 24px 64px rgba(8,56,120,0.3);
+          box-shadow: 0 24px 64px rgba(37, 99, 235,0.3);
           animation: csFadeUp 0.7s 0.15s ease both;
         }
 
@@ -347,7 +347,7 @@ const ContactSection = () => {
         }
         
         select.cs-field option {
-          background: #083878;
+          background: #2563eb;
           color: #fff;
         }
 
@@ -389,7 +389,7 @@ const ContactSection = () => {
 
         .cs-submit:hover:not(:disabled) {
           background: #fff;
-          color: #083878;
+          color: #2563eb;
           border-color: #fff;
           transform: translateY(-2px);
           box-shadow: 0 10px 28px rgba(0,0,0,0.18);
@@ -411,8 +411,8 @@ const ContactSection = () => {
           animation: csSpin 0.7s linear infinite;
         }
         .cs-submit:hover .cs-spinner {
-          border-color: rgba(8,56,120,0.3);
-          border-top-color: #083878;
+          border-color: rgba(37, 99, 235,0.3);
+          border-top-color: #2563eb;
         }
 
         /* success state */
@@ -455,7 +455,7 @@ const ContactSection = () => {
           box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: block;
           object-fit: contain;
         }
-        .qr-modal h3 { font-size: 22px; font-weight: 900; color: #083878; margin-bottom: 8px; }
+        .qr-modal h3 { font-size: 22px; font-weight: 900; color: #2563eb; margin-bottom: 8px; }
         .qr-modal p { font-size: 14.5px; color: #4b5563; line-height: 1.6; }
 
         /* ── RESPONSIVE ── */
@@ -512,7 +512,7 @@ const ContactSection = () => {
               </div>
             </div>
 
-            <div className="cs-info-card" onClick={() => setShowQR(true)} style={{ cursor: "pointer", background: "#083878", borderColor: "#083878" }}>
+            <div className="cs-info-card" onClick={() => setShowQR(true)} style={{ cursor: "pointer", background: "#2563eb", borderColor: "#2563eb" }}>
               <div className="cs-info-icon" style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderColor: "rgba(255,255,255,0.15)" }}>
                 <FaQrcode />
               </div>

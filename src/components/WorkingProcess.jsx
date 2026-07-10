@@ -68,7 +68,7 @@ const WorkingProcess = () => {
           content: '';
           position: absolute;
           inset: 0;
-          background-image: radial-gradient(rgba(8,56,120,0.035) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(37, 99, 235,0.035) 1px, transparent 1px);
           background-size: 32px 32px;
           pointer-events: none;
         }
@@ -89,14 +89,14 @@ const WorkingProcess = () => {
           font-weight: 800;
           letter-spacing: 2.5px;
           text-transform: uppercase;
-          color: #083878;
+          color: #2563eb;
           margin-bottom: 14px;
         }
 
         .wp-eyebrow-line {
           width: 24px;
           height: 2px;
-          background: #083878;
+          background: #2563eb;
           border-radius: 2px;
         }
 
@@ -111,15 +111,15 @@ const WorkingProcess = () => {
         .shiny-text {
           background: linear-gradient(
             120deg,
-            #083878 0%,
-            #083878 30%,
-            #1a6abf 42%,
-            #3b82f6 48%,
-            #60a5fa 50%,
-            #3b82f6 52%,
-            #1a6abf 58%,
-            #083878 70%,
-            #083878 100%
+            #2563eb 0%,
+            #2563eb 30%,
+            #2563eb 42%,
+            #2563eb 48%,
+            #2563eb 50%,
+            #2563eb 52%,
+            #2563eb 58%,
+            #2563eb 70%,
+            #2563eb 100%
           ) !important;
           background-size: 200% auto !important;
           background-repeat: repeat !important;
@@ -150,11 +150,11 @@ const WorkingProcess = () => {
         /* ── CARDS ── */
         .wp-card {
           background: #fff;
-          border: 1.5px solid rgba(8,56,120,0.06);
+          border: 1.5px solid rgba(37, 99, 235,0.06);
           border-radius: 24px;
           padding: 34px 28px;
           position: relative;
-          box-shadow: 0 8px 30px rgba(8,56,120,0.03);
+          box-shadow: 0 8px 30px rgba(37, 99, 235,0.03);
           transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
                       box-shadow 0.35s ease,
                       border-color 0.35s ease;
@@ -170,8 +170,8 @@ const WorkingProcess = () => {
 
         .wp-card:hover {
           transform: translateY(-6px);
-          box-shadow: 0 20px 48px rgba(8,56,120,0.1);
-          border-color: rgba(8,56,120,0.18);
+          box-shadow: 0 20px 48px rgba(37, 99, 235,0.1);
+          border-color: rgba(37, 99, 235,0.18);
         }
 
         /* Grid Assignments on Desktop */

@@ -61,12 +61,7 @@ const AboutHero = () => {
         .ah-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(
-            135deg,
-            rgba(8,56,120,0.90) 0%,
-            rgba(5,20,50,0.82) 55%,
-            rgba(8,56,120,0.75) 100%
-          );
+          background: linear-gradient(135deg, rgba(10, 15, 30, 0.92) 0%, rgba(10, 15, 30, 0.75) 60%, rgba(37, 99, 235, 0.40) 100%);
           z-index: 1;
         }
 
@@ -101,8 +96,8 @@ const AboutHero = () => {
           border-radius: 50%;
           bottom: 0; right: 0;
         }
-        .ah-arc:nth-child(1) { width:110px; height:110px; border:16px solid #083878; bottom:-28px; right:-28px; animation:ahFloat 4s ease-in-out infinite; }
-        .ah-arc:nth-child(2) { width:170px; height:170px; border:16px solid rgba(8,56,120,0.35); bottom:-55px; right:-55px; animation:ahFloat 5.5s 0.8s ease-in-out infinite; }
+        .ah-arc:nth-child(1) { width:110px; height:110px; border:16px solid #2563eb; bottom:-28px; right:-28px; animation:ahFloat 4s ease-in-out infinite; }
+        .ah-arc:nth-child(2) { width:170px; height:170px; border:16px solid rgba(37, 99, 235,0.35); bottom:-55px; right:-55px; animation:ahFloat 5.5s 0.8s ease-in-out infinite; }
 
         /* pulsing dots */
         .ah-dot { position:absolute; border-radius:50%; z-index:3; pointer-events:none; }
@@ -115,7 +110,7 @@ const AboutHero = () => {
           position: relative;
           z-index: 3;
           width: 100%;
-          padding: 72px 6%;
+          padding: 140px 6% 72px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -138,15 +133,16 @@ const AboutHero = () => {
         .ah-eyebrow-line { width:30px; height:1.5px; background:rgba(255,255,255,0.4); border-radius:2px; }
 
         .ah-title {
-          font-size: 58px;
+          font-size: 40px;
           font-weight: 900;
           color: #fff;
-          letter-spacing: 4px;
+          letter-spacing: 3px;
           text-transform: uppercase;
-          line-height: 1.1;
+          line-height: 1.2;
+          max-width: 900px;
           margin: 0;
           opacity: 0;
-          background: linear-gradient(90deg,#fff 0%,#fff 40%,rgba(255,255,255,0.55) 50%,#fff 60%,#fff 100%);
+          background: linear-gradient(90deg, #fff 0%, #fff 40%, rgba(255,255,255,0.55) 50%, #fff 60%, #fff 100%);
           background-size: 600px 100%;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -157,18 +153,18 @@ const AboutHero = () => {
         .ah-title-line {
           width: 0;
           height: 3px;
-          background: linear-gradient(90deg, transparent, #fff, transparent);
+          background: linear-gradient(90deg, transparent, #2563eb, transparent);
           border-radius: 4px;
           transition: width 0.8s 0.9s ease;
-          margin: -8px auto 0;
+          margin: -4px auto 0;
         }
         .ah-title-line.in { width: 200px; }
 
         .ah-desc {
-          font-size: 15px;
+          font-size: 16px;
           color: rgba(255,255,255,0.7);
-          line-height: 1.8;
-          max-width: 460px;
+          line-height: 1.6;
+          max-width: 800px;
           margin: 0;
           opacity: 0;
         }
@@ -191,7 +187,7 @@ const AboutHero = () => {
           opacity: 0;
         }
         .ah-breadcrumb.in { animation: ahFadeUp 0.7s 0.6s ease forwards; }
-        .ah-breadcrumb:hover { background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.45); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+        .ah-breadcrumb:hover { background: rgba(37, 99, 235, 0.2); border-color: rgba(37, 99, 235, 0.5); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2); }
         .ah-breadcrumb-sep { color:rgba(255,255,255,0.4); font-size:13px; }
         .ah-breadcrumb-active { color:#fff; font-weight:800; }
 

@@ -37,7 +37,7 @@ const Newsletter = () => {
         .newsletter {
           width: 100%;
           padding: 32px 6%;
-          background: linear-gradient(100deg, #083878 0%, #0c4a9e 55%, #1560c0 100%);
+          background: linear-gradient(100deg, #2563eb 0%, #0c4a9e 55%, #2563eb 100%);
           position: relative;
           overflow: hidden;
         }
@@ -153,7 +153,7 @@ const Newsletter = () => {
           padding: 0 24px;
           border: none;
           background: #fff;
-          color: #083878;
+          color: #2563eb;
           font-size: 14.5px;
           font-weight: 800;
           cursor: pointer;

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { FaCarSide, FaTshirt, FaLeaf, FaCheckCircle } from "react-icons/fa";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import StaticSocialMedia from "../components/staticsocialmedia/StaticSocialMedia";
 
 const Branches = () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const Branches = () => {
       id: "mobility",
       title: "RiDeal Mobility",
       icon: <FaCarSide />,
-      color: "#3b82f6", // Blue
+      color: "#2563eb", // Blue
       bg: "#eff6ff",
       desc1: "RiDeal Mobility offers safe, reliable, and affordable transportation solutions across India. Whether you need a daily city commute, airport transfer, or corporate fleet leasing, we've got you covered with professional drivers and modern vehicles.",
       desc2: "We understand that each journey matters. Our fleet of well-maintained vehicles, trained drivers, and 24/7 support ensures a seamless travel experience every time you ride with us.",
@@ -71,6 +72,7 @@ const Branches = () => {
   return (
     <>
       <Header />
+      <StaticSocialMedia />
       
       <style>{`
         .branches-page {
@@ -82,7 +84,7 @@ const Branches = () => {
 
         /* ── HERO ── */
         .br-hero {
-          background: linear-gradient(135deg, #083878 0%, #1a6abf 100%);
+          background: linear-gradient(135deg, rgba(10, 15, 30, 0.92) 0%, rgba(10, 15, 30, 0.75) 60%, rgba(37, 99, 235, 0.40) 100%);
           padding: 160px 6% 100px;
           text-align: center;
           color: #fff;
@@ -146,17 +148,17 @@ const Branches = () => {
           background: #fff;
           border-radius: 20px;
           overflow: hidden;
-          box-shadow: 0 10px 30px rgba(8,56,120,0.06);
+          box-shadow: 0 10px 30px rgba(37, 99, 235,0.06);
           margin-bottom: 40px;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          border: 1px solid rgba(8,56,120,0.06);
+          border: 1px solid rgba(37, 99, 235,0.06);
           transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .br-card:hover {
           transform: translateY(-8px);
-          box-shadow: 0 25px 50px rgba(8,56,120,0.12);
+          box-shadow: 0 25px 50px rgba(37, 99, 235,0.12);
         }
 
         .br-card.reverse {
