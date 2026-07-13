@@ -205,32 +205,70 @@ const HeroSection = () => {
           margin-bottom: 40px;
         }
 
+        .hero-btn-group {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+
         .hero-btn {
           font-family: 'Poppins', sans-serif;
-          font-weight: 600;
+          font-weight: 700;
           font-size: 1.05rem;
-          color: white;
+          color: #ffffff;
           padding: 16px 32px;
           border-radius: 12px;
           cursor: pointer;
           display: flex;
           align-items: center;
           gap: 10px;
-          border: 1px solid transparent;
-          background: linear-gradient(#1a1528, #1a1528) padding-box, 
-                      linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(37, 99, 235, 0.8)) border-box;
-          box-shadow: 0 0 25px rgba(37, 99, 235, 0.15);
+          border: none;
+          background: #2563eb;
+          box-shadow: 0 0 22px rgba(37, 99, 235, 0.3);
           transition: all 0.3s ease;
         }
         
         .hero-btn:hover {
-          box-shadow: 0 0 35px rgba(37, 99, 235, 0.3);
+          background: #1d4ed8;
+          box-shadow: 0 0 40px rgba(37, 99, 235, 0.5);
           transform: translateY(-2px);
         }
         .hero-btn:hover svg {
           transform: translate(3px, -3px);
         }
         .hero-btn svg {
+          transition: transform 0.3s ease;
+        }
+
+        .hero-btn-portfolio {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 700;
+          font-size: 1.05rem;
+          color: #2563eb;
+          padding: 16px 32px;
+          border-radius: 12px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          border: 1.5px solid rgba(37, 99, 235, 0.5);
+          background: rgba(37, 99, 235, 0.07);
+          box-shadow: none;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+
+        .hero-btn-portfolio:hover {
+          background: rgba(37, 99, 235, 0.15);
+          border-color: #2563eb;
+          box-shadow: 0 0 30px rgba(37, 99, 235, 0.25);
+          transform: translateY(-2px);
+        }
+        .hero-btn-portfolio:hover svg {
+          transform: translate(3px, -3px);
+        }
+        .hero-btn-portfolio svg {
           transition: transform 0.3s ease;
         }
 
@@ -347,12 +385,21 @@ const HeroSection = () => {
             Digital Marketing, Software Development, Business Automation & IT Services — All Under One Roof.
           </p>
 
-          <button className="hero-btn" onClick={() => window.location.href = '/contact'}>
-            Get Free Consultation
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 17l9.2-9.2M17 17V7H7"/>
-            </svg>
-          </button>
+          <div className="hero-btn-group">
+            <button className="hero-btn" onClick={() => window.location.href = '/contact'}>
+              Get Free Consultation
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+              </svg>
+            </button>
+
+            <a className="hero-btn-portfolio" href="/portfolio">
+              View Portfolio
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+              </svg>
+            </a>
+          </div>
         </motion.div>
 
         <div className="hero-visual">

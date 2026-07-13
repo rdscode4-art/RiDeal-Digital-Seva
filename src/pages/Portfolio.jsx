@@ -1,32 +1,29 @@
 import { Helmet } from 'react-helmet-async';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ShowcaseHero from '../components/showcase/ShowcaseHero';
-import ShowcasePortfolio from '../components/showcase/ShowcasePortfolio';
-import ShowcaseServices from '../components/showcase/ShowcaseServices';
-import SmartSolutions from '../components/SmartSolutions';
-import ShowcaseTestimonials from '../components/showcase/ShowcaseTestimonials';
-import ShowcaseTechStack from '../components/showcase/ShowcaseTechStack';
+import PortfolioHero from '../components/PortfolioHero';
+import PortfolioSection from '../components/PortfolioSection';
 import StaticSocialMedia from '../components/staticsocialmedia/StaticSocialMedia';
 
 const Portfolio = () => {
   return (
     <>
       <Helmet>
-        <title>Portfolio & Services | RiDeal Digital Seva</title>
-        <meta name="description" content="Explore our premium portfolio of projects and services. We build AI-powered digital experiences for future businesses." />
+        <title>Portfolio | RiDeal Digital Seva — Our Recent Works</title>
+        <meta
+          name="description"
+          content="Explore RiDeal Digital Seva ka premium portfolio — web development, e-commerce, mobile apps aur AI projects. Real clients ke liye real solutions."
+        />
+        <meta property="og:title" content="Portfolio | RiDeal Digital Seva" />
+        <meta property="og:description" content="Hamara kaam dekhiye — websites, apps aur digital solutions jo brands ko aage lekar jaate hain." />
       </Helmet>
 
       <Header />
 
-      <main className="showcase-main" style={{ background: '#051432', color: '#ffffff', overflowX: 'hidden' }}>
-        <ShowcaseHero />
+      <main style={{ background: '#111111', color: '#ffffff', overflowX: 'hidden' }}>
+        <PortfolioHero />
         <StaticSocialMedia />
-        {/* <ShowcasePortfolio /> */}
-        <ShowcaseServices />
-        <SmartSolutions />
-        <ShowcaseTestimonials />
-        <ShowcaseTechStack />
+        <PortfolioSection />
       </main>
 
       <Footer />
