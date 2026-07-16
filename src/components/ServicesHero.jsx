@@ -4,23 +4,12 @@ const ServicesHero = () => {
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState({
     title: "IT Services & Business Solutions",
-    subtitle: "Rideal Digital Seva provides ERP solutions, CRM development, AI automation, website development, mobile app development, digital marketing, SEO services, cloud solutions, and custom software development to help businesses grow faster and operate efficiently..",
+    subtitle: "From custom software and ERP development to digital marketing and AI automation, we provide comprehensive IT solutions to accelerate your growth.",
     content: {
       eyebrow: "What We Offer",
-      bgImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop"
     }
   });
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/sections/services-hero")
-      .then(res => res.json())
-      .then(resData => {
-        if (resData && resData.title) {
-          setData(resData);
-        }
-      })
-      .catch(err => console.warn("CMS ServicesHero load failed:", err));
-  }, []);
 
   useEffect(() => { const t = setTimeout(() => setLoaded(true), 80); return () => clearTimeout(t); }, []);
 
@@ -197,9 +186,7 @@ const ServicesHero = () => {
         <div className="sh-bg" style={{ backgroundImage: `url(${data.content?.bgImage || "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop"})` }} />
         <div className="sh-overlay" />
 
-        <div className="sh-circles">
-          <div className="sh-circle" /><div className="sh-circle" /><div className="sh-circle" />
-        </div>
+
 
         <div className="sh-arc-wrap">
           <div className="sh-arc" /><div className="sh-arc" />

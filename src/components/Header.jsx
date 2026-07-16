@@ -57,21 +57,22 @@ const NavbarPage = () => {
           width: 90%;
           max-width: 1400px;
           margin: 20px auto;
-          background: transparent; 
+          background: #ffffff; 
           position: fixed; 
           top: 0; 
           left: 0; right: 0; 
           z-index: 1000;
           border-radius: 50px;
-          border: none;
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
           transition: background 0.3s ease, box-shadow 0.3s ease;
         }
 
         .header.scrolled {
-          background: rgba(255, 255, 255, 0.95);
+          background: rgba(255, 255, 255, 0.98);
           backdrop-filter: blur(12px);
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          border: 1px solid rgba(0, 0, 0, 0.05);
+          border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .header-inner {
@@ -91,7 +92,7 @@ const NavbarPage = () => {
           z-index: 0;
           border-radius: 8px;
         }
-        .logo-img { height:96px; width:auto; object-fit:contain; display:block; border-radius:8px; transition:opacity 0.2s ease; position: relative; z-index: 1; }
+        .logo-img { height:80px; margin: -10px 0; width:auto; object-fit:contain; display:block; border-radius:8px; transition:opacity 0.2s ease; position: relative; z-index: 1; }
         .logo-img:hover { opacity:0.88; }
 
         /* DESKTOP NAV */
@@ -99,7 +100,7 @@ const NavbarPage = () => {
           display:flex; align-items:center; gap:2px; flex:1; justify-content:center;
         }
         .menu a {
-          text-decoration:none; color:#fff; font-size:16px; font-weight:600;
+          text-decoration:none; color:#111827; font-size:16px; font-weight:600;
           display:flex; align-items:center; padding:6px 14px; border-radius:6px;
           transition:color 0.2s ease; letter-spacing:0.1px; position:relative; white-space:nowrap;
         }
@@ -120,7 +121,7 @@ const NavbarPage = () => {
         /* SEARCH */
         .search-wrapper { position:relative; display:flex; align-items:center; }
         .search-toggle {
-          width:38px; height:38px; border:none; background:transparent; color:#fff;
+          width:38px; height:38px; border:none; background:transparent; color:#111827;
           display:flex; align-items:center; justify-content:center; font-size:16px;
           cursor:pointer; border-radius:6px; transition:color 0.2s ease,background 0.2s ease;
         }
@@ -169,7 +170,7 @@ const NavbarPage = () => {
         /* HAMBURGER */
         .hamburger {
           display:none; width:40px; height:40px; border:none; background:transparent;
-          color:#fff; font-size:20px; cursor:pointer; align-items:center;
+          color:#111827; font-size:20px; cursor:pointer; align-items:center;
           justify-content:center; border-radius:6px; flex-shrink:0;
           transition:background 0.2s ease, color 0.2s ease;
         }

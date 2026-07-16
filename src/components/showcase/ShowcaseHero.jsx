@@ -172,9 +172,7 @@ const ShowcaseHero = () => {
         <div className="sch-bg" style={{ backgroundImage: `url(${data.content?.bgImage || "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop"})` }} />
         <div className="sch-overlay" />
 
-        <div className="sch-circles">
-          <div className="sch-circle" /><div className="sch-circle" /><div className="sch-circle" />
-        </div>
+
         <div className="sch-arc-wrap">
           <div className="sch-arc" /><div className="sch-arc" />
         </div>

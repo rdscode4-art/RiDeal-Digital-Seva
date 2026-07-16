@@ -6,13 +6,10 @@ import H2 from '../assets/H2.jpeg';
 import H3 from '../assets/H3.jpeg';
 import H4 from '../assets/H4.jpeg';
 
-const images = [H1, H2, H3, H4];
+const images = [H2, H3, H4, H1];
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [cursorPos, setCursorPos] = useState({ x: 80, y: 80 }); // percentages
-  const [isClicking, setIsClicking] = useState(false);
-  const [step, setStep] = useState(0);
 
   // Parallax effect values
   const mouseX = useMotionValue(0);
@@ -20,7 +17,7 @@ const HeroSection = () => {
 
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
-    const x = (clientX / window.innerWidth - 0.5) * 2; 
+    const x = (clientX / window.innerWidth - 0.5) * 2;
     const y = (clientY / window.innerHeight - 0.5) * 2;
     mouseX.set(x);
     mouseY.set(y);
@@ -29,35 +26,16 @@ const HeroSection = () => {
   const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
-  const rotateY = useTransform(smoothX, [-1, 1], [-25, 25]);
-  const rotateX = useTransform(smoothY, [-1, 1], [15, -15]);
+  const rotateY = useTransform(smoothX, [-1, 1], [-15, 15]);
+  const rotateX = useTransform(smoothY, [-1, 1], [10, -10]);
 
-  // Precise step-by-step cursor animation sequence
+  // Simple interval to change images
   useEffect(() => {
-    let timer;
-    if (step === 0) {
-      // Idle at bottom right
-      setCursorPos({ x: 85, y: 85 });
-      timer = setTimeout(() => setStep(1), 2000);
-    } else if (step === 1) {
-      // Move to center area to click
-      // Generate a slight random offset so it doesn't click the exact same pixel every time
-      const randomX = 40 + Math.random() * 20; // 40% to 60%
-      const randomY = 40 + Math.random() * 20; // 40% to 60%
-      setCursorPos({ x: randomX, y: randomY });
-      timer = setTimeout(() => setStep(2), 800); // 800ms to move
-    } else if (step === 2) {
-      // Click
-      setIsClicking(true);
-      timer = setTimeout(() => setStep(3), 200); // 200ms press
-    } else if (step === 3) {
-      // Release click and switch to next image
-      setIsClicking(false);
+    const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-      timer = setTimeout(() => setStep(0), 500); // Wait briefly before returning to idle
-    }
-    return () => clearTimeout(timer);
-  }, [step]);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section className="hero-section" onMouseMove={handleMouseMove}>
@@ -66,8 +44,8 @@ const HeroSection = () => {
 
         .hero-section {
           min-height: 100vh;
-          background-color: #0a0f1e;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1.5px, transparent 1.5px);
+          background-color: #ffffff;
+          background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1.5px, transparent 1.5px);
           background-size: 40px 40px;
           display: flex;
           align-items: center;
@@ -136,7 +114,7 @@ const HeroSection = () => {
           font-family: 'Poppins', sans-serif;
           font-size: clamp(2.5rem, 4.5vw, 4rem);
           font-weight: 800;
-          color: white;
+          color: #1e293b;
           line-height: 1.1;
           display: flex;
           align-items: baseline;
@@ -165,8 +143,8 @@ const HeroSection = () => {
           display: inline-flex;
           align-items: center;
           gap: 12px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(0, 0, 0, 0.05);
+          border: 1px solid rgba(0, 0, 0, 0.1);
           padding: 8px 16px;
           border-radius: 50px;
           margin-bottom: 30px;
@@ -189,7 +167,7 @@ const HeroSection = () => {
         }
 
         .status-text {
-          color: #cbd5e1;
+          color: #475569;
           font-family: 'Poppins', sans-serif;
           font-size: 0.95rem;
           font-weight: 500;
@@ -198,7 +176,7 @@ const HeroSection = () => {
 
         .hero-description {
           font-family: 'Poppins', sans-serif;
-          color: #cbd5e1;
+          color: #475569;
           font-size: 1.05rem;
           line-height: 1.6;
           max-width: 480px;
@@ -281,67 +259,47 @@ const HeroSection = () => {
           z-index: 10;
         }
 
-        .mockup-window {
+        .image-container {
           width: 100%;
           max-width: 580px;
           aspect-ratio: 16/10;
-          border-radius: 12px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: -25px 35px 60px rgba(0, 0, 0, 0.6), 0 0 45px rgba(37, 99, 235, 0.1);
+          border-radius: 16px;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 0 0 40px rgba(37, 99, 235, 0.05);
           transform-style: preserve-3d;
           display: flex;
           flex-direction: column;
           overflow: hidden;
-          background: #101423;
+          background: transparent;
           position: relative;
+          transition: box-shadow 0.4s ease;
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .mockup-header {
-          height: 35px;
-          background: rgba(0, 0, 0, 0.4);
-          display: flex;
-          align-items: center;
-          padding: 0 15px;
-          gap: 8px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-          position: relative;
-          z-index: 10;
-        }
-
-        .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .dot-red { background: #ef4444; }
-        .dot-yellow { background: #f59e0b; }
-        .dot-green { background: #2563eb; }
-
-        .url-bar {
-          margin-left: 15px;
-          background: rgba(255, 255, 255, 0.08);
-          border-radius: 4px;
-          padding: 4px 12px;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          font-family: sans-serif;
-          font-size: 0.7rem;
-          color: rgba(255, 255, 255, 0.6);
-          flex: 1;
-          max-width: 220px;
-        }
-        
-        .mockup-body {
-          flex: 1;
-          position: relative;
-          background: #000;
-        }
-        
-        /* Fake Cursor */
-        .fake-cursor {
+        .image-container::after {
+          content: '';
           position: absolute;
-          z-index: 50;
-          width: 24px;
-          height: 24px;
+          top: 0;
+          left: -150%;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+          transform: skewX(-25deg);
+          z-index: 5;
           pointer-events: none;
-          filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+        }
+
+        .image-container:hover {
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 0 80px rgba(37, 99, 235, 0.3);
+          border-color: rgba(37, 99, 235, 0.4);
+        }
+
+        .image-container:hover::after {
+          animation: shine 1.2s ease-in-out;
+        }
+
+        @keyframes shine {
+          0% { left: -150%; }
+          100% { left: 250%; }
         }
 
         .slide-image {
@@ -358,12 +316,12 @@ const HeroSection = () => {
           .hero-title-bottom { justify-content: center; }
           .hero-description { margin: 0 auto 40px auto; }
           .hero-visual { perspective: none; }
-          .mockup-window { max-width: 100%; margin: 0 auto; transform: none !important; }
+          .image-container { max-width: 100%; margin: 0 auto; transform: none !important; }
         }
       `}</style>
 
       <div className="hero-container">
-        <motion.div 
+        <motion.div
           className="hero-content"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -389,71 +347,36 @@ const HeroSection = () => {
             <button className="hero-btn" onClick={() => window.location.href = '/contact'}>
               Get Free Consultation
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                <path d="M7 17l9.2-9.2M17 17V7H7" />
               </svg>
             </button>
 
             <a className="hero-btn-portfolio" href="/portfolio">
               View Portfolio
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                <path d="M7 17l9.2-9.2M17 17V7H7" />
               </svg>
             </a>
           </div>
         </motion.div>
 
         <div className="hero-visual">
-          <motion.div 
-            className="mockup-window"
+          <motion.div
+            className="image-container"
             style={{ rotateX, rotateY }}
           >
-            <div className="mockup-header">
-              <div className="dot dot-red"></div>
-              <div className="dot dot-yellow"></div>
-              <div className="dot dot-green"></div>
-              <div className="url-bar">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-                https://ridealdigitalseva.com/
-              </div>
-            </div>
-            
-            <div className="mockup-body">
-              {/* Fake animated cursor */}
-              <motion.div 
-                className="fake-cursor"
-                animate={{
-                  left: `${cursorPos.x}%`,
-                  top: `${cursorPos.y}%`,
-                  scale: isClicking ? 0.8 : 1
-                }}
-                transition={{
-                  left: { type: "spring", stiffness: 45, damping: 15 },
-                  top: { type: "spring", stiffness: 45, damping: 15 },
-                  scale: { duration: 0.1 }
-                }}
-                style={{ originX: 0.2, originY: 0.2 }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5.5 3L18.5 16L12.5 17L10 22L5.5 3Z" fill="white" stroke="#000" strokeWidth="1.5" strokeLinejoin="round"/>
-                </svg>
-              </motion.div>
-
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentIndex}
-                  src={images[currentIndex]}
-                  alt="Company Graphic"
-                  className="slide-image"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
-                />
-              </AnimatePresence>
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentIndex}
+                src={images[currentIndex]}
+                alt="Company Graphic"
+                className="slide-image"
+                initial={{ x: '100%', opacity: 0, scale: 0.95 }}
+                animate={{ x: 0, opacity: 1, scale: 1 }}
+                exit={{ x: '-100%', opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+              />
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>

@@ -84,7 +84,10 @@ const Branches = () => {
 
         /* ── HERO ── */
         .br-hero {
-          background: linear-gradient(135deg, rgba(10, 15, 30, 0.92) 0%, rgba(10, 15, 30, 0.75) 60%, rgba(37, 99, 235, 0.40) 100%);
+          background: linear-gradient(135deg, rgba(10, 15, 30, 0.92) 0%, rgba(10, 15, 30, 0.75) 60%, rgba(37, 99, 235, 0.40) 100%),
+                      url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop');
+          background-size: cover;
+          background-position: center;
           padding: 160px 6% 100px;
           text-align: center;
           color: #fff;
@@ -284,7 +287,7 @@ const Branches = () => {
             <span className="br-badge">Our Ventures</span>
             <h1 className="br-title">Expanding the RiDeal Ecosystem</h1>
             <p className="br-subtitle">
-              Beyond IT & Digital solutions, RiDeal Digital Seva proudly operates specialized branches dedicated to mobility, premium laundry, and hyper-local fresh produce delivery.
+              Beyond IT, RiDeal operates specialized ventures across mobility, premium laundry, and hyper-local fresh produce delivery.
             </p>
           </div>
         </section>

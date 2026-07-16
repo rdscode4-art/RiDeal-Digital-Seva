@@ -178,9 +178,7 @@ const BlogDetailsHero = ({ post }) => {
         <div className="bdh-bg" />
         <div className="bdh-overlay" />
 
-        <div className="bdh-circles">
-          <div className="bdh-circle" /><div className="bdh-circle" /><div className="bdh-circle" />
-        </div>
+
         <div className="bdh-arc-wrap">
           <div className="bdh-arc" /><div className="bdh-arc" />
         </div>

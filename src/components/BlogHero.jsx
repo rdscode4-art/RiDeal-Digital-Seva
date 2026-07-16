@@ -4,23 +4,12 @@ const BlogHero = () => {
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState({
     title: "IT Blogs, ERP Insights & Digital Marketing Guides",
-    subtitle: "Explore expert articles on ERP Software, CRM Development, HRMS Solutions, Web Development, Mobile App Development, AI Automation, Digital Marketing, SEO, and business growth strategies.",
+    subtitle: "Stay updated with the latest trends, insights, and news in the tech world. Read our expert articles and stories.",
     content: {
       eyebrow: "Technology & Business Insights",
       bgImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop"
     }
   });
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/sections/blog-hero")
-      .then(res => res.json())
-      .then(resData => {
-        if (resData && resData.title) {
-          setData(resData);
-        }
-      })
-      .catch(err => console.warn("CMS BlogHero load failed:", err));
-  }, []);
 
   useEffect(() => { const t = setTimeout(() => setLoaded(true), 80); return () => clearTimeout(t); }, []);
 
@@ -173,9 +162,7 @@ const BlogHero = () => {
         <div className="bh-bg" style={{ backgroundImage: `url(${data.content?.bgImage || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop"})` }} />
         <div className="bh-overlay" />
 
-        <div className="bh-circles">
-          <div className="bh-circle" /><div className="bh-circle" /><div className="bh-circle" />
-        </div>
+
         <div className="bh-arc-wrap">
           <div className="bh-arc" /><div className="bh-arc" />
         </div>

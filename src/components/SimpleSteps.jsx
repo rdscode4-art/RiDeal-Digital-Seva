@@ -17,11 +17,11 @@ const SimpleSteps = () => {
       <style>{`
         .ss-sec {
           width: 100%;
-          background: #0a0f1e;
+          background: #ffffff;
           padding: 60px 5%;
           font-family: 'Barlow', sans-serif;
           position: relative;
-          color: white;
+          color: #0a0f1e;
           overflow: hidden;
         }
         
@@ -32,7 +32,7 @@ const SimpleSteps = () => {
           left: 0%;
           width: 800px;
           height: 800px;
-          background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
           pointer-events: none;
           z-index: 0;
         }
@@ -42,7 +42,7 @@ const SimpleSteps = () => {
           content: '';
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px);
           background-size: 30px 30px;
           mask-image: radial-gradient(circle at center, black 60%, transparent 90%);
           -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 90%);
@@ -60,7 +60,7 @@ const SimpleSteps = () => {
         .ss-title {
           font-size: 3.5rem;
           font-weight: 700;
-          color: #f3f4f6;
+          color: #0a0f1e;
           margin: 0 0 15px 0;
           line-height: 1.1;
         }
@@ -73,10 +73,13 @@ const SimpleSteps = () => {
           font-style: italic;
           font-weight: 700;
           margin-left: 12px;
+          -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+          padding-right: 10px;
         }
 
         .ss-subtitle {
-          color: #9ca3af;
+          color: #4b5563;
           font-size: 1.1rem;
           margin: 0;
         }
@@ -99,7 +102,7 @@ const SimpleSteps = () => {
           bottom: 0;
           left: 34px;
           width: 2px;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(0, 0, 0, 0.1);
           z-index: 1;
         }
 
@@ -110,9 +113,9 @@ const SimpleSteps = () => {
           bottom: 0;
           left: 34px;
           width: 2px;
-          background: linear-gradient(180deg, #a855f7, #2563eb);
+          background: linear-gradient(180deg, #2563eb, #2563eb);
           z-index: 2;
-          box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+          box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
           transform-origin: top;
         }
 
@@ -131,24 +134,21 @@ const SimpleSteps = () => {
           width: 16px; 
           height: 16px;
           border-radius: 50%;
-          background: #0a0f1e;
+          background: #ffffff;
           border: 3px solid;
           z-index: 3;
         }
 
-        .node-1 { border-color: #a855f7; box-shadow: 0 0 12px rgba(168, 85, 247, 0.6); }
-        .node-2 { border-color: #8b5cf6; box-shadow: 0 0 12px rgba(139, 92, 246, 0.6); }
-        .node-3 { border-color: #6366f1; box-shadow: 0 0 12px rgba(99, 102, 241, 0.6); }
-        .node-4 { border-color: #2563eb; box-shadow: 0 0 12px rgba(37, 99, 235, 0.6); }
+        .node-1, .node-2, .node-3, .node-4 { border-color: #2563eb; box-shadow: 0 0 12px rgba(37, 99, 235, 0.6); }
 
         .ss-card {
           width: 100%;
-          background: #0e1329;
+          background: #f9fafb;
           background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
           background-size: 20px 20px;
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           border-radius: 16px;
           padding: 30px;
           position: relative;
@@ -159,18 +159,15 @@ const SimpleSteps = () => {
           transform: translateY(-6px);
         }
 
-        .card-1:hover { border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 12px 30px rgba(168, 85, 247, 0.15); }
-        .card-2:hover { border-color: rgba(139, 92, 246, 0.5); box-shadow: 0 12px 30px rgba(139, 92, 246, 0.15); }
-        .card-3:hover { border-color: rgba(99, 102, 241, 0.5); box-shadow: 0 12px 30px rgba(99, 102, 241, 0.15); }
-        .card-4:hover { border-color: rgba(37, 99, 235, 0.5); box-shadow: 0 12px 30px rgba(37, 99, 235, 0.15); }
+        .card-1:hover, .card-2:hover, .card-3:hover, .card-4:hover { border-color: rgba(37, 99, 235, 0.5); box-shadow: 0 12px 30px rgba(37, 99, 235, 0.15); }
 
         
         .ss-card-icon {
           width: 48px;
           height: 48px;
           border-radius: 12px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: rgba(0, 0, 0, 0.03);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -179,24 +176,18 @@ const SimpleSteps = () => {
           transition: all 0.4s ease;
         }
         
-        .card-1 .ss-card-icon { color: #a855f7; }
-        .card-2 .ss-card-icon { color: #8b5cf6; }
-        .card-3 .ss-card-icon { color: #6366f1; }
-        .card-4 .ss-card-icon { color: #2563eb; }
+        .card-1 .ss-card-icon, .card-2 .ss-card-icon, .card-3 .ss-card-icon, .card-4 .ss-card-icon { color: #2563eb; }
 
         .ss-card:hover .ss-card-icon {
           transform: scale(1.1);
         }
         
-        .card-1:hover .ss-card-icon { background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.4); }
-        .card-2:hover .ss-card-icon { background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.4); }
-        .card-3:hover .ss-card-icon { background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4); }
-        .card-4:hover .ss-card-icon { background: rgba(37, 99, 235, 0.15); border-color: rgba(37, 99, 235, 0.4); }
+        .card-1:hover .ss-card-icon, .card-2:hover .ss-card-icon, .card-3:hover .ss-card-icon, .card-4:hover .ss-card-icon { background: rgba(37, 99, 235, 0.15); border-color: rgba(37, 99, 235, 0.4); }
 
         .ss-card-title {
           font-size: 1.4rem;
           font-weight: 700;
-          color: white;
+          color: #1f2937;
           margin: 0 0 10px 0;
         }
 
@@ -205,13 +196,10 @@ const SimpleSteps = () => {
           font-weight: 500;
         }
 
-        .card-1 .ss-card-title span { color: #a855f7; }
-        .card-2 .ss-card-title span { color: #8b5cf6; }
-        .card-3 .ss-card-title span { color: #6366f1; }
-        .card-4 .ss-card-title span { color: #2563eb; }
+        .card-1 .ss-card-title span, .card-2 .ss-card-title span, .card-3 .ss-card-title span, .card-4 .ss-card-title span { color: #2563eb; }
 
         .ss-card-desc {
-          color: #9ca3af;
+          color: #4b5563;
           font-size: 0.95rem;
           line-height: 1.6;
           margin: 0;
@@ -312,20 +300,20 @@ const SimpleSteps = () => {
           <svg className="ss-desktop-svg" preserveAspectRatio="none" viewBox="0 0 100 100">
             <defs>
               <linearGradient id="curveGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#a855f7" />
+                <stop offset="0%" stopColor="#2563eb" />
                 <stop offset="100%" stopColor="#2563eb" />
               </linearGradient>
             </defs>
             {/* Background faint line */}
             <path 
               d="M 50 12.5 C 120 12.5, 120 37.5, 50 37.5 C -20 37.5, -20 62.5, 50 62.5 C 120 62.5, 120 87.5, 50 87.5"
-              stroke="rgba(255,255,255,0.1)" strokeWidth="2" fill="none" vectorEffect="non-scaling-stroke"
+              stroke="rgba(0,0,0,0.1)" strokeWidth="2" fill="none" vectorEffect="non-scaling-stroke"
             />
             {/* Animated glowing line */}
             <motion.path 
               d="M 50 12.5 C 120 12.5, 120 37.5, 50 37.5 C -20 37.5, -20 62.5, 50 62.5 C 120 62.5, 120 87.5, 50 87.5"
               stroke="url(#curveGrad)" strokeWidth="3" fill="none" vectorEffect="non-scaling-stroke"
-              style={{ pathLength: smoothProgress, filter: 'drop-shadow(0 0 8px rgba(168,85,247,0.5))' }}
+              style={{ pathLength: smoothProgress, filter: 'drop-shadow(0 0 8px rgba(37,99,235,0.5))' }}
             />
           </svg>
 

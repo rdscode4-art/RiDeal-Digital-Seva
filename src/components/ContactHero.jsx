@@ -4,23 +4,14 @@ const ContactHero = () => {
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState({
     title: "Contact RiDeal Digital Seva for IT Services",
-    subtitle: "Need ERP Software, CRM Development, Web Development, Mobile App Development, AI Automation or Digital Marketing Services?  Contact RiDeal Digital Seva today and our experts will help you choose the right solution for your business.",
+    subtitle: "Got a question or need a quote? Reach out to our dedicated support team today—we're always here to help.",
     content: {
       eyebrow: "Contact Us",
-      bgImage: "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?q=80&w=1600&auto=format&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop"
     }
   });
 
-  useEffect(() => {
-    fetch("https://backend.ridealdigitalseva.com/api/sections/contact-hero")
-      .then(res => res.json())
-      .then(resData => {
-        if (resData && resData.title) {
-          setData(resData);
-        }
-      })
-      .catch(err => console.warn("CMS ContactHero load failed:", err));
-  }, []);
+
 
   useEffect(() => { const t = setTimeout(() => setLoaded(true), 80); return () => clearTimeout(t); }, []);
 
@@ -51,7 +42,7 @@ const ContactHero = () => {
         .ch-bg {
           position: absolute;
           inset: 0;
-          background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop');
+          background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
           background-size: cover;
           background-position: center top;
           z-index: 0;
@@ -184,12 +175,13 @@ const ContactHero = () => {
 
         /* title */
         .ch-title {
-          font-size: 58px;
+          font-size: 40px;
           font-weight: 900;
           color: #fff;
-          letter-spacing: 4px;
+          letter-spacing: 3px;
           text-transform: uppercase;
-          line-height: 1.1;
+          line-height: 1.2;
+          max-width: 900px;
           margin: 0;
           opacity: 0;
           /* shimmer effect on text */
@@ -200,14 +192,6 @@ const ContactHero = () => {
           background-clip: text;
           animation: chShimmer 3.5s 0.8s linear infinite,
                      chFadeUp   0.7s 0.2s ease forwards;
-        }
-        .ch-title span {
-          color: transparent !important;
-          -webkit-text-stroke: 2px #fff !important;
-          text-stroke: 2px #fff !important;
-          display: inline-block;
-          background: none !important;
-          -webkit-text-fill-color: transparent !important;
         }
 
         /* underline accent */
@@ -277,15 +261,10 @@ const ContactHero = () => {
       `}</style>
 
       <section className="ch-section">
-        <div className="ch-bg" style={{ backgroundImage: `url(${data.content?.bgImage || "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop"})` }} />
+        <div className="ch-bg" style={{ backgroundImage: `url(${data.content?.bgImage || "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop"})` }} />
         <div className="ch-overlay" />
 
-        {/* spinning circles */}
-        <div className="ch-circles">
-          <div className="ch-circle" />
-          <div className="ch-circle" />
-          <div className="ch-circle" />
-        </div>
+
 
         {/* floating arcs */}
         <div className="ch-arc-wrap">
@@ -305,16 +284,7 @@ const ContactHero = () => {
             <span className="ch-eyebrow-line" />
           </div>
 
-          <h1 className={`ch-title ${loaded ? "" : ""}`}>
-            {data.title.includes("Touch") ? (
-              <>
-                {data.title.replace("Touch", "")}
-                <span>Touch</span>
-              </>
-            ) : (
-              data.title
-            )}
-          </h1>
+          <h1 className="ch-title">{data.title}</h1>
           <div className={`ch-title-line ${loaded ? "in" : ""}`} />
 
     <p className={`ch-desc ${loaded ? "in" : ""}`}>

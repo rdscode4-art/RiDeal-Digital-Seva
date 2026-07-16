@@ -4,11 +4,11 @@ const CertificationsHero = () => {
   const [loaded, setLoaded] = useState(false);
   
   const data = {
-    title: "Government Authorized Certifications",
-    subtitle: "We operate under full compliance and guidelines of statutory government organizations to guarantee safety, operational standards, and trust.",
+    title: "Our Certifications",
+    subtitle: "Industry-recognized credentials that validate our expertise, security standards, and commitment to quality.",
     content: {
-      eyebrow: "Official Credentials",
-      bgImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1600&auto=format&fit=crop"
+      eyebrow: "Official Awards",
+      bgImage: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1600&auto=format&fit=crop"
     }
   };
 
@@ -41,6 +41,7 @@ const CertificationsHero = () => {
         .ch-bg {
           position: absolute;
           inset: 0;
+          background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1600&auto=format&fit=crop');
           background-size: cover;
           background-position: center top;
           z-index: 0;
@@ -173,12 +174,13 @@ const CertificationsHero = () => {
 
         /* title */
         .ch-title {
-          font-size: 48px;
+          font-size: 40px;
           font-weight: 900;
           color: #fff;
-          letter-spacing: 2px;
+          letter-spacing: 3px;
           text-transform: uppercase;
           line-height: 1.2;
+          max-width: 900px;
           margin: 0;
           opacity: 0;
           /* shimmer effect on text */
@@ -189,14 +191,6 @@ const CertificationsHero = () => {
           background-clip: text;
           animation: chShimmer 3.5s 0.8s linear infinite,
                      chFadeUp   0.7s 0.2s ease forwards;
-        }
-        .ch-title span {
-          color: transparent !important;
-          -webkit-text-stroke: 2px #fff !important;
-          text-stroke: 2px #fff !important;
-          display: inline-block;
-          background: none !important;
-          -webkit-text-fill-color: transparent !important;
         }
 
         /* underline accent */
@@ -266,15 +260,10 @@ const CertificationsHero = () => {
       `}</style>
 
       <section className="ch-section">
-        <div className="ch-bg" style={{ backgroundImage: `url(${data.content.bgImage})` }} />
+        <div className="ch-bg" style={{ backgroundImage: `url('${data.content?.bgImage || "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1600&auto=format&fit=crop"}')` }} />
         <div className="ch-overlay" />
 
-        {/* spinning circles */}
-        <div className="ch-circles">
-          <div className="ch-circle" />
-          <div className="ch-circle" />
-          <div className="ch-circle" />
-        </div>
+
 
         {/* floating arcs */}
         <div className="ch-arc-wrap">

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   FaYoutube,
   FaFacebookF,
@@ -8,8 +9,24 @@ import {
   FaEnvelope,
   FaArrowUp,
 } from "react-icons/fa";
+import logoPng from "../assets/logo (3).png";
 
 const Footer = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button after scrolling down ~500px (approx half screen)
+      if (window.scrollY > 500) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
@@ -78,25 +95,19 @@ const Footer = () => {
 
         .footer-logo-link {
           display: inline-block;
-          margin-bottom: 22px;
-          border-radius: 12px;
-          overflow: hidden;
-          transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-          box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+          margin-bottom: 16px;
+          transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .footer-logo-link:hover {
-          transform: translateY(-4px) scale(1.04);
-          box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+          transform: translateY(-4px);
           opacity: 0.92;
         }
 
         .footer-logo-img {
-          height: 72px;
-          width: auto;
+          width: 180px;
+          height: auto;
           display: block;
-          object-fit: contain;
-          border-radius: 12px;
         }
 
         .footer-desc {
@@ -105,6 +116,7 @@ const Footer = () => {
           line-height: 1.85;
           max-width: 320px;
           margin-bottom: 28px;
+          text-align: justify;
         }
 
         /* Social icons */
@@ -320,7 +332,7 @@ const Footer = () => {
             gap: 36px;
           }
 
-          .footer-logo-img { height: 58px; }
+          .footer-logo-img { height: 88px; }
 
           .footer-desc { font-size: 14px; max-width: 100%; }
 
@@ -352,18 +364,11 @@ const Footer = () => {
 
               <a href="/" className="footer-logo-link">
                 <img
-                  src="/logo.jpeg"
+                  src={logoPng}
                   alt="RiDeal Digital Seva"
                   className="footer-logo-img"
                 />
               </a>
-
-              <p className="footer-desc">
-                RiDeal Digital Seva delivers innovative IT services, website
-                development, ERP solutions, digital marketing, and business
-                automation to help companies scale faster and achieve
-                long-term success.
-              </p>
 
               <div className="social-icons">
                 <a href="https://www.facebook.com/profile.php?id=61583579480455" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
@@ -455,13 +460,17 @@ const Footer = () => {
             cursor: "pointer",
             boxShadow: "0 6px 22px rgba(37, 99, 235, 0.3)",
             zIndex: 9999,
-            transition: "transform 0.25s ease, box-shadow 0.25s ease",
+            transition: "transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease, visibility 0.3s ease",
+            opacity: showScrollTop ? 1 : 0,
+            visibility: showScrollTop ? "visible" : "hidden",
           }}
           onMouseEnter={e => {
+            if (!showScrollTop) return;
             e.currentTarget.style.transform = "translateY(-4px)";
             e.currentTarget.style.boxShadow = "0 12px 32px rgba(37, 99, 235, 0.5)";
           }}
           onMouseLeave={e => {
+            if (!showScrollTop) return;
             e.currentTarget.style.transform = "translateY(0)";
             e.currentTarget.style.boxShadow = "0 6px 22px rgba(37, 99, 235, 0.3)";
           }}

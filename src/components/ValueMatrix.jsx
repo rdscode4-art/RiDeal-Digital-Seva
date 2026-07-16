@@ -75,6 +75,8 @@ const ValueMatrix = () => {
           font-style: italic;
           font-weight: 700;
           padding-right: 10px;
+          -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
         }
         .vm-main-subtitle {
           font-size: 1.15rem;
@@ -108,10 +110,10 @@ const ValueMatrix = () => {
           grid-template-columns: 1fr 1fr;
           grid-template-rows: 1fr 1fr;
           border-radius: 24px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          background-color: #0b0d17;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          background-color: #ffffff;
           position: relative;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
           overflow: hidden;
         }
         
@@ -120,7 +122,7 @@ const ValueMatrix = () => {
           content: '';
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
-          background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+          background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
           background-size: 25px 25px;
           pointer-events: none;
           z-index: 0;
@@ -135,8 +137,8 @@ const ValueMatrix = () => {
           transform: translate(-50%, -50%);
           width: 12px;
           height: 12px;
-          background: white;
-          border: 3px solid #000;
+          background: #000;
+          border: 3px solid #fff;
           border-radius: 50%;
           z-index: 10;
         }
@@ -153,9 +155,9 @@ const ValueMatrix = () => {
         }
 
         /* Quadrant Borders */
-        .vm-quad-1 { border-right: 1px solid rgba(255, 255, 255, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .vm-quad-2 { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .vm-quad-3 { border-right: 1px solid rgba(255, 255, 255, 0.1); }
+        .vm-quad-1 { border-right: 1px solid rgba(0, 0, 0, 0.08); border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+        .vm-quad-2 { border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+        .vm-quad-3 { border-right: 1px solid rgba(0, 0, 0, 0.08); }
         .vm-quad-4 { }
 
         /* Quadrant Background Glows - Default subtle */
@@ -229,12 +231,13 @@ const ValueMatrix = () => {
         }
         
         /* Unique Title Highlights */
-        .vm-quad-1 .vm-title span { color: #93c5fd; }
-        .vm-quad-2 .vm-title { color: #9ca3af; }
-        .vm-quad-3 .vm-title span { font-weight: 700; color: #9ca3af; }
-        .vm-quad-3 .vm-title { color: #6b7280; font-weight: 500; }
-        .vm-quad-4 .vm-title span { font-weight: 700; color: #9ca3af; }
-        .vm-quad-4 .vm-title { color: #6b7280; font-weight: 500; }
+        .vm-quad-1 .vm-title span { color: #2563eb; }
+        .vm-quad-2 .vm-title { color: #4b5563; }
+        .vm-quad-2 .vm-title span { color: #e11d48; }
+        .vm-quad-3 .vm-title span { font-weight: 700; color: #d97706; }
+        .vm-quad-3 .vm-title { color: #4b5563; font-weight: 500; }
+        .vm-quad-4 .vm-title span { font-weight: 700; color: #16a34a; }
+        .vm-quad-4 .vm-title { color: #4b5563; font-weight: 500; }
 
         .vm-mobile-chevron {
           display: none;
@@ -395,9 +398,9 @@ const ValueMatrix = () => {
           
           .vm-quad { 
             width: 100%;
-            background-color: #0a0d1c;
+            background-color: #f9fafb;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             padding: 24px; 
             transition: all 0.3s ease;
             position: relative;
@@ -413,7 +416,7 @@ const ValueMatrix = () => {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #0a0d1c;
+            background: #ffffff;
             border: 2px solid;
             z-index: 2;
             transition: all 0.3s ease;
@@ -453,9 +456,9 @@ const ValueMatrix = () => {
           
           .vm-main-title { font-size: 2.2rem; color: #0a0f1e; }
           .vm-main-subtitle { color: #4b5563; }
-          .vm-title { font-size: 1.5rem; color: #ffffff; }
-          .vm-quad-2 .vm-title, .vm-quad-3 .vm-title, .vm-quad-4 .vm-title { color: #ffffff; }
-          .vm-desc { color: #9ca3af; }
+          .vm-title { font-size: 1.5rem; color: #1f2937; }
+          .vm-quad-2 .vm-title, .vm-quad-3 .vm-title, .vm-quad-4 .vm-title { color: #1f2937; }
+          .vm-desc { color: #4b5563; }
         }
       `}</style>
       

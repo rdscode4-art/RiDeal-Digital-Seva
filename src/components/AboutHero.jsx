@@ -4,23 +4,12 @@ const AboutHero = () => {
   const [loaded, setLoaded] = useState(false);
   const [data, setData] = useState({
     title: "Custom Software Development & IT Solutions Company in India",
-    subtitle: "RiDeal Digital Seva is a leading custom software development company in India specializing in website development, mobile app development, ERP software solutions, CRM systems, SEO services, digital marketing, AI-powered applications, and business automation solutions. We help startups, small businesses, and enterprises accelerate growth through innovative technology solutions.",
+    subtitle: "RiDeal Digital Seva is your trusted partner for custom software, web apps, and business automation in India. We help businesses scale through innovative technology.",
     content: {
       eyebrow: "Trusted IT Solutions Partner",
-      bgImage: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop"
+      bgImage: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop"
     }
   });
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/sections/about-hero")
-      .then(res => res.json())
-      .then(resData => {
-        if (resData && resData.title) {
-          setData(resData);
-        }
-      })
-      .catch(err => console.warn("CMS AboutHero load failed:", err));
-  }, []);
 
   useEffect(() => { const t = setTimeout(() => setLoaded(true), 80); return () => clearTimeout(t); }, []);
 
@@ -200,9 +189,7 @@ const AboutHero = () => {
         <div className="ah-bg" style={{ backgroundImage: `url('${data.content?.bgImage || "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop"}')` }} />
         <div className="ah-overlay" />
 
-        <div className="ah-circles">
-          <div className="ah-circle" /><div className="ah-circle" /><div className="ah-circle" />
-        </div>
+
 
         <div className="ah-arc-wrap">
           <div className="ah-arc" /><div className="ah-arc" />
