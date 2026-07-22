@@ -1,0 +1,199 @@
+import { useEffect, useState } from "react";
+
+const BlogHero = () => {
+  const [loaded, setLoaded] = useState(false);
+  const [data, setData] = useState({
+    title: "IT Blogs, ERP Insights & Digital Marketing Guides",
+    subtitle: "Stay updated with the latest trends, insights, and news in the tech world. Read our expert articles and stories.",
+    content: {
+      eyebrow: "Technology & Business Insights",
+      bgImage: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop"
+    }
+  });
+
+  useEffect(() => { const t = setTimeout(() => setLoaded(true), 80); return () => clearTimeout(t); }, []);
+
+  return (
+    <>
+      <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+      <style>{`
+        @keyframes bhFadeUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes bhFadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes bhPulse    { 0%,100% { transform:scale(1); opacity:1; } 50% { transform:scale(1.35); opacity:0.6; } }
+        @keyframes bhSpin     { from { transform:translate(-50%,-50%) rotate(0deg); } to { transform:translate(-50%,-50%) rotate(360deg); } }
+        @keyframes bhFloat    { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+        @keyframes bhShimmer  { 0% { background-position:-600px 0; } 100% { background-position:600px 0; } }
+
+        .bh-section {
+          width: 100%;
+          min-height: 320px;
+          position: relative;
+          overflow: hidden;
+          font-family: 'Barlow', sans-serif;
+          display: flex;
+          align-items: center;
+        }
+
+        .bh-bg {
+          position: absolute;
+          inset: 0;
+          background-image: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop');
+          background-size: cover;
+          background-position: center;
+          z-index: 0;
+          transform: scale(1.04);
+          transition: transform 8s ease;
+        }
+        .bh-section:hover .bh-bg { transform: scale(1); }
+
+        .bh-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(10, 15, 30, 0.92) 0%, rgba(10, 15, 30, 0.75) 60%, rgba(37, 99, 235, 0.40) 100%);
+          z-index: 1;
+        }
+
+        .bh-circles { position:absolute; top:-40px; left:-40px; width:220px; height:220px; z-index:2; pointer-events:none; }
+        .bh-circle  { position:absolute; border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%); }
+        .bh-circle:nth-child(1) { width:80px;  height:80px;  border:1.5px solid rgba(255,255,255,0.25); animation:bhSpin 18s linear infinite; }
+        .bh-circle:nth-child(2) { width:130px; height:130px; border:1.5px solid rgba(255,255,255,0.14); animation:bhSpin 28s linear infinite reverse; }
+        .bh-circle:nth-child(3) { width:190px; height:190px; border:1px   solid rgba(255,255,255,0.07); animation:bhSpin 40s linear infinite; }
+
+        .bh-arc-wrap { position:absolute; bottom:-20px; right:-20px; width:200px; height:200px; z-index:2; pointer-events:none; }
+        .bh-arc      { position:absolute; border-radius:50%; bottom:0; right:0; }
+        .bh-arc:nth-child(1) { width:110px; height:110px; border:16px solid #2563eb; bottom:-28px; right:-28px; animation:bhFloat 4s ease-in-out infinite; }
+        .bh-arc:nth-child(2) { width:170px; height:170px; border:16px solid rgba(37, 99, 235,0.35); bottom:-55px; right:-55px; animation:bhFloat 5.5s 0.8s ease-in-out infinite; }
+
+        .bh-dot { position:absolute; border-radius:50%; z-index:3; pointer-events:none; }
+        .bh-dot-1 { width:12px; height:12px; background:#fff; top:36%; left:20%; animation:bhPulse 3s ease-in-out infinite; }
+        .bh-dot-2 { width:8px;  height:8px;  background:rgba(255,255,255,0.5); bottom:30%; right:15%; animation:bhPulse 4s 1s ease-in-out infinite; }
+        .bh-dot-3 { width:6px;  height:6px;  background:rgba(255,255,255,0.3); top:25%; right:28%; animation:bhPulse 5s 2s ease-in-out infinite; }
+
+        .bh-content {
+          position: relative;
+          z-index: 3;
+          width: 100%;
+          padding: 140px 6% 72px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 16px;
+        }
+
+        .bh-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.7);
+          opacity: 0;
+        }
+        .bh-eyebrow.in { animation: bhFadeDown 0.6s 0.1s ease forwards; }
+        .bh-eyebrow-line { width:30px; height:1.5px; background:rgba(255,255,255,0.4); border-radius:2px; }
+
+        .bh-title {
+          font-size: 48px;
+          font-weight: 900;
+          color: #fff;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          line-height: 1.1;
+          margin: 0;
+          opacity: 0;
+          background: linear-gradient(90deg, #fff 0%, #fff 40%, rgba(255,255,255,0.55) 50%, #fff 60%, #fff 100%);
+          background-size: 600px 100%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          animation: bhShimmer 3.5s 0.8s linear infinite, bhFadeUp 0.7s 0.2s ease forwards;
+        }
+
+        .bh-title-line {
+          width: 0;
+          height: 3px;
+          background: linear-gradient(90deg, transparent, #2563eb, transparent);
+          border-radius: 4px;
+          transition: width 0.8s 0.9s ease;
+          margin: -8px auto 0;
+        }
+        .bh-title-line.in { width: 180px; }
+
+        .bh-desc {
+          font-size: 15px;
+          color: rgba(255,255,255,0.7);
+          line-height: 1.8;
+          max-width: 460px;
+          margin: 0;
+          opacity: 0;
+        }
+        .bh-desc.in { animation: bhFadeUp 0.7s 0.45s ease forwards; }
+
+        .bh-breadcrumb {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+          background: rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 50px;
+          padding: 8px 22px;
+          font-size: 14px;
+          font-weight: 600;
+          color: rgba(255,255,255,0.75);
+          text-decoration: none;
+          backdrop-filter: blur(6px);
+          transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+          opacity: 0;
+        }
+        .bh-breadcrumb.in { animation: bhFadeUp 0.7s 0.6s ease forwards; }
+        .bh-breadcrumb:hover { background: rgba(37, 99, 235, 0.2); border-color: rgba(37, 99, 235, 0.5); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2); }
+        .bh-breadcrumb-sep    { color:rgba(255,255,255,0.4); font-size:13px; }
+        .bh-breadcrumb-active { color:#fff; font-weight:800; }
+
+        @media (max-width:768px) { .bh-title { font-size:38px; letter-spacing:2px; } .bh-content { padding:56px 20px; } }
+        @media (max-width:480px) { .bh-title { font-size:28px; } }
+      `}</style>
+
+      <section className="bh-section">
+        <div className="bh-bg" style={{ backgroundImage: `url(${data.content?.bgImage || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop"})` }} />
+        <div className="bh-overlay" />
+
+
+        <div className="bh-arc-wrap">
+          <div className="bh-arc" /><div className="bh-arc" />
+        </div>
+
+        <div className="bh-dot bh-dot-1" />
+        <div className="bh-dot bh-dot-2" />
+        <div className="bh-dot bh-dot-3" />
+
+        <div className="bh-content">
+          <div className={`bh-eyebrow ${loaded ? "in" : ""}`}>
+            <span className="bh-eyebrow-line" />
+            {data.content?.eyebrow || "Insights & Updates"}
+            <span className="bh-eyebrow-line" />
+          </div>
+
+          <h1 className="bh-title">{data.title}</h1>
+          <div className={`bh-title-line ${loaded ? "in" : ""}`} />
+
+          <p className={`bh-desc ${loaded ? "in" : ""}`}>
+            {data.subtitle}
+          </p>
+
+          <a href="/" className={`bh-breadcrumb ${loaded ? "in" : ""}`}>
+            Home
+            <span className="bh-breadcrumb-sep">→</span>
+            <span className="bh-breadcrumb-active">Blog</span>
+          </a>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default BlogHero;

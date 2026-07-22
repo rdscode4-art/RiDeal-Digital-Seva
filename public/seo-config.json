@@ -1,0 +1,39 @@
+{
+  "title": "RiDeal Digital Seva - Digital Services & Solutions",
+  "description": "Expert digital services and solutions for your business. Discover our comprehensive range of services including web development, digital marketing, and business consulting.",
+  "keywords": "digital services, web development, digital marketing, business solutions, SEO, consulting",
+  "author": "RiDeal Digital Seva",
+  "canonicalUrl": "https://ridealdigitalseva.com",
+  "socialMeta": {
+    "ogTitle": "RiDeal Digital Seva - Digital Services & Solutions",
+    "ogDescription": "Transform your business with expert digital services and innovative solutions.",
+    "ogImage": "https://ridealdigitalseva.com/og-image.jpg",
+    "ogUrl": "https://ridealdigitalseva.com",
+    "twitterCard": "summary_large_image",
+    "twitterTitle": "RiDeal Digital Seva",
+    "twitterDescription": "Expert digital services and solutions for your business.",
+    "twitterImage": "https://ridealdigitalseva.com/twitter-image.jpg"
+  },
+  "pages": {
+    "home": {
+      "title": "RiDeal Digital Seva - Home",
+      "description": "Welcome to RiDeal Digital Seva. Explore our digital services and solutions."
+    },
+    "about": {
+      "title": "About Us - RiDeal Digital Seva",
+      "description": "Learn more about RiDeal Digital Seva, our mission, values, and team."
+    },
+    "services": {
+      "title": "Our Services - RiDeal Digital Seva",
+      "description": "Discover our comprehensive range of digital services and solutions for your business."
+    },
+    "blog": {
+      "title": "Blog - RiDeal Digital Seva",
+      "description": "Read our latest articles and insights on digital services and business trends."
+    },
+    "contact": {
+      "title": "Contact Us - RiDeal Digital Seva",
+      "description": "Get in touch with RiDeal Digital Seva. We'd love to hear from you."
+    }
+  }
+}

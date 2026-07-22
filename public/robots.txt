@@ -1,0 +1,33 @@
+# robots.txt for Rideal Digital Seva
+# https://ridealdigitalseva.com
+
+User-agent: *
+Allow: /
+
+# Important frontend assets
+Allow: /assets/
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Block sensitive/private routes
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+Disallow: /api/
+Disallow: /login/
+Disallow: /register/
+
+# Block unnecessary files
+Disallow: /.env
+Disallow: /server.js
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://ridealdigitalseva.com/sitemap.xml
