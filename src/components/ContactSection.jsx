@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaArrowRight, FaCheckCircle, FaQrcode, FaTimes } from "react-icons/fa";
-import scannerImg from "../assets/scanner.jpeg";
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt, FaArrowRight, FaCheckCircle, FaTimes } from "react-icons/fa";
 
 // ── EmailJS credentials (optional — fill in to enable direct email sending) ──
 // Sign up free at https://www.emailjs.com, create a Gmail service + template,
@@ -22,7 +21,6 @@ const ContactSection = () => {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [showQR, setShowQR] = useState(false);
 
   const handle = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -432,32 +430,6 @@ const ContactSection = () => {
 
         .cs-success svg { font-size: 20px; color: #4ade80; }
 
-        /* ── QR MODAL ── */
-        .qr-overlay {
-          position: fixed; top:0; left:0; width:100%; height:100%;
-          background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
-          z-index: 9999; display: flex; align-items: center; justify-content: center;
-          animation: csFadeUp 0.3s ease;
-        }
-        .qr-modal {
-          background: #fff; padding: 40px; border-radius: 20px;
-          text-align: center; max-width: 400px; width: 90%;
-          position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        .qr-close {
-          position: absolute; top: 16px; right: 16px;
-          background: transparent; border: none; font-size: 20px;
-          color: #6b7280; cursor: pointer; transition: color 0.2s;
-        }
-        .qr-close:hover { color: #0a0f1e; }
-        .qr-modal img {
-          width: 250px; height: 250px; border-radius: 12px; margin: 20px auto;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: block;
-          object-fit: contain;
-        }
-        .qr-modal h3 { font-size: 22px; font-weight: 900; color: #2563eb; margin-bottom: 8px; }
-        .qr-modal p { font-size: 14.5px; color: #4b5563; line-height: 1.6; }
-
         /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
           .cs-wrap { flex-direction: column; }
@@ -509,16 +481,6 @@ const ContactSection = () => {
               <div className="cs-info-body">
                 <h4>Phone</h4>
                 <p>+91 90279 53810</p>
-              </div>
-            </div>
-
-            <div className="cs-info-card" onClick={() => setShowQR(true)} style={{ cursor: "pointer", background: "#2563eb", borderColor: "#2563eb" }}>
-              <div className="cs-info-icon" style={{ background: "rgba(255,255,255,0.15)", color: "#fff", borderColor: "rgba(255,255,255,0.15)" }}>
-                <FaQrcode />
-              </div>
-              <div className="cs-info-body">
-                <h4 style={{ color: "#fff" }}>Start Your Project</h4>
-                <p style={{ color: "rgba(255,255,255,0.8)" }}>Scan to make advance payment & begin</p>
               </div>
             </div>
           </div>
@@ -589,17 +551,6 @@ const ContactSection = () => {
 
         </div>
       </section>
-
-      {showQR && (
-        <div className="qr-overlay" onClick={() => setShowQR(false)}>
-          <div className="qr-modal" onClick={e => e.stopPropagation()}>
-            <button className="qr-close" onClick={() => setShowQR(false)}><FaTimes /></button>
-            <h3>Kickstart Your Project</h3>
-            <img src={scannerImg} alt="Pay Token Money QR" />
-            <p>Please share a screenshot of your successful advance payment with us to begin onboarding immediately.</p>
-          </div>
-        </div>
-      )}
     </>
   );
 };
